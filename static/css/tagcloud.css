@@ -1,0 +1,35 @@
+/*   
+Theme Name: Open Sourcerer
+Theme URI: http://www.theopensourcerer.com
+Description: A Wordpress Theme inspired by the colour scheme of Ubuntu Jaunty 9.04. Features: Two column layout, widget aware, variable width. 
+Author: Alan Lord alan@theopensourcerer.com
+Author URI: http://www.theopensourcerer.com
+Version: 1.3
+Tags: brown, two-column, flexible-width, widget-aware
+License: GPLv3 or Later. (c) 2009 Alan Lord 
+*/
+
+ul.tagcloud {
+    clear:left;
+    list-style:none;
+    position:relative;
+    left:0;
+    margin:0;
+    padding:0;
+}
+
+ul.tagcloud li {
+    display:inline;
+    white-space:nowrap;
+    margin-right:0.5ex;
+}
+
+li.tag-1 {font-size:200.0%}
+li.tag-2 {font-size:187.5%}
+li.tag-3 {font-size:175.0%}
+li.tag-4 {font-size:162.5%}
+li.tag-5 {font-size:150.0%}
+li.tag-6 {font-size:137.5%}
+li.tag-7 {font-size:125.0%}
+li.tag-8 {font-size:112.5%}
+li.tag-9 {font-size:100.0%}

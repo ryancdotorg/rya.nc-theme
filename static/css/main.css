@@ -1,0 +1,92 @@
+/*   
+Theme Name: Open Sourcerer
+Theme URI: http://www.theopensourcerer.com
+Description: A Wordpress Theme inspired by the colour scheme of Ubuntu Jaunty 9.04 and the Dark Smoke Theme. Features: Two column layout, widget aware, variable width between 800-1200px. 
+Author: Alan Lord
+Author URI: http://www.theopenlearningcentre.com
+Version: 1.4
+Tags: dark, brown, two-columns, flexible-width, threaded-comments
+License: GPLv3 or Later. (c) 2009 Alan Lord
+*/
+
+.highlighttable, td.linenos {
+    background-color: #121212;
+    border:1px solid #292929;
+}
+
+table.highlighttable {
+    width:100%;
+}
+
+.highlighttable td {
+    padding:0 0.3em;
+}
+
+td.linenos {
+    width:4ex;
+    text-align:right;
+}
+
+/* Begin Global Resets */
+* {
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-color:#000000; /* 0f0c0b */
+    color:#D9D9D9; /* dcdad5 */
+    font-size:76%;
+    font-family:"Liberation Sans", Arial, Helvetica, sans-serif;
+    line-height:1.3em;
+    text-align:center; /* IE6 Center hack */
+}
+
+table {
+    border-collapse:collapse;
+    empty-cells:hide;
+}
+
+h1,h2,h3,h4,h5,h6,p,blockquote,form,label,ul,ol,dl,fieldset,address {
+    margin: 0.5em 0;
+}
+
+ul, ol, dd {
+    margin-left:1em;
+}
+
+a {
+    text-decoration:none;
+    color:#56DF56; /* dcdad5 */
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+a img {
+    border:0;
+}
+
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+
+/* End Global resets */
+
+/* Following needed for Wordpress Theme Directory Compliance. */
+/* And to support image and other WP generated content positioning - obviously */
+.alignright {
+	float:right;
+}
+
+.alignleft {
+	float:left;
+}
+
+.aligncenter, div.aligncenter {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}

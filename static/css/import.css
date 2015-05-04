@@ -1,0 +1,23 @@
+/*   
+Theme Name: Open Sourcerer
+Theme URI: http://www.theopensourcerer.com
+Description: A Wordpress Theme inspired by the colour scheme of Ubuntu Jaunty 9.04 and the Dark Smoke Theme. Features: Two column layout, widget aware, variable width between 800-1200px. 
+Author: Alan Lord
+Author URI: http://www.theopenlearningcentre.com
+Version: 1.4
+Tags: dark, brown, two-columns, flexible-width, threaded-comments
+License: GPLv3 or Later. (c) 2009 Alan Lord
+*/
+
+/* Make it easy to alter stuff... */
+@import url("layout.css");
+@import url("header.css");
+@import url("menu.css");
+@import url("tagcloud.css");
+@import url("content.css");
+@import url("sidebar.css");
+@import url("footer.css");
+@import url("wordpress.css");
+@import url("tweeks.css");
+@import url("pygment.css");
+@import url("main.css");
