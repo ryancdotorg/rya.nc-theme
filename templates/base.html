@@ -4,7 +4,9 @@
   {% block head %}
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width" />
+  <link rel="alternate" hreflang="en" href="{{ output_file|canonical_url }}" />
+  <link rel="canonical" hreflang="en" href="{{ output_file|canonical_url }}" />
   <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
   <link rel="shortcut icon" href="/theme/img/favicon.ico" />
   {% if FEED_ALL_ATOM %}
@@ -32,6 +34,20 @@
   <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
   {% endif %}
   {% endblock head %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Person",
+  "name": "Ryan Castellucci",
+  "url": "https://rya.nc/",
+  "sameAs": [
+    "https://plus.google.com/+RyanCastellucci",
+    "https://www.linkedin.com/in/ryancastellucci",
+    "https://github.com/ryancdotorg",
+    "https://twitter.com/ryancdotorg"
+  ]
+}
+</script>
 </head>
 
 <body id="index" class="home">
@@ -69,7 +85,7 @@
       <li><a href="http://www.flickr.com/photos/ryanqx/" rel="me" title="My photos on flickr">Flickr</a></li>
       <li><a href="https://twitter.com/ryancdotorg" rel="me" title="My twitter profile">Twitter</a></li>
       <li><a href="https://github.com/ryancdotorg" rel="me" title="My GitHub profile">GitHub</a></li>
-      <li><a href="https://plus.google.com/102161594653790479451" rel="me" title="My Google+ profile">Google+</a></li>
+      <li><a href="https://plus.google.com/+RyanCastellucci" rel="me" title="My Google+ profile">Google+</a></li>
       <li><a href="https://www.linkedin.com/in/ryancastellucci" rel="me" title="My LinkedIn profile">LinkedIn</a></li>
     </ul>
   </div></div><!-- /.widget -->
@@ -92,7 +108,7 @@
 
   <footer id="contentinfo"><div class="inside">
     <div id="ft_left">
-      <p>Site Contents &copy;{{ '%Y'|strfnow }}&nbsp;<a href="/">{{ SITENAME }}</a><br/>
+      <p>Site Contents &copy;{{ '%Y'|strfnow }}&nbsp;<a href="/about.html">Ryan Castellucci</a><br/>
       Powered by <a href="http://getpelican.com/">Pelican</a></p>
     </div>
     <div id="ft_right">
