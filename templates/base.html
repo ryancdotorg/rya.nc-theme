@@ -5,7 +5,7 @@
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
   <link rel="shortcut icon" href="/theme/img/favicon.ico" />
   {% if FEED_ALL_ATOM %}
   <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
@@ -37,25 +37,25 @@
 <body id="index" class="home">
   <div id="wrap"><!-- Begin Wrap -->
   <header id="banner"><div class="inside">
-    <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+    <h1><a href="/">{{ SITENAME }}</a></h1>
     <p class="subtitle">{{ SITESUBTITLE }}</p>
   </div></header><!-- /#banner -->
   <nav id="menu"><ul>
-  <li class="page_item"><a href="{{ SITEURL }}/">Home</a></li>
+  <li class="page_item"><a href="/">Home</a></li>
   {% for title, link in MENUITEMS %}
     <li><a href="{{ link }}">{{ title }}</a></li>
   {% endfor %}
   {% if DISPLAY_PAGES_ON_MENU %}
     {% for p in PAGES %}
       <li class="page_item{% if p == page %} current_page_item{% endif %}">
-        <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+        <a href="/{{ p.url }}">{{ p.title }}</a>
       </li>
     {% endfor %}
   {% else %}
     {% if DISPLAY_CATEGORIES_ON_MENU %}
       {% for cat, null in categories %}
         <li{% if cat == category %} class="active"{% endif %}>
-          <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+          <a href="/{{ cat.url }}">{{ cat }}</a>
         </li>
       {% endfor %}
     {% endif %}
@@ -79,7 +79,7 @@
     <ul><li><h2>Tags</h2></li>
     <ul class="tagcloud">
       {% for tag in tag_cloud|msort(attributes=[1,0]) %}
-        <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a></li>
+        <li class="tag-{{ tag.1 }}"><a href="/{{ tag.0.url }}">{{ tag.0 }}</a></li>
       {% endfor %}
     </ul></ul>
   </div></div><!-- /.widget -->
@@ -92,7 +92,7 @@
 
   <footer id="contentinfo"><div class="inside">
     <div id="ft_left">
-      <p>Site Contents &copy;{{ '%Y'|strfnow }}&nbsp;<a href="{{ SITEURL }}/">{{ SITENAME }}</a><br/>
+      <p>Site Contents &copy;{{ '%Y'|strfnow }}&nbsp;<a href="/">{{ SITENAME }}</a><br/>
       Powered by <a href="http://getpelican.com/">Pelican</a></p>
     </div>
     <div id="ft_right">
