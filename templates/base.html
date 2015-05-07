@@ -79,18 +79,17 @@
   </ul></nav><!-- /#menu -->
 
   <div id="sidebar">
+  {% if SOCIAL %}
   <div class="widget" id="elsewhere"><div class="inside">
     <ul><li><h2>Me Elsewhere</h2></li></ul>
     <ul>
-      <li><a href="http://www.flickr.com/photos/ryanqx/" rel="me" title="My photos on flickr">Flickr</a></li>
-      <li><a href="https://twitter.com/ryancdotorg" rel="me" title="My twitter profile">Twitter</a></li>
-      <li><a href="https://github.com/ryancdotorg" rel="me" title="My GitHub profile">GitHub</a></li>
-      <li><a href="https://plus.google.com/+RyanCastellucci" rel="me" title="My Google+ profile">Google+</a></li>
-      <li><a href="https://www.linkedin.com/in/ryancastellucci" rel="me" title="My LinkedIn profile">LinkedIn</a></li>
+      {% for name, link in SOCIAL %}
+        <li><a href="{{ link }}" rel="me">{{ name }}</a></li>
+      {% endfor %}
     </ul>
   </div></div><!-- /.widget -->
-  <!-- spacer is a hack for the mobile layout -->
-  <div class="spacer"></div>
+  <div class="spacer"></div><!-- hack for the mobile layout -->
+  {% endif %}
   <div class="widget" id="tagcloud"><div class="inside">
     <ul><li><h2>Tags</h2></li>
     <ul class="tagcloud">
