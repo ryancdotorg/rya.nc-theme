@@ -1,1 +1,40 @@
-index.html
+{% extends "base.html" %}
+
+{% block title %}{{ tag }} | {{ SITENAME }}{% endblock %}
+
+{% block head %}
+{{ super() }}
+<meta name="description" content="All posts on {{ SITENAME }} tagged '{{ tag }}'" />
+{% endblock %}
+
+{% block content %}
+<!--<section id="content">
+{% block content_title %}
+<h2>All articles</h2>
+{% endblock %}-->
+
+{% for article in articles_page.object_list %}
+<div class="article">
+<div class="inside">
+<header> <h2 class="entry-title"><a href="/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2></header>
+<div class="entry-content">
+{{ article.summary }}
+<a href="/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">Read more...</a>
+</div><!-- /.entry-content -->
+<footer class="postmeta"><small>
+<abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
+|
+{% for author in article.authors %}
+    <a class="url fn" href="/{{ author.url }}">{{ author }}</a>
+{% endfor %}
+| Tags:
+{% for tag in article.tags %}
+    <a href="/{{ tag.url }}">{{ tag }}</a>
+{% endfor %}
+</small></footer><!-- /.postmeta -->
+</div><!-- /.article -->
+</div><!-- /.inside -->
+{% endfor %}
+{% include 'pagination.html' %}
+</section><!-- /#content -->
+{% endblock content %}
