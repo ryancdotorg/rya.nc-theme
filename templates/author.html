@@ -1,6 +1,12 @@
 {% extends "index.html" %}
 
 {% block title %}Posts by {{ author }} | {{ SITENAME }}{% endblock %}
+
+{% block head %}
+{{ super() }}
+<meta name="description" content="All posts on {{ SITENAME }} by {{ author }}" />
+{% endblock %}
+
 {% block content_title %}
 <h2>Posts by {{ author }}</h2>
 {% endblock %}
