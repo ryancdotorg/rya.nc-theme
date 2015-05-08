@@ -84,6 +84,17 @@
       {% endfor %}
     </ul>
   </div></div><!-- /.widget -->
+  {% if LINKS %}
+  <div class="widget" id="blogroll"><div class="inside">
+    <ul><li><h2 title="I think 'Blogroll' is a dumb word, but I couldn't come up with a better one.">Blogroll</h2></li></ul>
+    <ul>
+      {% for name, link in LINKS|sort %}
+        <li><a href="{{ link }}">{{ name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div></div><!-- /.widget -->
+  {% endif %}
+
   </div><!-- /#sidebar -->
 
   <section id="content">

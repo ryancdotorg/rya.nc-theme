@@ -73,6 +73,9 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
         left:5em;
         width:100%;
     }
+    #blogroll {
+        display:none;
+    }
     #content {
         margin-right:0;
     }
