@@ -77,12 +77,12 @@
   <div class="spacer"></div><!-- hack for the mobile layout -->
   {% endif %}
   <div class="widget" id="tagcloud"><div class="inside">
-    <ul><li><h2>Tags</h2></li>
+    <ul><li><h2>Tags</h2></li></ul>
     <ul class="tagcloud">
       {% for tag in tag_cloud|msort(attributes=[1,0]) %}
         <li class="tag-{{ tag.1 }}"><a href="/{{ tag.0.url }}">{{ tag.0 }}</a></li>
       {% endfor %}
-    </ul></ul>
+    </ul>
   </div></div><!-- /.widget -->
   </div><!-- /#sidebar -->
 
