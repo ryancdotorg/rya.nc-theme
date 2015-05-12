@@ -2,6 +2,11 @@
 
 {% block title %}{{ SITENAME }}{% endblock %}
 
+{% block head %}
+{{ super() }} 
+<meta name="description" content="{{ SITEDESC }}" />
+{% endblock %}
+
 {% block content %}
 <!--<section id="content">
 {% block content_title %}
