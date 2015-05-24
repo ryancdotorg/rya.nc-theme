@@ -13,9 +13,15 @@
     <meta name="tags" contents="{{tag}}" />
   {% endfor %}
 
+  {% if article.status == "draft" %}
+    <meta name="robots" content="noindex, nofollow" />
+  {% endif %}
 {% endblock %}
 
-{% block title %}{{ article.title }} | {{ SITENAME }}{% endblock title %}
+{% block title %}
+{% if article.status == "draft" %}[DRAFT] {% endif %}
+{{ article.title|striptags }} | {{ SITENAME }}
+{% endblock title %}
 
 {% block content %}
   <div class="article">
@@ -23,7 +29,10 @@
   <header>
     <h2 class="entry-title">
       <a href="/{{ article.url }}" rel="bookmark"
-         title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
+         title="Permalink to {{ article.title|striptags }}">
+         {% if article.status == "draft" %}[DRAFT] {% endif %}{{ article.title }}
+      </a>
+    </h2>
   {% import 'translations.html' as translations with context %}
   {{ translations.translations_for(article) }}
   </header>
