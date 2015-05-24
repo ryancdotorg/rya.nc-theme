@@ -22,7 +22,7 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     margin-bottom:1em;
 }
 
-.article h2, .archive h2.entry-title {
+.article h1, .archive h1.entry-title {
     padding:0.5em 0 1em 0;
     border-bottom:solid 1px #292929;
     font-size:1.8em;

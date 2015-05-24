@@ -3,10 +3,10 @@
 {% block content %}
     <div class="article">
     <div class="inside">
-    <header><h2 class="entry-title">
+    <header><h1 class="entry-title">
       <a href="/{{ page.url }}" rel="bookmark"
          title="Permalink to {{ page.title|striptags }}">{{ page.title }}</a>
-    </h2></header>
+    </h1></header>
     {% import 'translations.html' as translations with context %}
     {{ translations.translations_for(page) }}
 

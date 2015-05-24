@@ -27,12 +27,12 @@
   <div class="article">
   <div class="inside">
   <header>
-    <h2 class="entry-title">
+    <h1 class="entry-title">
       <a href="/{{ article.url }}" rel="bookmark"
          title="Permalink to {{ article.title|striptags }}">
          {% if article.status == "draft" %}[DRAFT] {% endif %}{{ article.title }}
       </a>
-    </h2>
+    </h1>
   {% import 'translations.html' as translations with context %}
   {{ translations.translations_for(article) }}
   </header>
