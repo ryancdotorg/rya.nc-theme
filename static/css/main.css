@@ -55,6 +55,8 @@ ul, ol, dd {
     margin-left:1em;
 }
 
+b, i { color:white; }
+
 a {
     text-decoration:none;
     color:#56DF56; /* dcdad5 */
