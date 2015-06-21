@@ -1,13 +1,13 @@
 {% extends "index.html" %}
 
-{% block title %}Posts by {{ author }} | {{ SITENAME }}{% endblock %}
+{% block title %}Posts by {{ AUTHOR_NAMES[author] or author }} | {{ SITENAME }}{% endblock %}
 
 {% block head %}
 {{ super() }}
-<meta name="description" content="All posts on {{ SITENAME }} by {{ author }}" />
+<meta name="description" content="All posts on {{ SITENAME }} by {{ AUTHOR_NAMES[author] or author }}" />
 {% endblock %}
 
 {% block content_title %}
-<h1>Posts by {{ author }}</h1>
+<h1>Posts by {{ AUTHOR_NAMES[author] or author }}</h1>
 {% endblock %}
 

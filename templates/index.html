@@ -25,7 +25,7 @@
 <abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
 |
 {% for author in article.authors %}
-    <a class="url fn" href="/{{ author.url }}">{{ author }}</a>
+    <a class="url fn" href="/{{ author.url }}">{{ AUTHOR_NAMES[author] or author }}</a>
 {% endfor %}
 | Tags:
 {% for tag in article.tags %}
