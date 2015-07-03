@@ -90,6 +90,14 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     background-color:#121212;
 }
 
+.article table.footnote td {
+    background-color:inherit;
+    border:0;
+    font-size:smaller;
+}
+
+.article table.footnote td.label { padding-left:0; }
+
 /*
 pre {
     font-size:1.3em;
@@ -99,13 +107,13 @@ pre {
 
 /* subscript/superscript tweak to avoid preturbing lines */
 /* https://gist.github.com/unruthless/413930 */
-sub, sup {
+sub, sup, a.footnote-reference {
     font-size: 70%;
     line-height: 0;
     position: relative;
     vertical-align: baseline;
 }
-sup { top: -0.4em; }
+sup, a.footnote-reference { top: -0.4em; }
 sub { bottom: -0.3em; }
 
 /* Form Styling */
