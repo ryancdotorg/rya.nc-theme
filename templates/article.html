@@ -16,6 +16,10 @@
   {% if article.status == "draft" %}
     <meta name="robots" content="noindex, nofollow" />
   {% endif %}
+
+  {% for extracss in (article.extracss or None)|split %}
+    <link rel="stylesheet" type="text/css" href="{{ extracss }}" />
+  {% endfor %}
 {% endblock %}
 
 {% block title %}
