@@ -33,6 +33,7 @@
   {% if TAG_FEED_RSS and tag %}
   <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
   {% endif %}
+  <meta name="twitter:site" content="@ryancdotorg">
   {% endblock head %}
 </head>
 
