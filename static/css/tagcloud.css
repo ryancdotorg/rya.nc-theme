@@ -17,6 +17,7 @@ ul.tagcloud li {
     display:inline;
     white-space:nowrap;
     margin-right:0.5ex;
+    line-height:115%;
 }
 
 li.tag-1 {font-size:200.0%}
