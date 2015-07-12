@@ -15,14 +15,8 @@
 
   <!-- twitter article metadata -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="{{ article.title|striptags|e }}" />
-  {% if author|author_info('twitter') %}
-  <meta name="twitter:creator" content="{{ author|author_info('twitter') }}" />
-  {% endif %}
-  {% if article.description %}
-  <meta name="twitter:description" content="{{ article.description|e }}" />
-  {% else %}
-  <meta name="twitter:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}" />
+  {% if article.author|author_info('twitter') %}
+  <meta name="twitter:creator" content="{{ article.author|author_info('twitter') }}" />
   {% endif %}
 
   <!-- open graph article metadata -->
