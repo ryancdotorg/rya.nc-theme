@@ -23,11 +23,6 @@
   <meta property="og:title" content="{{ article.title|striptags|e }}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{ output_file|canonical_url }}" />
-  {% if article.description %}
-  <meta property="og:description" content="{{ article.description|e }}" />
-  {% else %}
-  <meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}" />
-  {% endif %}
   <meta property="og:site_name" content="{{ SITETITLE }}" />
   {% for tag in article.tags %}
   <meta property="article:tag" content="{{ tag }}" />
@@ -55,6 +50,11 @@
     </h1>
   {% import 'translations.html' as translations with context %}
   {{ translations.translations_for(article) }}
+  {% if article.description %}
+  <meta itemprop="description" property="og:description" content="{{ article.description|e }}" />
+  {% else %}
+  <meta itemprop="description" property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}" />
+  {% endif %}
   </header>
   <div class="entry-content" itemprop="articleBody">
     {{ article.content }}
