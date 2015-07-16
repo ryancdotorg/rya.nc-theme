@@ -24,6 +24,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{ output_file|canonical_url }}" />
   <meta property="og:site_name" content="{{ SITETITLE }}" />
+  {% if article.description %}
+  <meta property="og:description" content="{{ article.description|e }}" />
+  {% else %}
+  <meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}" />
+  {% endif %}
+  {% if article.image %}
+  <meta property="og:image" content="{{ article.image }}" />
+  {% endif %}
   {% for tag in article.tags %}
   <meta property="article:tag" content="{{ tag }}" />
   {% endfor %}
@@ -51,12 +59,12 @@
   {% import 'translations.html' as translations with context %}
   {{ translations.translations_for(article) }}
     {% if article.description %}
-    <meta itemprop="description" property="og:description" content="{{ article.description|e }}" />
+    <meta itemprop="description" content="{{ article.description|e }}" />
     {% else %}
-    <meta itemprop="description" property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}" />
+    <meta itemprop="description" content="{{ article.summary|striptags|wordtrunc(200)|e }}" />
     {% endif %}
     {% if article.image %}
-    <meta itemprop="image" property="og:image" content="{{ article.image }}" />
+    <meta itemprop="image" content="{{ article.image }}" />
     {% endif %}
     </header>
   <div class="entry-content" itemprop="articleBody">
