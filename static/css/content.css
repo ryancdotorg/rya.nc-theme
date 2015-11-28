@@ -131,3 +131,10 @@ fieldset {
     border-color:#BFBFBF;
     border-width:2px; /* C1D7A6 */
 }
+
+/* footnotes */
+.footnote:first-of-type {
+    border-top:1px solid #292929;
+    padding-top:0.5em;
+    border-collapse:separate;
+}
