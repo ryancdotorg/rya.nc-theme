@@ -139,5 +139,13 @@ fieldset {
 .footnote:first-of-type {
     border-top:1px solid #292929;
     padding-top:0.5em;
+}
+
+table.footnote {
     border-collapse:separate;
+    border-spacing:0;
+}
+
+table.footnote:target td + td {
+    background-color:#121212;
 }
