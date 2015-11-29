@@ -119,6 +119,21 @@ sub { bottom: -0.3em; }
 /* hide broken footnote references from summary */
 .entry-summary a.footnote-reference { display:none; }
 
+/* other footnote stuff */
+.footnote:first-of-type {
+    border-top:1px solid #292929;
+    padding-top:0.5em;
+}
+
+table.footnote {
+    border-collapse:separate;
+    border-spacing:0;
+}
+
+table.footnote:target td + td {
+    background-color:#121212;
+}
+
 /* Form Styling */
 
 /* Style input boxes and buttons */ 
@@ -133,19 +148,4 @@ fieldset {
     padding:0.5em;
     border-color:#BFBFBF;
     border-width:2px; /* C1D7A6 */
-}
-
-/* footnotes */
-.footnote:first-of-type {
-    border-top:1px solid #292929;
-    padding-top:0.5em;
-}
-
-table.footnote {
-    border-collapse:separate;
-    border-spacing:0;
-}
-
-table.footnote:target td + td {
-    background-color:#121212;
 }
