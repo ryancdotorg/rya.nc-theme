@@ -105,6 +105,13 @@ pre {
 }
 */
 
+/* docutils crap */
+img.align-center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 /* subscript/superscript tweak to avoid preturbing lines */
 /* https://gist.github.com/unruthless/413930 */
 sub, sup, a.footnote-reference {
