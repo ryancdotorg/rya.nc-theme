@@ -127,14 +127,20 @@ sub { bottom: -0.3em; }
 .entry-summary a.footnote-reference { display:none; }
 
 /* other footnote stuff */
-.footnote:first-of-type {
+table.footnote:first-of-type {
     border-top:1px solid #292929;
     padding-top:0.5em;
 }
 
 table.footnote {
+    width:100%;
     border-collapse:separate;
     border-spacing:0;
+}
+
+table.footnote .label {
+    width:1px; /* minimum width */
+    white-space:nowrap;
 }
 
 table.footnote:target td + td {
