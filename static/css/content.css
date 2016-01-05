@@ -22,6 +22,18 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     margin-bottom:1em;
 }
 
+.article li p:first-child {
+    margin-top:0;
+}
+
+.article li p:last-child {
+    margin-bottom:0;
+}
+
+.article li + li {
+    margin-top:0.2em;
+}
+
 .article h1, .archive h1.entry-title {
     padding:0.5em 0 1em 0;
     border-bottom:solid 1px #292929;
