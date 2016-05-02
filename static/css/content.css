@@ -139,9 +139,15 @@ sub { bottom: -0.3em; }
 .entry-summary a.footnote-reference { display:none; }
 
 /* other footnote stuff */
-table.footnote:first-of-type {
+/*table.footnote:first-of-type {*/
+table.footnote {
     border-top:1px solid #292929;
     padding-top:0.5em;
+}
+
+table.footnote ~ table.footnote {
+    border-top:0;
+    padding-top:inherit;
 }
 
 table.footnote {
