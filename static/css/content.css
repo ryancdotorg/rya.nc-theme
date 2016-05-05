@@ -124,6 +124,8 @@ img.align-center {
     margin-left: auto;
 }
 
+.sarcasm { transform: skewX(15deg); display: inline-block; }
+
 /* subscript/superscript tweak to avoid preturbing lines */
 /* https://gist.github.com/unruthless/413930 */
 sub, sup, a.footnote-reference {
