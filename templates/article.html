@@ -87,14 +87,11 @@
       {% endfor %}
     {% endif %}
     on
-    <abbr class="published" title="{{ article.date.isoformat() }}">
-      {{ article.locale_date }}.
-    </abbr>
+    <abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>.
     <meta itemprop="datePublished" content="{{ article.date.isoformat() }}"/>
-	{% if article.modified %}
-    <abbr class="modified" title="{{ article.modified.isoformat() }}">
-      Last modified {{ article.locale_modified }}.
-    </abbr>
+    {% if article.modified %}
+    Last modified
+    <abbr class="modified" title="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</abbr>.
     <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}/>
 	{% endif %}
     Tags:

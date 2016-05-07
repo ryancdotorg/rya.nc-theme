@@ -22,7 +22,7 @@
 <a href="/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">Read more...</a>
 </div><!-- /.entry-summary -->
 <footer class="postmeta"><small>
-<abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
+<abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>
 |
 {% for author in article.authors %}
     <a class="url fn" href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a>
