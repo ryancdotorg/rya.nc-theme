@@ -16,10 +16,12 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     max-height:122px;
     margin-bottom:2px;
     margin-left:-1px;
-    background:#000000 url("/theme/img/header-thin.png") no-repeat 0 0;
+    background:#000 url("/theme/img/header-thin-1200.png") no-repeat 0 0;
     text-align:right;
     border:0px;
 }
+
+/* @media (max-width: 800px)  { #banner { background-image:url("/theme/img/header-thin-800.png");  } } */
 
 #banner p.name {
     font-size: 2em;
