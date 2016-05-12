@@ -126,6 +126,23 @@ img.align-center {
 
 .sarcasm { transform: skewX(15deg); display: inline-block; }
 
+input[type=checkbox].spoiler { display: none; }
+
+input[type=checkbox].spoiler:not(:checked) + .spoiler,
+input[type=checkbox].spoiler:checked + .spoiler:hover {
+  background-color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+input[type=checkbox].spoiler:checked + .spoiler {
+  background-color: currentColor;
+  padding: 1px;
+  margin: -1px;
+}
+
+input[type=checkbox].spoiler + .spoiler { cursor: pointer; }
+
 /* subscript/superscript tweak to avoid preturbing lines */
 /* https://gist.github.com/unruthless/413930 */
 sub, sup, a.footnote-reference {
