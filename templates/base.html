@@ -117,7 +117,14 @@
   </div></footer><!-- /#contentinfo -->
   </div><!-- /#wrap -->
   <!-- START headerTags.cfm trolololol -->
-  <script type="text/javascript" src="https://rya.nc/theme/js/redir.js" defer></script>
+  <script type="text/javascript">
+  if (location.hostname == 'ryanc.org') {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.src = 'https://rya.nc/theme/js/redir.js';
+    document.body.appendChild(s);
+  }
+  </script>
 </body>
 </html>
 <!--
