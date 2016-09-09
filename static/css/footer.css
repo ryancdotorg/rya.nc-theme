@@ -29,6 +29,7 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
         bottom:auto;
         margin:auto -1.5em;
     }
+    #ft_left { margin-right:0; }
     #contentinfo {
         height:auto;
     }
