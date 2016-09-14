@@ -9,6 +9,10 @@ Tags: brown, two-column, flexible-width, widget-aware
 License: GPLv3 or Later. (c) 2009 Alan Lord 
 */
 
+.css-warning {
+  display:none;
+}
+
 .article, .archive {
     background-color:#191919;
     border:1px solid #292929;
