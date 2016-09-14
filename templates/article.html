@@ -39,10 +39,6 @@
   {% endfor %}
 {#//#}
   {% if article.extracss %}
-  <script type="text/javascript">
-  /* https://github.com/filamentgroup/loadCSS */
-  {% include '/js/cssasync.js' %}
-  </script>
   {% for extracss in article.extracss|split %}
   <link rel="preload" as="style" type="text/css" href="{{ extracss }}" onload="this.rel='stylesheet'" />
   {% endfor %}
@@ -51,6 +47,10 @@
   <link rel="stylesheet" type="text/css" href="{{ extracss }}" />
   {% endfor %}
   </noscript>
+  <script type="text/javascript">
+  /* https://github.com/filamentgroup/loadCSS */
+  {% include '/js/cssasync.js' %}
+  </script>
   {% endif %}
 {% endblock %}
 
