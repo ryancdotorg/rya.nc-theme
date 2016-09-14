@@ -4,11 +4,11 @@
   {% if article.status == "draft" %}
   <meta name="robots" content="noindex, nofollow" />
   {% endif %}
-{##}
+{#//#}
   {% if article.keywords %}
   <meta name="keywords" content="{{ article.keywords }}" />
   {% endif %}
-{# https://moz.com/blog/meta-data-templates-123 #}
+{#/ https://moz.com/blog/meta-data-templates-123 /#}
   {% if article.description %}
   <meta name="description" content="{{ article.description|e }}" />
   {% endif %}
@@ -37,10 +37,21 @@
   {% for tag in article.tags %}
   <meta property="article:tag" content="{{ tag }}" />
   {% endfor %}
-{##}
-  {% for extracss in (article.extracss or None)|split %}
+{#//#}
+  {% if article.extracss %}
+  <script type="text/javascript">
+  /* https://github.com/filamentgroup/loadCSS */
+  {% include '/js/cssasync.js' %}
+  </script>
+  {% for extracss in article.extracss|split %}
+  <link rel="preload" as="style" type="text/css" href="{{ extracss }}" onload="this.rel='stylesheet'" />
+  {% endfor %}
+  <noscript>
+  {% for extracss in article.extracss|split %}
   <link rel="stylesheet" type="text/css" href="{{ extracss }}" />
   {% endfor %}
+  </noscript>
+  {% endif %}
 {% endblock %}
 
 {% block title %}

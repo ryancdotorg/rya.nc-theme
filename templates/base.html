@@ -8,7 +8,9 @@
   <link rel="alternate" hreflang="en" href="{{ output_file|canonical_url }}" />
   <link rel="canonical" hreflang="en" href="{{ output_file|canonical_url }}" />
   <link rel="preload" href="/theme/img/header-thin-1200.png" as="image" />
-  <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+  <style type="text/css">
+  {% include '/css/inline.css' %}
+  </style>
   <link rel="shortcut icon" href="/theme/img/favicon.ico" />
   {% if FEED_ALL_ATOM %}
   <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
