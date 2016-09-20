@@ -92,7 +92,7 @@
     {% if article.authors %}
       by
       {% for author in article.authors %}
-      <a class="url fn" href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}" itemprop="author" itemscope itemtype="http://schema.org/Person">
           {% if author|author_info('url') %}
           <meta itemprop="url" content="{{ author|author_info('url') }}" />
           {% endif %}
