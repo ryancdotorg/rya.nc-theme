@@ -107,7 +107,7 @@
     Last modified
     <abbr class="modified" title="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</abbr>.
     <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}"/>
-	{% endif %}
+    {% endif %}
     Tags:
     {% for tag in article.tags %}
         <a href="/{{ tag.url }}">{{ tag }}</a>
