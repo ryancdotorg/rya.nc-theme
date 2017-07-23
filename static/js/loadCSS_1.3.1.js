@@ -1,5 +1,4 @@
-/*! loadCSS: load a CSS file asynchronously. [c]2016 @scottjehl, Filament Group, Inc. Licensed MIT */
-/*! CSS rel=preload polyfill. Depends on loadCSS function. [c]2016 @scottjehl, Filament Group, Inc. Licensed MIT  */
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 (function(w){
 	"use strict";
 	/* exported loadCSS */
@@ -41,7 +40,7 @@
 		ready( function(){
 			ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
 		});
-		// A method (exposed on return object for external use) that mimics onload by polling until document.styleSheets until it includes the new sheet.
+		// A method (exposed on return object for external use) that mimics onload by polling document.styleSheets until it includes the new sheet.
 		var onloadcssdefined = function( cb ){
 			var resolvedHref = ss.href;
 			var i = sheets.length;
@@ -70,35 +69,11 @@
 		onloadcssdefined( loadCB );
 		return ss;
 	};
-    w.loadCSS = loadCSS;
-  // rel=preload support test
-  var rp = loadCSS.relpreload = {};
-  try {
-    if (w.document.createElement( "link" ).relList.supports( "preload" )) {return;}
-  } catch (e) {}
-
-  // loop preload links and fetch using loadCSS
-  rp.poly = function(){
-    var links = w.document.getElementsByTagName( "link" );
-    for( var i = 0; i < links.length; i++ ){
-      var link = links[ i ];
-      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" ){
-        w.loadCSS( link.href, link );
-        link.rel = null;
-      }
-    }
-  };
-
-  // if link[rel=preload] is not supported, we must fetch the CSS manually using loadCSS
-  rp.poly();
-  var run = w.setInterval( rp.poly, 300 );
-  if( w.addEventListener ){
-    w.addEventListener( "load", function(){
-      w.clearInterval( run );
-    } );
-  } else if( w.attachEvent ){
-    w.attachEvent( "onload", function(){
-      w.clearInterval( run );
-    } )
-  }
-}( this ));
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ));
