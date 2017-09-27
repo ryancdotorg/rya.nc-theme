@@ -53,7 +53,7 @@
     <li><a href="{{ link }}">{{ title }}</a></li>
   {% endfor %}
   {% if DISPLAY_PAGES_ON_MENU %}
-    {% for p in PAGES %}
+    {% for p in pages %}
       <li class="page_item{% if p == page %} current_page_item{% endif %}">
         <a href="/{{ p.url }}">{{ p.title }}</a>
       </li>
