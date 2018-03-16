@@ -40,10 +40,12 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     text-align:left;
 }
 
+/*
 #ft_centre {
     left:40%;
     text-align:center;
 }
+*/
 
 #ft_right {
     right:0.5em;

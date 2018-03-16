@@ -10,6 +10,7 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 */
 
 /* Make it easy to alter stuff... */
+/* @import url("print.css"); */
 @import url("layout.css");
 @import url("header.css");
 @import url("menu.css");
@@ -18,5 +19,5 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 @import url("sidebar.css");
 @import url("footer.css");
 @import url("tweeks.css");
-@import url("pygment.css");
+@import url("pygment.min.css");
 @import url("main.css");
