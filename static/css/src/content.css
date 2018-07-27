@@ -13,6 +13,10 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
   display:none;
 }
 
+.redacted { background-color: currentColor; }
+
+.sarcasm { transform: skewX(15deg); display: inline-block; }
+
 .article, .archive {
     background-color:#191919;
     border:1px solid #292929;
@@ -127,8 +131,6 @@ img.align-center {
     margin-right: auto;
     margin-left: auto;
 }
-
-.sarcasm { transform: skewX(15deg); display: inline-block; }
 
 input[type=checkbox].spoiler { display: none; }
 

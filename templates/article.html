@@ -62,6 +62,7 @@
 {% block content %}
   <div class="article" itemprop="mainEntity" itemscope itemtype="http://schema.org/BlogPosting">
   <div class="inside">
+  <link itemprop="mainEntityOfPage" href="{{ output_file|canonical_url }}"/>
   <header>
     <h1 class="entry-title" itemprop="headline">
       <a href="/{{ article.url }}" rel="bookmark"
@@ -79,7 +80,7 @@
     {% if article.image %}
     <meta itemprop="image" content="{{ article.image }}" />
     {% endif %}
-    </header>
+  </header>
   <div class="entry-content" itemprop="articleBody">
     <span class="css-warning"><p><strong>
       Note: You are viewing this blog post without the intended style information, which may result in formatting issues.
@@ -89,7 +90,7 @@
   </div><!-- /.entry-content -->
   <footer class="postmeta"><small>
     Posted 
-    {% if article.authors %}
+    {% if article.Authors %}
       by
       {% for author in article.authors %}
       <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}" itemprop="author" itemscope itemtype="http://schema.org/Person">
