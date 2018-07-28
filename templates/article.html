@@ -90,7 +90,7 @@
   </div><!-- /.entry-content -->
   <footer class="postmeta"><small>
     Posted 
-    {% if article.Authors %}
+    {% if article.authors %}
       by
       {% for author in article.authors %}
       <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}" itemprop="author" itemscope itemtype="http://schema.org/Person">
