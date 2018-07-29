@@ -104,15 +104,15 @@
     on
     <abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>.
     <meta itemprop="datePublished" content="{{ article.date.isoformat() }}"/>
-    {% if article.modified %}
-    Last modified
-    <abbr class="modified" title="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</abbr>.
-    <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}"/>
-    {% endif %}
     Tags:
     {% for tag in article.tags %}
         <a href="/{{ tag.url }}">{{ tag }}</a>
     {% endfor %}
+    {% if article.modified %}
+    <br/>Last modified
+    <abbr class="modified" title="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</abbr>.
+    <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}"/>
+    {% endif %}
   </small></footer><!-- /.postmeta -->
   </div><!-- /.inside -->
   </div><!-- /.article -->
