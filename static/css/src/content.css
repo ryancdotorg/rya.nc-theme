@@ -42,12 +42,20 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     margin-top:0.2em;
 }
 
-.article h1, .archive h1.entry-title {
+.article h1 {
     padding:0.5em 0 1em 0;
     border-bottom:solid 1px #292929;
     font-size:1.8em;
     font-weight:normal;
     line-height:1.3em;
+}
+
+.archive .inside + .inside {
+    border-top:solid 1px #292929;
+}
+
+.archive .postmeta {
+    padding-top:0;
 }
 
 .article ol, .article ul {
@@ -71,11 +79,11 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 }*/
 
 /* The Article's meta data */
-.article div.postmeta, small {
+.postmeta, small {
     font-size:0.9em;
 }
 
-.article .postmeta {
+.postmeta {
     color:#008700;
     margin-bottom:0.5em;
     padding-top:2em;
@@ -137,14 +145,10 @@ input[type=checkbox].spoiler { display: none; }
 input[type=checkbox].spoiler:not(:checked) + .spoiler,
 input[type=checkbox].spoiler:checked + .spoiler:hover {
   background-color: inherit;
-  padding: 0;
-  margin: 0;
 }
 
 input[type=checkbox].spoiler:checked + .spoiler {
   background-color: currentColor;
-  padding: 1px;
-  margin: -1px;
 }
 
 input[type=checkbox].spoiler + .spoiler { cursor: pointer; }

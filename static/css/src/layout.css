@@ -80,7 +80,7 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     #content {
         margin-right:0;
     }
-    div.article {
+    div.article, div.archive {
         margin-right:0;
     }
 }

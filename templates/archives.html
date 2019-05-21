@@ -1,11 +1,24 @@
 {% extends "base.html" %}
-{% block content %}
-<h1>Archives for {{ SITENAME }}</h1>
 
-<dl>
+{% block title %}Archives | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="archive">
 {% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
-    <dd><a href="/{{ article.url }}">{{ article.title }}</a></dd>
+<div class="inside">
+    <h2 class="entry-title"><a href="/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
+    <div class="postmeta">
+    <abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>
+    |
+    {% for author in article.authors %}
+        <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a>
+    {% endfor %}
+    | Tags:
+    {% for tag in article.tags %}
+        <a href="/{{ tag.url }}">{{ tag }}</a>
+    {% endfor %}
+    </div>
+</div>
 {% endfor %}
-</dl>
+</div>
 {% endblock %}
