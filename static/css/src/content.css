@@ -101,8 +101,63 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     padding:0 0.2em;
     border:solid 1px #292929;
     background-color:#121212;
-    font-family: monospace;
+    font-family:monospace;
 }
+
+/* code block stuff */
+[unselectable="on"] {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.highlighttable {
+    width:100%;
+    background-color:#121212;
+    border:1px solid #292929;
+    line-height:calc(1.3em - 2px);
+}
+
+.highlighttable td {
+    vertical-align:text-top;
+    padding:0 .3em;
+    border:0;
+}
+
+.highlighttable .linenos {
+    width:4ch;
+    text-align:right;
+    font-family:monospace;
+    border-right:1px solid #292929;
+}
+
+.linenos a, [class^=pgcssc]>a {
+    color: inherit;
+}
+
+.highlighttable td>code, .highlight pre>code {
+    background-color:transparent;
+    white-space:pre-wrap;
+    border:0;
+}
+
+.highlight pre {
+    padding:0 0.2em;
+    border:solid 1px #292929;
+    background-color:#121212;
+}
+
+.breakall {
+    word-break:break-all !important;
+}
+
+/* hack to get rid of 2px of cell padding */
+/*.highlighttable td>div {
+    margin:-1px 0;
+}*/
 
 .article td, .article th {
     padding:0.3em;

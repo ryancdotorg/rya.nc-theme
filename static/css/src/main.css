@@ -19,12 +19,16 @@ table.highlighttable {
 }
 
 .highlighttable td {
-    padding:0 0.3em;
+    vertical-align:text-top;
+    padding:0 .3em;
+    border:0;
 }
 
 td.linenos {
-    width:4ex;
+    width:4ch;
     text-align:right;
+    font-family:monospace;
+    border-right:1px solid #292929;
 }
 
 /* Begin Global Resets */
