@@ -1,4 +1,5 @@
-.pgcsshll { background-color: #404040 }
+/* native.css */
+.pgcsshll { background-color: #292929 !important }
 .pgcssc { color: #999999; font-style: italic } /* Comment */
 .pgcsserr { color: #a61717; background-color: #e3d2d2 } /* Error */
 .pgcssg { color: #d0d0d0 } /* Generic */

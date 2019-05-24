@@ -1,6 +1,7 @@
+/* native.css */
+.pgcsshll { background-color: #292929 !important }
 .pgcssnb, .pgcssbp { color: #24909d }
 .pgcssm, .pgcssmf, .pgcssmh, .pgcssmi, .pgcssil, .pgcssmo { color: #3677a9 }
-.pgcsshll { background-color: #404040 }
 .pgcssno, .pgcssnv, .pgcssvc, .pgcssvg, .pgcssvi { color: #40ffff }
 .pgcssnf { color: #447fcf }
 .pgcssnc, .pgcssnn { color: #447fcf; text-decoration: underline }
