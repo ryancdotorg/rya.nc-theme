@@ -2,49 +2,49 @@
 {% block head %}
   {{ super() }}
   {% if article.status == "draft" %}
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content="noindex, nofollow">
   {% endif %}
 {#//#}
   {% if article.keywords %}
-  <meta name="keywords" content="{{ article.keywords }}" />
+  <meta name="keywords" content="{{ article.keywords }}">
   {% endif %}
 {#/ https://moz.com/blog/meta-data-templates-123 /#}
   {% if article.description %}
-  <meta name="description" content="{{ article.description|e }}" />
+  <meta name="description" content="{{ article.description|e }}">
   {% endif %}
 
   <!-- twitter article metadata -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary">
   {% if article.author|author_info('twitter') %}
-  <meta name="twitter:creator" content="{{ article.author|author_info('twitter') }}" />
+  <meta name="twitter:creator" content="{{ article.author|author_info('twitter') }}">
   {% endif %}
 
   <!-- open graph article metadata -->
-  <meta property="og:title" content="{{ article.title|striptags|e }}" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="{{ output_file|canonical_url }}" />
-  <meta property="og:site_name" content="{{ SITETITLE }}" />
+  <meta property="og:title" content="{{ article.title|striptags|e }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ output_file|canonical_url }}">
+  <meta property="og:site_name" content="{{ SITETITLE }}">
   {% if article.description %}
-  <meta property="og:description" content="{{ article.description|e }}" />
+  <meta property="og:description" content="{{ article.description|e }}">
   {% else %}
-  <meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}" />
+  <meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
   {% endif %}
   {% if article.image %}
-  <meta property="og:image" content="{{ article.image|canonical_url }}" />
+  <meta property="og:image" content="{{ article.image|canonical_url }}">
   {% else %}
-  <meta property="og:image" content="{{ SITEURL }}/theme/img/avatar.png" />
+  <meta property="og:image" content="{{ SITEURL }}/theme/img/avatar.png">
   {% endif %}
   {% for tag in article.tags %}
-  <meta property="article:tag" content="{{ tag }}" />
+  <meta property="article:tag" content="{{ tag }}">
   {% endfor %}
 {#//#}
   {% if article.extracss %}
   {% for extracss in article.extracss|split %}
-  <link rel="preload" as="style" type="text/css" href="{{ extracss }}" onload="this.rel='stylesheet'" />
+  <link rel="preload" as="style" type="text/css" href="{{ extracss }}" onload="this.rel='stylesheet'">
   {% endfor %}
   <noscript>
   {% for extracss in article.extracss|split %}
-  <link rel="stylesheet" type="text/css" href="{{ extracss }}" />
+  <link rel="stylesheet" type="text/css" href="{{ extracss }}">
   {% endfor %}
   </noscript>
   <script type="text/javascript">
@@ -62,7 +62,7 @@
 {% block content %}
   <div class="article" itemprop="mainEntity" itemscope itemtype="http://schema.org/BlogPosting">
   <div class="inside">
-  <link itemprop="mainEntityOfPage" href="{{ output_file|canonical_url }}"/>
+  <link itemprop="mainEntityOfPage" href="{{ output_file|canonical_url }}">
   <header>
     <h1 class="entry-title" itemprop="headline">
       <a href="/{{ article.url }}" rel="bookmark"
@@ -73,12 +73,12 @@
   {% import 'translations.html' as translations with context %}
   {{ translations.translations_for(article) }}
     {% if article.description %}
-    <meta itemprop="description" content="{{ article.description|e }}" />
+    <meta itemprop="description" content="{{ article.description|e }}">
     {% else %}
-    <meta itemprop="description" content="{{ article.summary|striptags|wordtrunc(200)|e }}" />
+    <meta itemprop="description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
     {% endif %}
     {% if article.image %}
-    <meta itemprop="image" content="{{ article.image }}" />
+    <meta itemprop="image" content="{{ article.image }}">
     {% endif %}
   </header>
   <div class="entry-content" itemprop="articleBody">
@@ -95,7 +95,7 @@
       {% for author in article.authors %}
       <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}" itemprop="author" itemscope itemtype="http://schema.org/Person">
           {% if author|author_info('url') %}
-          <meta itemprop="url" content="{{ author|author_info('url') }}" />
+          <meta itemprop="url" content="{{ author|author_info('url') }}">
           {% endif %}
           <span itemprop="name">{{ author|author_info('name') or author }}</span>
       </a>
@@ -103,15 +103,15 @@
     {% endif %}
     on
     <abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>.
-    <meta itemprop="datePublished" content="{{ article.date.isoformat() }}"/>
+    <meta itemprop="datePublished" content="{{ article.date.isoformat() }}">
     Tags:
     {% for tag in article.tags %}
         <a href="/{{ tag.url }}">{{ tag }}</a>
     {% endfor %}
     {% if article.modified %}
-    <br/>Last modified
+    <br>Last modified
     <abbr class="modified" title="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</abbr>.
-    <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}"/>
+    <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}">
     {% endif %}
   </small></footer><!-- /.postmeta -->
   </div><!-- /.inside -->
