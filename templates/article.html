@@ -10,11 +10,14 @@
   {% endif %}
 {#/ https://moz.com/blog/meta-data-templates-123 /#}
   {% if article.description %}
-  <meta name="description" content="{{ article.description|e }}">
+  <meta name="description" content="{{ article.description|wordtrunc(155)|e }}">
+  {% else %}
+  <meta name="description" content="{{ article.summary|striptags|wordtrunc(155)|e }}">
   {% endif %}
 
   <!-- twitter article metadata -->
   <meta name="twitter:card" content="summary">
+  <!-- <meta name="twitter:image:src" content="{{ SITEURL }}/avatar2.png"> -->
   {% if article.author|author_info('twitter') %}
   <meta name="twitter:creator" content="{{ article.author|author_info('twitter') }}">
   {% endif %}
@@ -23,16 +26,16 @@
   <meta property="og:title" content="{{ article.title|striptags|e }}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ output_file|canonical_url }}">
-  <meta property="og:site_name" content="{{ SITETITLE }}">
+  <meta property="og:site_name" content="{{ SITENAME }}">
   {% if article.description %}
-  <meta property="og:description" content="{{ article.description|e }}">
+  <meta property="og:description" name="description" content="{{ article.description|e }}">
   {% else %}
-  <meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
+  <meta property="og:description" name="description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
   {% endif %}
   {% if article.image %}
   <meta property="og:image" content="{{ article.image|canonical_url }}">
   {% else %}
-  <meta property="og:image" content="{{ SITEURL }}/theme/img/avatar.png">
+  <meta property="og:image" content="{{ SITEURL }}/avatar2.png">
   {% endif %}
   {% for tag in article.tags %}
   <meta property="article:tag" content="{{ tag }}">
@@ -41,6 +44,7 @@
   {% if article.extracss %}
   {% for extracss in article.extracss|split %}
   <link rel="preload" as="style" type="text/css" href="{{ extracss }}" onload="this.rel='stylesheet'">
+  <!-- https://www.filamentgroup.com/lab/load-css-simpler/#can%E2%80%99t-rel%3Dpreload-do-this-too%3F -->
   {% endfor %}
   <noscript>
   {% for extracss in article.extracss|split %}
@@ -48,8 +52,9 @@
   {% endfor %}
   </noscript>
   <script type="text/javascript">
-  /* https://github.com/filamentgroup/loadCSS */
-  {% include '/js/cssasync.js' %}
+  {#/* https://github.com/filamentgroup/loadCSS */#}
+  {#/{% include '/js/cssasync.js' %}/#}
+  {% include '/js/cssryanc.min.js' %}
   </script>
   {% endif %}
 {% endblock %}
@@ -79,6 +84,8 @@
     {% endif %}
     {% if article.image %}
     <meta itemprop="image" content="{{ article.image }}">
+    {% else %}
+    <meta itemprop="image" content="{{ SITEURL }}/avatar2.png">
     {% endif %}
   </header>
   <div class="entry-content" itemprop="articleBody">
@@ -89,15 +96,22 @@
 <!-- PELICAN_END_CONTENT -->
   </div><!-- /.entry-content -->
   <footer class="postmeta"><small>
-    Posted 
+    <!-- Okay, this is just obnoxious... -->
+    <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <meta itemprop="name" content="{{ SITENAME }}">
+      <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="{{ SITEURL }}/avatar2.png">
+      </span>
+    </span>
+    Posted
     {% if article.authors %}
       by
       {% for author in article.authors %}
       <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          {% if author|author_info('url') %}
-          <meta itemprop="url" content="{{ author|author_info('url') }}">
-          {% endif %}
-          <span itemprop="name">{{ author|author_info('name') or author }}</span>
+        {% if author|author_info('url') %}
+        <meta itemprop="url" content="{{ author|author_info('url') }}">
+        {% endif %}
+        <span itemprop="name">{{ author|author_info('name') or author }}</span>
       </a>
       {% endfor %}
     {% endif %}
@@ -112,6 +126,8 @@
     <br>Last modified
     <abbr class="modified" title="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</abbr>.
     <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}">
+    {% else %}
+    <meta itemprop="dateModified" content="{{ article.date.isoformat() }}">
     {% endif %}
   </small></footer><!-- /.postmeta -->
   </div><!-- /.inside -->
