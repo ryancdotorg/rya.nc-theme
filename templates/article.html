@@ -28,9 +28,9 @@
   <meta property="og:url" content="{{ output_file|canonical_url }}">
   <meta property="og:site_name" content="{{ SITENAME }}">
   {% if article.description %}
-  <meta property="og:description" name="description" content="{{ article.description|e }}">
+  <meta property="og:description" content="{{ article.description|e }}">
   {% else %}
-  <meta property="og:description" name="description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
+  <meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
   {% endif %}
   {% if article.image %}
   <meta property="og:image" content="{{ article.image|canonical_url }}">
