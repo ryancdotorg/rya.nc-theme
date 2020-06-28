@@ -51,7 +51,7 @@
   <link rel="stylesheet" type="text/css" href="{{ extracss }}">
   {% endfor %}
   </noscript>
-  <script type="text/javascript">
+  <script>
   {#/* https://github.com/filamentgroup/loadCSS */#}
   {#/{% include '/js/cssasync.js' %}/#}
   {% include '/js/cssryanc.min.js' %}
@@ -89,13 +89,13 @@
     {% endif %}
   </header>
   <div class="entry-content" itemprop="articleBody">
-    <span class="css-warning"><p><strong>
+    <p class="css-warning"><strong>
       Note: You are viewing this blog post without the intended style information, which may result in formatting issues.
-    </strong></p></span>
+    </strong></p>
     {{ article.content }}
 <!-- PELICAN_END_CONTENT -->
   </div><!-- /.entry-content -->
-  <footer class="postmeta"><small>
+  <footer class="postmeta">
     <!-- Okay, this is just obnoxious... -->
     <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
       <meta itemprop="name" content="{{ SITENAME }}">
@@ -129,7 +129,7 @@
     {% else %}
     <meta itemprop="dateModified" content="{{ article.date.isoformat() }}">
     {% endif %}
-  </small></footer><!-- /.postmeta -->
+  </footer><!-- /.postmeta -->
   </div><!-- /.inside -->
   </div><!-- /.article -->
 {% endblock %}

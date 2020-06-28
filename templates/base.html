@@ -8,9 +8,7 @@
   <link rel="alternate" hreflang="en" href="{{ output_file|canonical_url }}">
   <link rel="canonical" hreflang="en" href="{{ output_file|canonical_url }}">
   <link rel="preload" href="/theme/img/header-thin-1200.png" as="image">
-  <style type="text/css">
-  {% include '/css/inline.css' %}
-  </style>
+  <style>{% include '/css/inline.css' %}</style>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00a300">
   <link rel="alternate icon" thref="/favicon.ico">
@@ -52,14 +50,15 @@
     <h1 class="title"><a href="/">{{ SITETITLE }}</a></h1>
     <!--<p class="subtitle">{{ SITESUBTITLE }}</p>-->
   </div></header><!-- /#banner -->
+
   <nav id="menu"><ul>
-  <li class="page_item"><a href="/">Home</a></li>
+  <li><a href="/">Home</a></li>
   {% for title, link in MENUITEMS %}
     <li><a href="{{ link }}">{{ title }}</a></li>
   {% endfor %}
   {% if DISPLAY_PAGES_ON_MENU %}
     {% for p in pages %}
-      <li class="page_item{% if p == page %} current_page_item{% endif %}">
+      <li{% if p == page %} class="current_page"{% endif %}>
         <a href="/{{ p.url }}">{{ p.title }}</a>
       </li>
     {% endfor %}
@@ -72,7 +71,8 @@
       {% endfor %}
     {% endif %}
   {% endif %}
-  </ul></nav><!-- /#menu -->
+  </ul>
+  </nav><!-- /#menu -->
 
   <div id="sidebar">
   {% if SOCIAL %}
@@ -104,7 +104,6 @@
     </ul>
   </div></div><!-- /.widget -->
   {% endif %}
-
   </div><!-- /#sidebar -->
 
   <section id="content">
@@ -138,5 +137,8 @@
     document.body.appendChild(s);
   }
   </script>
+  {% endif %}
+  <script src="/theme/js/prefetch.js"></script>
 </body>
 </html>
+
