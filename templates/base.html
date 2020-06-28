@@ -5,8 +5,8 @@
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="alternate" hreflang="en" href="{{ output_file|canonical_url }}">
-  <link rel="canonical" hreflang="en" href="{{ output_file|canonical_url }}">
+  <link rel="alternate" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
+  <link rel="canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
   <link rel="preload" href="/theme/img/header-thin-1200.png" as="image">
   <style>{% include '/css/inline.css' %}</style>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
