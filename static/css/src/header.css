@@ -14,18 +14,24 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     height:122px;
     min-height:122px;
     max-height:122px;
-    margin-bottom:2px;
-    margin-left:-1px;
-    background:#000 url("/theme/img/header-thin-1200.png") no-repeat 0 0;
+    margin:2px 0;
+    /*margin-left:-1px;*/
+/*    background-repeat: repeat-x;
+    background-position: 0 0;*/
+    background-color: #2a2d20;
+    background-image:
+    /* needs less.js preprocessor */
+    inline-image("hex_mask_tile.png"),
+    url("/theme/img/hdr-1200.jpg"),
+    /* IE11 and Safari <= 13 will use the background color as a fallback */
+    inline-image("green-circuits-thin-1200-lq.webp");
     text-align:right;
     border:0px;
 }
 
-/* @media (max-width: 800px)  { #banner { background-image:url("/theme/img/header-thin-800.png");  } } */
-
 #banner p.name {
     font-size: 2em;
-    font-weight: bold;
+/*    font-weight: bold;*/
     margin:18px 18px 0 0;
 }
 
@@ -41,11 +47,33 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     margin:1em 18px 0 0;
 }
 
+/*
 #banner p.subtitle {
     font-size:1.2em;
     margin:1em 18px 0 0;
 }
+*/
 
-#banner h1.title a {
+#banner a {
     color:#D9D9D9;
 }
+
+/*
+#social {
+    text-align:left;
+    float:left;
+    font-size:1.5em;
+    padding:.5em;
+}
+
+#social a {
+    display:block;
+    margin-bottom:.33em;
+}
+
+#social svg, #social object {
+    margin-bottom:-.155em;
+    height:1em;
+    width:1em;
+}
+*/

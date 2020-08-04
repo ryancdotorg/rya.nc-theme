@@ -17,9 +17,8 @@
 
   <!-- twitter article metadata -->
   <meta name="twitter:card" content="summary">
-  <!-- <meta name="twitter:image:src" content="{{ SITEURL }}/avatar2.png"> -->
   {% if article.author|author_info('twitter') %}
-  <meta name="twitter:creator" content="{{ article.author|author_info('twitter') }}">
+  <meta name="twitter:creator" content="@{{ article.author|author_info('twitter') }}">
   {% endif %}
 
   <!-- open graph article metadata -->
@@ -53,14 +52,14 @@
   </noscript>
   <script>
   {#/* https://github.com/filamentgroup/loadCSS */#}
-  {#/{% include '/js/cssasync.js' %}/#}
+  {#/{% include '/js/cssasync.min.js' %}/#}
   {% include '/js/cssryanc.min.js' %}
   </script>
   {% endif %}
 {% endblock %}
 
 {% block title %}
-{% if article.status == "draft" %}[DRAFT] {% endif %}
+{% if article.status == "draft" %}[DRAFT] {% endif -%}
 {{ article.title|striptags }} | {{ SITENAME }}
 {% endblock title %}
 
@@ -83,7 +82,7 @@
     <meta itemprop="description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
     {% endif %}
     {% if article.image %}
-    <meta itemprop="image" content="{{ article.image }}">
+    <meta itemprop="image" content="{{ article.image|canonical_url }}">
     {% else %}
     <meta itemprop="image" content="{{ SITEURL }}/avatar2.png">
     {% endif %}
@@ -93,10 +92,18 @@
       Note: You are viewing this blog post without the intended style information, which may result in formatting issues.
     </strong></p>
     {{ article.content }}
-<!-- PELICAN_END_CONTENT -->
   </div><!-- /.entry-content -->
+  {% if article.author|author_info('twitter') %}
+  <div class="call-to-action">
+    If you enjoyed this,
+    <a href="https://twitter.com/intent/follow?screen_name={{ article.author|author_info('twitter') }}" rel="noreferrer">
+      follow me on Twitter{{ '' -}}
+    </a>
+    for my latest posts.
+  </div>
+  {% endif %}
   <footer class="postmeta">
-    <!-- Okay, this is just obnoxious... -->
+    {#/ Okay, this is just obnoxious... /#}
     <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
       <meta itemprop="name" content="{{ SITENAME }}">
       <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
@@ -111,8 +118,14 @@
         {% if author|author_info('url') %}
         <meta itemprop="url" content="{{ author|author_info('url') }}">
         {% endif %}
-        <span itemprop="name">{{ author|author_info('name') or author }}</span>
-      </a>
+        <span itemprop="name">{{ author|author_info('name') or author }}</span>{{ '' -}}
+      </a>{% if not loop.last %}
+      {% if loop.revindex > 2 -%}
+      ,
+      {% else -%}
+      , and
+      {% endif %}
+      {% endif %}
       {% endfor %}
     {% endif %}
     on
@@ -120,7 +133,7 @@
     <meta itemprop="datePublished" content="{{ article.date.isoformat() }}">
     Tags:
     {% for tag in article.tags %}
-        <a href="/{{ tag.url }}">{{ tag }}</a>
+      <a href="/{{ tag.url }}">{{ tag }}</a>
     {% endfor %}
     {% if article.modified %}
     <br>Last modified

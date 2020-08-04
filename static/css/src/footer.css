@@ -9,35 +9,29 @@ Tags: brown, two-column, flexible-width, widget-aware
 License: GPLv3 or Later. (c) 2009 Alan Lord 
 */
 
-#contentinfo img {
+/*#contentinfo img {
     border:0;
-}
+}*/
 
 /* Remove the dotted highlight when clicked */ 
-#contentinfo a:focus {
+/*#contentinfo a:focus {
     outline:none;
-}
+}*/
 
-#ft_left, #ft_centre, #ft_right {
-    position:absolute;
-    bottom:0.5em;
-}
+/*#ft_left, #ft_centre, #ft_right {
+    position:relative;
+}*/
 
-@media (max-width: 584px) {
-    #ft_left, #ft_centre, #ft_right {
-        position:relative;
-        bottom:auto;
-        margin:auto -1.5em;
-    }
-    #ft_left { margin-right:0; }
-    #contentinfo {
-        height:auto;
-    }
+@media (max-width: 700px) {
+    #ft_left { float:none !important; }
+}
+@media (max-width: 480px) {
+    #contentinfo { font-size:2.9vw; }
 }
 
 #ft_left {
-    left:0.5em;
-    text-align:left;
+/*    left:0.5em;*/
+    float:left;
 }
 
 /*
@@ -48,6 +42,6 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 */
 
 #ft_right {
-    right:0.5em;
+/*    right:0.5em;*/
     text-align:right;
 }

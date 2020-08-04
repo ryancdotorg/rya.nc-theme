@@ -20,12 +20,10 @@ ul.tagcloud li {
     line-height:115%;
 }
 
-li.tag-1 {font-size:200.0%}
-li.tag-2 {font-size:187.5%}
-li.tag-3 {font-size:175.0%}
-li.tag-4 {font-size:162.5%}
-li.tag-5 {font-size:150.0%}
-li.tag-6 {font-size:137.5%}
-li.tag-7 {font-size:125.0%}
-li.tag-8 {font-size:112.5%}
-li.tag-9 {font-size:100.0%}
+li.tag-1 {font-size:140%}
+li.tag-2 {font-size:130%}
+li.tag-3 {font-size:120%}
+li.tag-4 {font-size:110%}
+li.tag-5 {font-size:100%}
+li.tag-6 {font-size:90%}
+li.tag-7 {font-size:80%}

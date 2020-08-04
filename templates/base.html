@@ -2,12 +2,14 @@
 <html lang="{{ DEFAULT_LANG }}">
 <head>
   {% block head %}
-  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
   <meta charset="utf-8">
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
   <meta name="viewport" content="width=device-width">
-  <link rel="alternate" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
+  <link rel="alternate canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
+{#/
   <link rel="canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
-  <link rel="preload" href="/theme/img/header-thin-1200.png" as="image">
+/#}
+<!-- {{ 'static/img/green-circuits-thin-1200-lq.webp'|data_uri }} -->
   <style>{% include '/css/inline.css' %}</style>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00a300">
@@ -17,40 +19,74 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   {% if FEED_ALL_ATOM %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed">
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml"
+        rel="alternate" title="{{ SITENAME }} Atom Feed">
   {% endif %}
   {% if FEED_ALL_RSS %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed">
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml"
+        rel="alternate" title="{{ SITENAME }} RSS Feed">
   {% endif %}
+{#/
   {% if FEED_ATOM %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed">
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml"
+        rel="alternate" title="{{ SITENAME }} Atom Feed">
   {% endif %}
   {% if FEED_RSS %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed">
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml"
+        rel="alternate" title="{{ SITENAME }} RSS Feed">
   {% endif %}
   {% if CATEGORY_FEED_ATOM and category %}
-  <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed">
+  <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}"
+        type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed">
   {% endif %}
   {% if CATEGORY_FEED_RSS and category %}
-  <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed">
+  <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}"
+        type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed">
   {% endif %}
+/#}
   {% if TAG_FEED_ATOM and tag %}
-  <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM.format(slug=tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed">
+  <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM.format(slug=tag.slug) }}"
+        type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed">
   {% endif %}
   {% if TAG_FEED_RSS and tag %}
-  <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS.format(slug=tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed">
+  <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS.format(slug=tag.slug) }}"
+        type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed">
   {% endif %}
   <meta name="twitter:site" content="@ryancdotorg">
+
+  <script>
+  {% if output_file == 'index.html' %}
+  {% include '/js/unhash.min.js' %}
+
+  {% endif %}
+  {% include '/js/svgspriteie.min.js' %}
+
+  </script>
+
   {% endblock head %}
 </head>
 
-<body id="index" class="home">
+<body>
   <div id="wrap"><!-- Begin Wrap -->
-  <header id="banner"><div itemscope itemtype="http://schema.org/WebSite" class="inside">
+  <header id="banner">
+    {#/
+    <div id="social">
+      {% for brand, user, link in SOCIAL %}
+      <a href="{{ link }}" rel="me" title="My profile on {{ brand }}">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="/theme/img/social.svg#{{ brand }}"/>
+        </svg>
+        {{ user }}
+      </a>
+      {% endfor %}
+    </div>
+    /#}
+    <div itemscope itemtype="http://schema.org/WebSite" class="inside">
     <p class="name" itemprop="name"><a href="/" itemprop="url">{{ SITENAME }}</a></p>
     <h1 class="title"><a href="/">{{ SITETITLE }}</a></h1>
     <!--<p class="subtitle">{{ SITESUBTITLE }}</p>-->
-  </div></header><!-- /#banner -->
+    </div>
+  </header>
 
   <nav id="menu"><ul>
   <li><a href="/">Home</a></li>
@@ -76,28 +112,31 @@
   </nav><!-- /#menu -->
 
   <div id="sidebar">
+
   {% if SOCIAL %}
   <div class="widget" id="elsewhere"><div class="inside">
     <ul><li><h2>Me Elsewhere</h2></li></ul>
     <ul>
-      {% for name, link in SOCIAL %}
-        <li><a href="{{ link }}" rel="me">{{ name }}</a></li>
+      {% for brand, user, link in SOCIAL %}
+        <li><a href="{{ link }}" rel="me">{{ brand }}</a></li>
       {% endfor %}
     </ul>
   </div></div><!-- /.widget -->
+
   <div class="spacer"></div><!-- hack for the mobile layout -->
   {% endif %}
   <div class="widget" id="tagcloud"><div class="inside">
     <ul><li><h2>Tags</h2></li></ul>
     <ul class="tagcloud">
-      {% for tag in tag_cloud|msort(attributes=[1,0]) %}
+      {% for tag in tag_cloud %}
         <li class="tag-{{ tag.1 }}"><a href="/{{ tag.0.url }}">{{ tag.0 }}</a></li>
       {% endfor %}
     </ul>
   </div></div><!-- /.widget -->
+
   {% if LINKS %}
   <div class="widget" id="blogroll"><div class="inside">
-    <ul><li><h2 title="I think 'Blogroll' is a dumb word, but I couldn't come up with a better one.">Blogroll</h2></li></ul>
+    <ul><li><h2>Blogroll</h2></li></ul>
     <ul>
       {% for name, link in LINKS|sort %}
         <li><a href="{{ link }}">{{ name }}</a></li>
@@ -105,6 +144,7 @@
     </ul>
   </div></div><!-- /.widget -->
   {% endif %}
+
   </div><!-- /#sidebar -->
 
   <section id="content">
@@ -112,7 +152,7 @@
   {% endblock %}
   </section>
 
-  <footer id="contentinfo"><div class="inside">
+  <footer id="contentinfo">
     <div id="ft_left">
       <p>Site Contents &copy;{{ '%Y'|strfnow }}&nbsp;<a href="/about.html">Ryan Castellucci</a><br>
       Powered by <a href="https://getpelican.com/">Pelican</a>
@@ -120,35 +160,20 @@
     </div>
     <div id="ft_right">
       <p><a href="https://github.com/ryancdotorg/rya.nc-theme">Theme</a> based on
-      <a href="https://web.archive.org/web/20160417115921/http://www.theopensourcerer.com/this-theme/">Open Sourcerer</a>
+      <a href="http://www.theopensourcerer.com/this-theme/">Open Sourcerer</a>
       &copy;<a href="https://web.archive.org/web/20131105064339/http://www.theopenlearningcentre.com/">The Open Learning Centre</a>
       / <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a><br>
       Header image based on <a href="https://www.flickr.com/photos/profilerehab/4250721014/in/photostream/">Green circuit boards</a>
       &copy;<a href="https://www.flickr.com/photos/profilerehab/">Andrew Taylor</a>
       / <a href="https://creativecommons.org/licenses/by/2.0/">CC BY</a></p>
     </div>
-  </div></footer><!-- /#contentinfo -->
+  </footer><!-- /#contentinfo -->
   </div><!-- /#wrap -->
 
+  <script src="/theme/js/prefetch.min.js"></script>
   {% if SITENAME == 'rya.nc' %}
-  <script>
-  !function(d){
-    if (location.hostname == 'ryanc.org') {
-      var s = d.createElement('script');
-      s.src = 'https://rya.nc/theme/js/redir.js';
-      d.body.appendChild(s);
-    }
-  }(document);
-  {% if output_file == 'index.html' %}
-  try {
-    if (/#.+\/\w+$/.test(location.href)) {
-      history.replaceState(null, document.title, location.href.replace(/#.*/,''));
-    }
-  } catch(e) {}
+  <script>{% include '/js/domain.min.js' %}</script>
   {% endif %}
-  </script>
-  {% endif %}
-  <script src="/theme/js/prefetch.js"></script>
 </body>
 </html>
 

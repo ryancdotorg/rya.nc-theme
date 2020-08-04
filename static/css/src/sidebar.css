@@ -17,8 +17,12 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 .widget {
 /*    width:100%; */
     background-color:#191919;
-    margin:0 0 0.5em 0;
+/*    margin:0 0 0.5em 0;*/
     border:1px solid #292929;
+}
+
+div + .widget {
+    margin-top: 1.5em;
 }
 
 .widget .inside {

@@ -1,5 +1,5 @@
 @media print {
-    #sidebar, #menu { display: none; }
+    #sidebar, #menu { display: none; !important; }
     .article, .archive { border: 0 !important; }
     .inside { padding: 0 !important; }
     #banner {

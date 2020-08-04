@@ -21,34 +21,34 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     width:1200px; /*IE6 hack*/
     margin:0 auto; /*center hack*/
     text-align:left; /*center hack*/
-    padding-top:1em; /*Space above wrap*/
+    /*padding-top:1em; *//*Space above wrap*/
 }
 
 #content {
     float:left;
     margin-right:-215px;
     width:100%;
-    margin-bottom:2em;
     overflow:hidden;
 }
 
 #sidebar {
     float:right;
     width:215px;
-    font-size:1.1em;
+    font-size:1.2em;
     overflow:hidden;
-    margin-bottom:2em;
+    margin-bottom:1.5em;
     position:relative;
 }
 
 #contentinfo {
-    height:50px;
+/*    height:50px;*/
     clear:both;
     background-color:#191919;
     border:1px solid #292929;
     margin-bottom:1em;
+    padding:0 .8em;
 /*    width:100%;*/
-    position:relative;
+/*    position:relative;*/
 }
 
 /* reflow for narrow display */

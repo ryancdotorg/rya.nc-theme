@@ -1,2 +1,8 @@
 static/css/inline.css
 static/js/cssasync.js
+static/js/*.min.js
+static/js/*.bundle.js
+*.swp
+.*
+*.gz
+*.br

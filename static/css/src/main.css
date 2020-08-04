@@ -40,7 +40,8 @@ td.linenos {
 body {
     background-color:#000000; /* 0f0c0b */
     color:#D9D9D9; /* dcdad5 */
-    font-size:76%;
+    /*font-size:76%;*/
+    font-size:13.33333px;
     font-family:"Liberation Sans", Arial, Helvetica, sans-serif;
     line-height:1.3em;
     text-align:center; /* IE6 Center hack */
@@ -59,11 +60,13 @@ ul, ol, dd {
     margin-left:1em;
 }
 
+/*
 b, i, .formula { color:white; }
+*/
 
 a {
     text-decoration:none;
-    color:#56DF56; /* dcdad5 */
+    color:#74f474; /* 56df56 */
 }
 
 a:hover {
@@ -83,12 +86,13 @@ html {
 
 /* Following needed for Wordpress Theme Directory Compliance. */
 /* And to support image and other WP generated content positioning - obviously */
+/*
 .alignright {
-	float:right;
+    float:right;
 }
 
 .alignleft {
-	float:left;
+    float:left;
 }
 
 .aligncenter, div.aligncenter {
@@ -96,3 +100,4 @@ html {
     margin-left:auto;
     margin-right:auto;
 }
+*/

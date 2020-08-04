@@ -1,7 +1,7 @@
 /*   
 Theme Name: Open Sourcerer
 Theme URI: http://www.theopensourcerer.com
-Description: A Wordpress Theme inspired by the colour scheme of Ubuntu Jaunty 9.04. Features: Two column layout, widget aware, variable width. 
+Description: A Wordpress Theme inspired by the colour scheme of Ubuntu Jaunty 9.04. Features: Two column layout, widget aware, variable width.
 Author: Alan Lord alan@theopensourcerer.com
 Author URI: http://www.theopensourcerer.com
 Version: 1.3
@@ -13,9 +13,21 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
   display:none;
 }
 
+/*
 .redacted { background-color: currentColor; }
+*/
 
-.sarcasm { transform: skewX(15deg); display: inline-block; }
+/*
+.sarcasm { transform: skewX(10deg); display: inline-block; }
+*/
+
+/* expand abbreviations on devices without good pointers */
+@media not (any-pointer: fine) or (any-hover: none) {
+    span.abbr::before { content: attr(data-title) " ("; }
+    span.abbr::after { content: ")"; }
+}
+
+a[href^="/tag/"]::before { content: "#"; }
 
 .article, .archive {
     background-color:#191919;
@@ -23,10 +35,10 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     font-size:1.2em;
     line-height:1.3em;
     margin-bottom:1.5em;
-    margin-right: 245px;
+    margin-right: 239px;
 }
 
-.article p, .archive p {
+.article div > p, .archive div > p, .article table {
     margin-bottom:1em;
 }
 
@@ -64,9 +76,11 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 }
 
 /* Some extra space for the "Next Page >>" link at the bottom */
+/*
 #content>p>a {
     font-size:1.3em;
 }
+*/
 
 /*.article p a, .article li a, .postmeta a {
     /*color:#C1D7A6;*/
@@ -79,23 +93,27 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 }*/
 
 /* The Article's meta data */
-.postmeta, small {
+.postmeta {
     font-size:0.9em;
+    color:#0ea82a;
+    margin:2.2222em 0 .5em;
 }
 
-.postmeta {
-    color:#008700;
-    margin-bottom:0.5em;
-    padding-top:2em;
+.call-to-action {
+    margin:2em 0 2em;
 }
 
 .article blockquote {
     margin:0 1em 0 2em;
-    padding:1em 1em 1em 1em;
+    padding:1em;
     font-style:italic;
     background-color:#1E1E1E;
     border:solid 1px #292929;
 }
+
+/* make sure blockquotes look right whether or not they've got nested p tags */
+blockquote > p { margin:0; }
+blockquote > p + p { margin-top:1em; }
 
 .article code, .article .code {
     padding:0 0.2em;
@@ -118,7 +136,15 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     width:100%;
     background-color:#121212;
     border:1px solid #292929;
+    font-size:12px;
     line-height:calc(1.3em - 2px);
+}
+
+@media (max-width: 800px) {
+    .highlighttable {
+        line-height:calc(1.5em - 2px);
+        font-size:1.6vw;
+    }
 }
 
 .highlighttable td {
@@ -142,6 +168,14 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     background-color:transparent;
     white-space:pre-wrap;
     border:0;
+}
+
+[class^=pgcssc]>a {
+    text-decoration: underline dotted;
+}
+
+.highlighttable .special td, .highlighttable :target td {
+    background-color: #292929 !important;
 }
 
 .highlight pre {
@@ -230,6 +264,7 @@ table.footnote {
     border-spacing:0;
     border-top:1px solid #292929;
     padding-top:0.5em;
+    margin-bottom:0;
 }
 
 table.footnote ~ table.footnote {

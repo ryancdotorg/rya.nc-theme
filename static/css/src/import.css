@@ -10,7 +10,7 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 */
 
 /* Make it easy to alter stuff... */
-/* @import url("print.css"); */
+/*@import url("print.css");*/
 @import url("layout.css");
 @import url("header.css");
 @import url("menu.css");
