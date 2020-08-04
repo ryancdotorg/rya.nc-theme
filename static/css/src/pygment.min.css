@@ -1,26 +1,26 @@
-/* native.css */
-.pgcsshll { background-color: #292929 !important }
-.pgcssnb, .pgcssbp { color: #24909d }
-.pgcssm, .pgcssmf, .pgcssmh, .pgcssmi, .pgcssil, .pgcssmo { color: #3677a9 }
-.pgcssno, .pgcssnv, .pgcssvc, .pgcssvg, .pgcssvi { color: #40ffff }
-.pgcssnf { color: #447fcf }
-.pgcssnc, .pgcssnn { color: #447fcf; text-decoration: underline }
-.pgcssgi { color: #589819 }
-.pgcssw { color: #666666 }
-.pgcssk, .pgcsskc, .pgcsskd, .pgcsskn, .pgcsskr, .pgcsskt, .pgcssnt, .pgcssow { color: #6ab825; font-weight: bold }
-.pgcsskp { color: #6ab825 }
-.pgcssc, .pgcsscm, .pgcssc1 { color: #999999; font-style: italic }
-.pgcsserr { color: #a61717; background-color: #e3d2d2 }
-.pgcssgp { color: #aaaaaa }
-.pgcssna, .pgcssne { color: #bbbbbb }
-.pgcssgo { color: #cccccc }
-.pgcsscp { color: #cd2828; font-weight: bold }
-.pgcssge { color: #d0d0d0; font-style: italic }
-.pgcssgs { color: #d0d0d0; font-weight: bold }
-.pgcssg, .pgcssl, .pgcssld, .pgcssn, .pgcssni, .pgcssnl, .pgcssnx, .pgcsspy, .pgcsso, .pgcssx, .pgcssp { color: #d0d0d0 }
-.pgcssgd, .pgcssgr, .pgcssgt { color: #d22323 }
-.pgcsscs { color: #e50808; font-weight: bold; background-color: #520000 }
-.pgcsss, .pgcsssb, .pgcsssc, .pgcsssd, .pgcsss2, .pgcssse, .pgcsssh, .pgcsssi, .pgcsssr, .pgcsss1, .pgcssss { color: #ed9d13 }
-.pgcsssx, .pgcssnd { color: #ffa500 }
-.pgcssgh { color: #ffffff; font-weight: bold }
-.pgcssgu { color: #ffffff; text-decoration: underline }
+.pgcssil,.pgcssm,.pgcssmf,.pgcssmh,.pgcssmi,.pgcssmo{color:#3677a9}
+.pgcsserr{color:#a61717;background-color:#e3d2d2}
+.pgcssbp,.pgcssnb{color:#24909d}
+.pgcssc,.pgcssc1,.pgcsscm,.pgcssge{color:#999;font-style:italic}
+.pgcssge{color:#d0d0d0}
+.pgcsscp,.pgcssgh{font-weight:700}
+.pgcssgh{color:#fff}
+.pgcsscp{color:#cd2828}
+.pgcssgd,.pgcssgr,.pgcssgt{color:#d22323}
+.pgcsss,.pgcsss1,.pgcsss2,.pgcsssb,.pgcsssc,.pgcsssd,.pgcssse,.pgcsssh,.pgcsssi,.pgcsssr,.pgcssss{color:#ed9d13}
+.pgcssg,.pgcssgs,.pgcssl,.pgcssld,.pgcssn,.pgcssni,.pgcssnl,.pgcssnx,.pgcsso,.pgcssp,.pgcsspy,.pgcssx{color:#d0d0d0}
+.pgcssgs{font-weight:700}
+.pgcssgp{color:#aaa}
+.pgcssgo{color:#ccc}
+.pgcssnc,.pgcssnn{color:#447fcf;text-decoration:underline}
+.pgcssgi{color:#589819}
+.pgcssk,.pgcsskc,.pgcsskd,.pgcsskn,.pgcsskr,.pgcsskt,.pgcssnt,.pgcssow{color:#6ab825;font-weight:700}
+.pgcssnd,.pgcsssx{color:orange}
+.pgcsshll{background-color:#292929!important}
+.pgcssgu{color:#fff;text-decoration:underline}
+.pgcssnf{color:#447fcf}
+.pgcssw{color:#666}
+.pgcsskp{color:#6ab825}
+.pgcssna,.pgcssne{color:#bbb}
+.pgcssno,.pgcssnv,.pgcssvc,.pgcssvg,.pgcssvi{color:#40ffff}
+.pgcsscs{color:#e50808;font-weight:700;background-color:#520000}

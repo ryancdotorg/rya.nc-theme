@@ -1,0 +1,87 @@
+[unselectable="on"] {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.linenos a, [class^=pgcssc]>a {
+    color: inherit;
+}
+
+[class^=pgcssc]>a {
+    text-decoration: underline dotted;
+}
+
+.highlighttable, .highlight pre, td.linenos {
+    background-color: #121212;
+    border:1px solid #292929;
+}
+
+.highlight pre { padding:0 0.2em; }
+
+table.highlighttable { width:100%; }
+
+.highlighttable td {
+    vertical-align:text-top;
+    padding:0 .3em;
+    border:0;
+}
+
+td.linenos {
+    width:4ch;
+    text-align:right;
+    font-family:monospace;
+    border-right:1px solid #292929;
+}
+
+.article code, .article .code {
+    padding:0 0.2em;
+    border:solid 1px #292929;
+    background-color:#121212;
+    font-family:monospace;
+}
+
+.highlighttable {
+    width:100%;
+    background-color:#121212;
+    border:1px solid #292929;
+    font-size:12px;
+    line-height:calc(1.3em - 2px);
+}
+
+.highlighttable td {
+    vertical-align:text-top;
+    padding:0 .3em;
+    border:0;
+}
+
+.highlighttable .linenos {
+    width:4ch;
+    text-align:right;
+    font-family:monospace;
+    border-right:1px solid #292929;
+}
+
+/* hack to get rid of 2px of cell padding */
+// .highlighttable td>div { margin:-1px 0; }
+
+.highlighttable td>code, .highlight pre>code {
+    background-color:transparent;
+    white-space:pre-wrap;
+    border:0;
+}
+.highlighttable .special td, .highlighttable :target td {
+    background-color: #292929 !important;
+}
+
+.breakall { word-break:break-all !important; }
+
+@media (max-width: 800px) {
+    .highlighttable {
+        line-height:calc(1.5em - 2px);
+        font-size:1.6vw;
+    }
+}

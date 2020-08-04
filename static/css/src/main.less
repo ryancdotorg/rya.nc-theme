@@ -9,27 +9,8 @@ Tags: dark, brown, two-columns, flexible-width, threaded-comments
 License: GPLv3 or Later. (c) 2009 Alan Lord
 */
 
-.highlighttable, td.linenos {
-    background-color: #121212;
-    border:1px solid #292929;
-}
-
-table.highlighttable {
-    width:100%;
-}
-
-.highlighttable td {
-    vertical-align:text-top;
-    padding:0 .3em;
-    border:0;
-}
-
-td.linenos {
-    width:4ch;
-    text-align:right;
-    font-family:monospace;
-    border-right:1px solid #292929;
-}
+/* If you want to clear a float (after an image perhaps) use this class */
+.clear { clear:both; }
 
 /* Begin Global Resets */
 * {
@@ -38,11 +19,10 @@ td.linenos {
 }
 
 body {
-    background-color:#000000; /* 0f0c0b */
-    color:#D9D9D9; /* dcdad5 */
-    /*font-size:76%;*/
+    background-color:#000000;
+    color:#D9D9D9;
     font-size:13.33333px;
-    font-family:"Liberation Sans", Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     line-height:1.3em;
     text-align:center; /* IE6 Center hack */
 }
@@ -60,13 +40,9 @@ ul, ol, dd {
     margin-left:1em;
 }
 
-/*
-b, i, .formula { color:white; }
-*/
-
 a {
     text-decoration:none;
-    color:#74f474; /* 56df56 */
+    color:#74f474;
 }
 
 a:hover {
@@ -86,18 +62,6 @@ html {
 
 /* Following needed for Wordpress Theme Directory Compliance. */
 /* And to support image and other WP generated content positioning - obviously */
-/*
-.alignright {
-    float:right;
-}
-
-.alignleft {
-    float:left;
-}
-
-.aligncenter, div.aligncenter {
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
-}
-*/
+// .alignright { float:right; }
+// .alignleft { float:left; }
+// .aligncenter, div.aligncenter { display:block; margin-left:auto; margin-right:auto; }
