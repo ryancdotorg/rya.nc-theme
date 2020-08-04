@@ -20,9 +20,11 @@ static/js/cssasync.min.js: static/js/loadCSS_1.3.1.js static/js/cssrelpreload_1.
 #	terser --safari10 --emca 5 -c evaluate=false -m --mangle-props regex=/^_/ -o $@ $<
 #	@echo >> $@
 
-static/css/inline.css: $(wildcard static/css/src/*.css)
-	csscombine static/css/src/import.css 2>/dev/null | \
-	lessc - |  csso | tr -d '\n' > $@
+static/css/inline.css: $(wildcard static/css/src/*.less) $(wildcard static/css/src/*.css)
+	lessc --include-path=static/css/src:static/img \
+		static/css/src/inline.less | csso | tr -d '\n' > $@
+	#csscombine static/css/src/import.css 2>/dev/null | \
+	#lessc - |  csso | tr -d '\n' > $@
 
 clean:
 	[ ! -f static/css/inline.css ] || rm static/css/inline.css

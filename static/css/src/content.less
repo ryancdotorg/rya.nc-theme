@@ -1,0 +1,298 @@
+/*   
+Theme Name: Open Sourcerer
+Theme URI: http://www.theopensourcerer.com
+Description: A Wordpress Theme inspired by the colour scheme of Ubuntu Jaunty 9.04. Features: Two column layout, widget aware, variable width.
+Author: Alan Lord alan@theopensourcerer.com
+Author URI: http://www.theopensourcerer.com
+Version: 1.3
+Tags: brown, two-column, flexible-width, widget-aware
+License: GPLv3 or Later. (c) 2009 Alan Lord 
+*/
+
+.css-warning {
+  display:none;
+}
+
+/*
+.redacted { background-color: currentColor; }
+*/
+
+/*
+.sarcasm { transform: skewX(10deg); display: inline-block; }
+*/
+
+/* expand abbreviations on devices without good pointers */
+@media not (any-pointer: fine) or (any-hover: none) {
+    span.abbr::before { content: attr(data-title) " ("; }
+    span.abbr::after { content: ")"; }
+}
+
+a[href^="/tag/"]::before { content: "#"; }
+
+.article, .archive {
+    background-color:#191919;
+    border:1px solid #292929;
+    font-size:1.2em;
+    line-height:1.3em;
+    margin-bottom:1.5em;
+    margin-right: 239px;
+}
+
+.article div > p, .archive div > p, .article table {
+    margin-bottom:1em;
+}
+
+.article li p:first-child {
+    margin-top:0;
+}
+
+.article li p:last-child {
+    margin-bottom:0;
+}
+
+.article li + li {
+    margin-top:0.2em;
+}
+
+.article h1 {
+    padding:0.5em 0 1em 0;
+    border-bottom:solid 1px #292929;
+    font-size:1.8em;
+    font-weight:normal;
+    line-height:1.3em;
+}
+
+.archive .inside + .inside {
+    border-top:solid 1px #292929;
+}
+
+.archive .postmeta {
+    padding-top:0;
+}
+
+.article ol, .article ul {
+    margin-left:1.4em;
+    margin-bottom:1em;
+}
+
+/* Some extra space for the "Next Page >>" link at the bottom */
+/*
+#content>p>a {
+    font-size:1.3em;
+}
+*/
+
+/*.article p a, .article li a, .postmeta a {
+    /*color:#C1D7A6;*/
+/*    color:#56DF56;
+    text-decoration:underline;
+}
+
+.article p a:hover {
+    color:#FFF;
+}*/
+
+/* The Article's meta data */
+.postmeta {
+    font-size:0.9em;
+    color:#0ea82a;
+    margin:2.2222em 0 .5em;
+}
+
+.call-to-action {
+    margin:2em 0 2em;
+}
+
+.article blockquote {
+    margin:0 1em 0 2em;
+    padding:1em;
+    font-style:italic;
+    background-color:#1E1E1E;
+    border:solid 1px #292929;
+}
+
+/* make sure blockquotes look right whether or not they've got nested p tags */
+blockquote > p { margin:0; }
+blockquote > p + p { margin-top:1em; }
+
+.article code, .article .code {
+    padding:0 0.2em;
+    border:solid 1px #292929;
+    background-color:#121212;
+    font-family:monospace;
+}
+
+/* code block stuff */
+[unselectable="on"] {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.highlighttable {
+    width:100%;
+    background-color:#121212;
+    border:1px solid #292929;
+    font-size:12px;
+    line-height:calc(1.3em - 2px);
+}
+
+@media (max-width: 800px) {
+    .highlighttable {
+        line-height:calc(1.5em - 2px);
+        font-size:1.6vw;
+    }
+}
+
+.highlighttable td {
+    vertical-align:text-top;
+    padding:0 .3em;
+    border:0;
+}
+
+.highlighttable .linenos {
+    width:4ch;
+    text-align:right;
+    font-family:monospace;
+    border-right:1px solid #292929;
+}
+
+.linenos a, [class^=pgcssc]>a {
+    color: inherit;
+}
+
+.highlighttable td>code, .highlight pre>code {
+    background-color:transparent;
+    white-space:pre-wrap;
+    border:0;
+}
+
+[class^=pgcssc]>a {
+    text-decoration: underline dotted;
+}
+
+.highlighttable .special td, .highlighttable :target td {
+    background-color: #292929 !important;
+}
+
+.highlight pre {
+    padding:0 0.2em;
+    border:solid 1px #292929;
+    background-color:#121212;
+}
+
+.breakall {
+    word-break:break-all !important;
+}
+
+/* hack to get rid of 2px of cell padding */
+/*.highlighttable td>div {
+    margin:-1px 0;
+}*/
+
+.article td, .article th {
+    padding:0.3em;
+    border:solid 1px #292929;
+}
+
+.article th {
+    text-align:center;
+    background-color:#292929;
+}
+
+.article td {
+    background-color:#121212;
+}
+
+.article table.footnote td {
+    background-color:inherit;
+    border:0;
+    font-size:smaller;
+}
+
+.article table.footnote td.label { padding-left:0; }
+
+/*
+pre {
+    font-size:1.3em;
+    white-space:normal;
+}
+*/
+
+/* docutils crap */
+img.align-center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+input[type=checkbox].spoiler { display: none; }
+
+input[type=checkbox].spoiler:not(:checked) + .spoiler,
+input[type=checkbox].spoiler:checked + .spoiler:hover {
+  background-color: inherit;
+}
+
+input[type=checkbox].spoiler:checked + .spoiler {
+  background-color: currentColor;
+}
+
+input[type=checkbox].spoiler + .spoiler { cursor: pointer; }
+
+/* subscript/superscript tweak to avoid preturbing lines */
+/* https://gist.github.com/unruthless/413930 */
+sub, sup, a.footnote-reference {
+    font-size: 70%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup, a.footnote-reference { top: -0.4em; }
+sub { bottom: -0.3em; }
+
+/* hide broken footnote references from summary */
+.entry-summary a.footnote-reference { display:none; }
+
+/* other footnote stuff */
+/*table.footnote:first-of-type {*/
+table.footnote {
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    border-top:1px solid #292929;
+    padding-top:0.5em;
+    margin-bottom:0;
+}
+
+table.footnote ~ table.footnote {
+    border-top:0;
+    padding-top:inherit;
+}
+
+table.footnote .label {
+    width:1px; /* minimum width */
+    white-space:nowrap;
+}
+
+table.footnote:target td + td {
+    background-color:#121212;
+}
+
+/* Form Styling */
+
+/* Style input boxes and buttons */ 
+input, textarea, select {
+    background-color:#D9D9D9;
+    border-color:#BFBFBF; /* C1D7A6 */
+    border-width:2px;
+    color:#191919;
+}
+
+fieldset {
+    padding:0.5em;
+    border-color:#BFBFBF;
+    border-width:2px; /* C1D7A6 */
+}
