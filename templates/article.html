@@ -39,24 +39,38 @@
   {% for tag in article.tags %}
   <meta property="article:tag" content="{{ tag }}">
   {% endfor %}
-{#//#}
+{% endblock head %}
+{% block stylehead %}
+  <link rel="preload" href="/theme/css/iosevka-ryanc-woff2.css" as="style">
   {% if article.extracss %}
   {% for extracss in article.extracss|split %}
-  <link rel="preload" as="style" type="text/css" href="{{ extracss }}" onload="this.rel='stylesheet'">
+  <link rel="preload" href="{{ extracss }}" as="style" onload="this.rel='stylesheet'">
   <!-- https://www.filamentgroup.com/lab/load-css-simpler/#can%E2%80%99t-rel%3Dpreload-do-this-too%3F -->
   {% endfor %}
   <noscript>
-  {% for extracss in article.extracss|split %}
-  <link rel="stylesheet" type="text/css" href="{{ extracss }}">
-  {% endfor %}
-  </noscript>
-  <script>
-  {#/* https://github.com/filamentgroup/loadCSS */#}
-  {#/{% include '/js/cssasync.min.js' %}/#}
-  {% include '/js/cssryanc.min.js' %}
-  </script>
+  <link rel="stylesheet" href="/theme/css/iosevka-ryanc-woff.css">
+  <link rel="stylesheet" href="/theme/css/print.css" media="print">
   {% endif %}
-{% endblock %}
+  {% if article.extracss %}
+  {% for extracss in article.extracss|split %}
+  <link rel="stylesheet" href="{{ extracss }}">
+  {% endfor %}
+  {% endif %}
+  </noscript>
+{% endblock stylehead %}
+{% block scripthead %}
+{{ super() }}
+{#/* https://github.com/filamentgroup/loadCSS */#}
+
+{% include '/js/cssryanc.min.js' %}
+
+loadCSS("FontFace" in this?
+"/theme/css/iosevka-ryanc-woff2.css":
+"/theme/css/iosevka-ryanc-woff.css")
+.next(function(){
+loadCSS("/theme/css/print.css", null, "print");
+});
+{% endblock scripthead %}
 
 {% block title %}
 {% if article.status == "draft" %}[DRAFT] {% endif -%}

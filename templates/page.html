@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block head %}
+{{ super() }} 
+<link rel="stylesheet" href="/theme/css/print.css" media="print">
+{% endblock head %}
 {% block title %}{{ page.title }} | {{ SITENAME }}{% endblock %}
 {% block content %}
     <div class="article">

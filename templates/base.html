@@ -9,6 +9,7 @@
 {#/
   <link rel="canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
 /#}
+  <link rel="preload" href="/theme/img/hdr-1200.jpg" as="image">
   <style>{% include '/css/inline.css' %}</style>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00a300">
@@ -52,17 +53,24 @@
         type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed">
   {% endif %}
   <meta name="twitter:site" content="@ryancdotorg">
-
+  {% endblock head %}
+  {% block stylehead %}
+  <link rel="prefetch" href="/theme/css/iosevka-ryanc-woff2.css" as="font">
+  <link rel="stylesheet" href="/theme/css/print.css" media="print">
+  {% endblock stylehead %}
   <script>
+  {% block scripthead %}
+  {% if SITENAME == 'rya.nc' %}
+  {% include '/js/domain.min.js' %}
+
+  {% endif %}
   {% if output_file == 'index.html' %}
   {% include '/js/unhash.min.js' %}
 
   {% endif %}
-  {% include '/js/svgspriteie.min.js' %}
-
+{#/{% include '/js/svgspriteie.min.js' %}/#}
+  {% endblock scripthead %}
   </script>
-
-  {% endblock head %}
 </head>
 
 <body>
@@ -169,10 +177,7 @@
   </footer><!-- /#contentinfo -->
   </div><!-- /#wrap -->
 
-  <script src="/theme/js/prefetch.min.js"></script>
-  {% if SITENAME == 'rya.nc' %}
-  <script>{% include '/js/domain.min.js' %}</script>
-  {% endif %}
+  <script defer src="/theme/js/prefetch.min.js"></script>
 </body>
 </html>
 
