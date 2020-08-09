@@ -16,9 +16,23 @@
 }
 
 .highlighttable, .highlight pre, td.linenos {
-    background-color: #121212;
-    border:1px solid #292929;
+    background-color:@theme-bg1;
+    border:solid 1px @theme-border;
 }
+
+pre.code { white-space: pre-wrap; }
+
+code, .code, .linenos {
+    font-family: monospace;
+}
+
+//.article code, .article .code {
+code, .code {
+    background-color:@theme-bg1;
+    border:solid 1px @theme-border;
+    padding:0 0.2em;
+}
+
 
 .highlight pre { padding:0 0.2em; }
 
@@ -30,39 +44,30 @@ table.highlighttable { width:100%; }
     border:0;
 }
 
-td.linenos {
-    width:4ch;
-    text-align:right;
-    font-family:monospace;
-    border-right:1px solid #292929;
-}
-
-.article code, .article .code {
-    padding:0 0.2em;
-    border:solid 1px #292929;
-    background-color:#121212;
-    font-family:monospace;
-}
-
-.highlighttable {
-    width:100%;
-    background-color:#121212;
-    border:1px solid #292929;
-    font-size:12px;
-    line-height:calc(1.3em - 2px);
-}
-
-.highlighttable td {
-    vertical-align:text-top;
-    padding:0 .3em;
-    border:0;
-}
+//td.linenos {
+//    width:4ch;
+//    text-align:right;
+//    border-right:solid 1px @theme-border;
+//}
 
 .highlighttable .linenos {
     width:4ch;
     text-align:right;
-    font-family:monospace;
-    border-right:1px solid #292929;
+    border-right:solid 1px @theme-border;
+}
+
+.highlighttable {
+    width:100%;
+    background-color:@theme-bg1;
+    border:solid 1px @theme-border;
+    line-height:calc(1.3em - 2px);
+}
+
+.highlighttable tbody td {
+    font-size: ~"min(16px, 1.3vw)";
+    vertical-align:text-top;
+    padding:0 .3em;
+    border:0;
 }
 
 /* hack to get rid of 2px of cell padding */
@@ -78,10 +83,3 @@ td.linenos {
 }
 
 .breakall { word-break:break-all !important; }
-
-@media (max-width: 800px) {
-    .highlighttable {
-        line-height:calc(1.5em - 2px);
-        font-size:1.6vw;
-    }
-}
