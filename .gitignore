@@ -1,5 +1,5 @@
-static/css/inline.css
-static/js/cssasync.js
+static/font/*.*
+static/css/*.css
 static/js/*.min.js
 static/js/*.bundle.js
 *.swp
