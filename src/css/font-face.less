@@ -1,0 +1,77 @@
+.font-inline(@family, @stem, @ranges) {
+
+    @font-face {
+        font-family: @family;
+        src: data-uri("@{stem}-regular-basic.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-regular-basic.woff") format("woff"));
+        font-weight: 400;
+        font-style: normal;
+        unicode-range: @ranges;
+    }
+
+    @font-face {
+        font-family: @family;
+        src: data-uri("@{stem}-bold-basic.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bold-basic.woff") format("woff"));
+        font-weight: 700;
+        font-style: normal;
+        unicode-range: @ranges;
+    }
+
+    @font-face {
+        font-family: @family;
+        src: data-uri("@{stem}-italic-basic.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-italic-basic.woff") format("woff"));
+        font-weight: 400;
+        font-style: italic;
+        unicode-range: @ranges;
+    }
+
+    @font-face {
+        font-family: @family;
+        src: url("/theme/font/@{stem}-bolditalic-basic.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bolditalic-basic.woff") format("woff"));
+        font-weight: 700;
+        font-style: italic;
+        unicode-range: @ranges;
+    }
+}
+
+.font-face(@family, @stem, @subset, @ranges) {
+
+    @font-face {
+        font-family: @family;
+        src: url("/theme/font/@{stem}-regular-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-regular-@{subset}.woff") format("woff"));
+        font-weight: 400;
+        font-style: normal;
+        unicode-range: @ranges;
+    }
+
+    @font-face {
+        font-family: @family;
+        src: url("/theme/font/@{stem}-bold-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bold-@{subset}.woff") format("woff"));
+        font-weight: 700;
+        font-style: normal;
+        unicode-range: @ranges;
+    }
+
+    @font-face {
+        font-family: @family;
+        src: url("/theme/font/@{stem}-italic-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-italic-@{subset}.woff") format("woff"));
+        font-weight: 400;
+        font-style: italic;
+        unicode-range: @ranges;
+    }
+
+    @font-face {
+        font-family: @family;
+        src: url("/theme/font/@{stem}-bolditalic-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bolditalic-@{subset}.woff") format("woff"));
+        font-weight: 700;
+        font-style: italic;
+        unicode-range: @ranges;
+    }
+}

@@ -1,0 +1,33 @@
+[class^="pgcss"] { color: #d9d9d9; }
+[class^="pgcsss"], .pgcssgi { color: #99ad6a; }
+[class^="pgcssc"] { color: #888; font-style: italic; }
+[class^="pgcssk"], .pgcssnt, .pgcssgu, .pgcssow { color: #8197bf; }
+[class^="pgcssm"], .pgcssil, .pgcssgd { color: #cf6a4c; }
+.pgcssch { font-style: normal; }
+.pgcssgr, .pgcssgt { background-color: #902020; }
+.pgcsshll { background-color: #ffc; }
+.pgcssgh { color:#70b950; }
+.pgcssni { color: #799d6a; }
+.pgcssgo{ color: gray; }
+
+/*
+.pgcssk, .pgcsskc, .pgcsskd, .pgcsskn, .pgcsskp, .pgcsskr, .pgcssnt, .pgcssgu, .pgcssow { color: #8197bf; }
+*/
+/*
+.pgcssc, .pgcssc1, .pgcsscm, .pgcsscs, .pgcssch { color: #888; }
+.pgcssc, .pgcssc1, .pgcsscm, .pgcsscs { font-style: italic; }
+*/
+.pgcsscp { color:#8fbfdc; }
+/*
+.pgcsss, .pgcsss1, .pgcsss2, .pgcsssb, .pgcsssc, .pgcsssd, .pgcssse, .pgcsssh, .pgcsssi, .pgcsssr, .pgcssss, .pgcsssx { color: #99ad6a; }
+*/
+.pgcssnv, .pgcssvc, .pgcssvg, .pgcssvi { color: #c6b6ee; }
+/*
+.pgcssil, .pgcssm, .pgcssmf, .pgcssmh, .pgcssmi, .pgcssmo, .pgcssno, .pgcssgd { color: #cf6a4c; }
+*/
+/*
+.pgcssbp, .pgcsserr, .pgcssg, .pgcssge, .pgcssgi, .pgcssgp, .pgcssgr, .pgcssgs, .pgcssgt, .pgcssh, .pgcssl, .pgcssld, .pgcssn, .pgcssnb, .pgcssnd, .pgcssnn, .pgcssnx, .pgcsso, .pgcssow, .pgcssp, .pgcsspy, .pgcssw, .pgcssx { color: #e8e8d3; }
+*/
+.pgcssna, .pgcssnf, .pgcssnc, .pgcssnd, .pgcssnb { color: #fad07a; }
+.pgcsskt, .pgcssne, .pgcssnl {color: #ffb964; }
+.pgcssgh, .pgcssgu { font-weight: 700; }

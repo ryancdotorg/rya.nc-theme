@@ -1,0 +1,16 @@
+@media print {
+    #sidebar, #menu, #pagination { display: none !important; };
+    .article, .archive { border: 0 !important; };
+    .inside { padding: 0 !important; };
+    #banner {
+        margin: 0 !important;
+        height: 0 !important;
+        min-height: 0 !important;
+    };
+    body, p, h1, h2, h1>a, .name>a, .postmeta { color: black !important; }
+    a { color: black; }
+    a[href^="http"] { text-decoration: underline; }
+    a[href^="http"]::after { content: " [" attr(href) "] "; }
+    .postmeta abbr { text-decoration: none; }
+    .postmeta abbr[data-time]::after { content: " at " attr(data-time); }
+}

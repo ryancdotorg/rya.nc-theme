@@ -1,0 +1,191 @@
+/*   
+Theme Name: Open Sourcerer
+Theme URI: http://www.theopensourcerer.com
+Description: A Wordpress Theme inspired by the colour scheme of Ubuntu Jaunty 9.04. Features: Two column layout, widget aware, variable width.
+Author: Alan Lord alan@theopensourcerer.com
+Author URI: http://www.theopensourcerer.com
+Version: 1.3
+Tags: brown, two-column, flexible-width, widget-aware
+License: GPLv3 or Later. (c) 2009 Alan Lord 
+*/
+
+.css-warning {
+  display:none;
+}
+
+// .redacted { background-color: currentColor; }
+// .sarcasm { transform: skewX(10deg); display: inline-block; }
+
+/* expand abbreviations on devices without good pointers */
+@media not all and (any-pointer: fine), (any-hover: none) {
+    span.abbr::before { content: attr(data-title) " ("; }
+    span.abbr::after { content: ")"; }
+}
+
+.postmeta a[href^="/tag/"]::before { content: "#"; }
+
+.article, .archive, #pagination {
+    background-color:@theme-bg2;
+    border:solid 1px @theme-border;
+    font-size:1.2em;
+    line-height:1.3em;
+    margin-bottom:1.5em;
+    margin-right: 239px;
+}
+
+.article div > p, .archive div > p, .article table {
+    margin-bottom:1em;
+}
+
+.article li p:first-child {
+    margin-top:0;
+}
+
+.article li p:last-child {
+    margin-bottom:0;
+}
+
+.article li + li {
+    margin-top:0.2em;
+}
+
+.article h1 {
+    padding:0.5em 0 1em 0;
+    border-bottom:solid 1px @theme-border;
+    font-size:1.8em;
+    font-weight:normal;
+    line-height:1.3em;
+}
+
+.archive .inside + .inside {
+    border-top:solid 1px @theme-border;
+}
+
+.archive .postmeta {
+    padding-top:0;
+}
+
+.article ol, .article ul {
+    margin-left:1.4em;
+    margin-bottom:1em;
+}
+
+/* Some extra space for the "Next Page >>" link at the bottom */
+// #content>p>a { font-size:1.3em; }
+
+// .article p a, .article li a, .postmeta a { color:#56DF56; text-decoration:underline; }
+
+// .article p a:hover { color:#FFF; }
+
+/* The Article's meta data */
+.postmeta {
+    font-size:0.9em;
+    color:@theme-meta;
+    margin:2.2222em 0 .5em;
+}
+
+.call-to-action {
+    margin:2em 0 2em;
+}
+
+.article blockquote {
+    margin:0 1em 0 2em;
+    padding:1em;
+    font-style:italic;
+    background-color:@theme-bg1;
+    border:solid 1px @theme-border;
+}
+
+/* make sure blockquotes look right whether or not they've got nested p tags */
+blockquote > p { margin:0; }
+blockquote > p + p { margin-top:1em; }
+
+.breakall {
+    word-break:break-all !important;
+}
+
+.article td, .article th {
+    padding:0.3em;
+    border:solid 1px @theme-border;
+}
+
+.article th {
+    text-align:center;
+    background-color:@theme-border;
+}
+
+.article td {
+    background-color:@theme-bg1;
+}
+
+.article table.footnote td {
+    background-color:inherit;
+    border:0;
+    font-size:smaller;
+}
+
+.article table.footnote td.label { padding-left:0; }
+
+// pre { font-size:1.3em; white-space:normal; }
+
+/* docutils crap */
+img.align-center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* subscript/superscript tweak to avoid preturbing lines */
+/* https://gist.github.com/unruthless/413930 */
+sub, sup, a.footnote-reference {
+    font-size: 70%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup, a.footnote-reference { top: -0.4em; }
+sub { bottom: -0.3em; }
+
+/* hide broken footnote references from summary */
+.entry-summary a.footnote-reference { display:none; }
+
+/* other footnote stuff */
+/*table.footnote:first-of-type {*/
+table.footnote {
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    border-top:solid 1px @theme-border;
+    padding-top:0.5em;
+    margin-bottom:0;
+}
+
+table.footnote ~ table.footnote {
+    border-top:0;
+    padding-top:inherit;
+}
+
+table.footnote .label {
+    width:1px; /* minimum width */
+    white-space:nowrap;
+}
+
+table.footnote:target td + td {
+    background-color:@theme-bg1;
+}
+
+/* Form Styling */
+
+/* Style input boxes and buttons */ 
+//input, textarea, select {
+//    background-color:@theme-fg1;
+//    border-color:#BFBFBF; /* C1D7A6 */
+//    border-width:2px;
+//    color:@theme-bg2;
+//}
+
+//fieldset {
+//    padding:0.5em;
+//    border-color:#BFBFBF;
+//    border-width:2px; /* C1D7A6 */
+//}

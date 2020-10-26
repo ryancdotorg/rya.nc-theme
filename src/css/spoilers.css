@@ -1,0 +1,12 @@
+input[type=checkbox].spoiler { display: none; }
+
+input[type=checkbox].spoiler:not(:checked) + .spoiler,
+input[type=checkbox].spoiler:checked + .spoiler:hover {
+  background-color: inherit;
+}
+
+input[type=checkbox].spoiler:checked + .spoiler {
+  background-color: currentColor;
+}
+
+input[type=checkbox].spoiler + .spoiler { cursor: pointer; }

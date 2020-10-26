@@ -7,7 +7,7 @@
 
     <ul>
     {% for author, articles in authors|sort %}
-        <li><a href="{{ SITEURL }}/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a> ({{ articles|count }})</li>
+        <li><a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a> ({{ articles|count }})</li>
     {% endfor %}
     </ul>
 {% endblock %}

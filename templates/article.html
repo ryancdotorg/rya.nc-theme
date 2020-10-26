@@ -1,80 +1,72 @@
 {% extends "base.html" %}
 {% block head %}
-  {{ super() }}
-  {% if article.status == "draft" %}
-  <meta name="robots" content="noindex, nofollow">
-  {% endif %}
+{{ super() }}
+{% if article.status == "draft" %}
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, none">
+{% endif %}
 {#//#}
-  {% if article.keywords %}
-  <meta name="keywords" content="{{ article.keywords }}">
-  {% endif %}
+{% if article.keywords %}
+<meta name="keywords" content="{{ article.keywords }}">
+{% endif %}
 {#/ https://moz.com/blog/meta-data-templates-123 /#}
-  {% if article.description %}
-  <meta name="description" content="{{ article.description|wordtrunc(155)|e }}">
-  {% else %}
-  <meta name="description" content="{{ article.summary|striptags|wordtrunc(155)|e }}">
-  {% endif %}
-
-  <!-- twitter article metadata -->
-  <meta name="twitter:card" content="summary">
-  {% if article.author|author_info('twitter') %}
-  <meta name="twitter:creator" content="@{{ article.author|author_info('twitter') }}">
-  {% endif %}
-
-  <!-- open graph article metadata -->
-  <meta property="og:title" content="{{ article.title|striptags|e }}">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="{{ output_file|canonical_url }}">
-  <meta property="og:site_name" content="{{ SITENAME }}">
-  {% if article.description %}
-  <meta property="og:description" content="{{ article.description|e }}">
-  {% else %}
-  <meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
-  {% endif %}
-  {% if article.image %}
-  <meta property="og:image" content="{{ article.image|canonical_url }}">
-  {% else %}
-  <meta property="og:image" content="{{ SITEURL }}/avatar2.png">
-  {% endif %}
-  {% for tag in article.tags %}
-  <meta property="article:tag" content="{{ tag }}">
-  {% endfor %}
+{% if article.description %}
+<meta name="description" content="{{ article.description|wordtrunc(155)|e }}">
+{% else %}
+<meta name="description" content="{{ article.summary|striptags|wordtrunc(155)|e }}">
+{% endif %}
+<!-- twitter article metadata -->
+<meta name="twitter:card" content="summary">
+{% if article.author|author_info('twitter') %}
+<meta name="twitter:creator" content="@{{ article.author|author_info('twitter') }}">
+{% endif %}
+<!-- open graph article metadata -->
+<meta property="og:title" content="{{ article.title|striptags|e }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ output_file|canonical_url }}">
+<meta property="og:site_name" content="{{ SITENAME }}">
+{% if article.description %}
+<meta property="og:description" content="{{ article.description|e }}">
+{% else %}
+<meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
+{% endif %}
+{% if article.image %}
+<meta property="og:image" content="{{ article.image|canonical_url }}">
+{% else %}
+<meta property="og:image" content="{{ SITEURL }}/avatar2.png">
+{% endif %}
+{% for tag in article.tags %}
+<meta property="article:tag" content="{{ tag }}">
+{% endfor %}
 {% endblock head %}
-{% block stylehead %}
-  <link rel="preload" href="/theme/css/iosevka-ryanc-woff2.css" as="style">
-  {% if article.extracss %}
-  {% for extracss in article.extracss|split %}
-  <link rel="preload" href="{{ extracss }}" as="style" onload="this.rel='stylesheet'">
-  <!-- https://www.filamentgroup.com/lab/load-css-simpler/#can%E2%80%99t-rel%3Dpreload-do-this-too%3F -->
-  {% endfor %}
-  <noscript>
-  <link rel="stylesheet" href="/theme/css/iosevka-ryanc-woff.css">
-  <link rel="stylesheet" href="/theme/css/print.css" media="print">
-  {% endif %}
-  {% if article.extracss %}
-  {% for extracss in article.extracss|split %}
-  <link rel="stylesheet" href="{{ extracss }}">
-  {% endfor %}
-  {% endif %}
-  </noscript>
-{% endblock stylehead %}
 {% block scripthead %}
 {{ super() }}
 {#/* https://github.com/filamentgroup/loadCSS */#}
 
 {% include '/js/cssryanc.min.js' %}
 
-loadCSS("FontFace" in this?
-"/theme/css/iosevka-ryanc-woff2.css":
-"/theme/css/iosevka-ryanc-woff.css")
-.next(function(){
-loadCSS("/theme/css/print.css", null, "print");
-});
+loadCSS("FontFace" in this?"/theme/css/iosevka-ryanc-woff2.css":"/theme/css/iosevka-ryanc-woff.css").next(function(){loadCSS("/theme/css/print.css",null,"print")});
 {% endblock scripthead %}
-
+{% block stylehead %}
+<link rel="preload" href="/theme/css/iosevka-ryanc-woff2.css" as="style">
+{% if article.extracss %}
+{% for extracss in article.extracss|split %}
+<link rel="preload" href="{{ extracss }}" as="style" onload="this.rel='stylesheet'">
+<!-- https://www.filamentgroup.com/lab/load-css-simpler/#can%E2%80%99t-rel%3Dpreload-do-this-too%3F -->
+{% endfor %}
+{% endif %}
+<noscript>
+<link rel="stylesheet" href="/theme/css/iosevka-ryanc-woff.css">
+<link rel="stylesheet" href="/theme/css/print.css" media="print">
+{% if article.extracss %}
+{% for extracss in article.extracss|split %}
+<link rel="stylesheet" href="{{ extracss }}">
+{% endfor %}
+{% endif %}
+</noscript>
+{% endblock stylehead %}
 {% block title %}
 {% if article.status == "draft" %}[DRAFT] {% endif -%}
-{{ article.title|striptags }} | {{ SITENAME }}
+{{ article.title|striptags }} | {{ SITENAME -}}
 {% endblock title %}
 
 {% block content %}
@@ -110,9 +102,7 @@ loadCSS("/theme/css/print.css", null, "print");
   {% if article.author|author_info('twitter') %}
   <div class="call-to-action">
     If you enjoyed this,
-    <a href="https://twitter.com/intent/follow?screen_name={{ article.author|author_info('twitter') }}" rel="noreferrer">
-      follow me on Twitter{{ '' -}}
-    </a>
+    <a class="reference external" href="https://twitter.com/intent/follow?screen_name={{ article.author|author_info('twitter') }}" rel="noreferrer">follow me on Twitter</a>
     for my latest posts.
   </div>
   {% endif %}
@@ -143,15 +133,15 @@ loadCSS("/theme/css/print.css", null, "print");
       {% endfor %}
     {% endif %}
     on
-    <abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>.
+    <abbr class="published" title="{{ article.date.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_date }}</abbr>.
     <meta itemprop="datePublished" content="{{ article.date.isoformat() }}">
     Tags:
     {% for tag in article.tags %}
-      <a href="/{{ tag.url }}">{{ tag }}</a>
+      <a href="/{{ tag.url }}" rel="tag">{{ tag }}</a>
     {% endfor %}
     {% if article.modified %}
     <br>Last modified
-    <abbr class="modified" title="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</abbr>.
+    <abbr class="modified" title="{{ article.modified.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_modified }}</abbr>.
     <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}">
     {% else %}
     <meta itemprop="dateModified" content="{{ article.date.isoformat() }}">

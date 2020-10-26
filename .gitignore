@@ -1,7 +1,6 @@
-static/font/*.*
-static/css/*.css
-static/js/*.min.js
-static/js/*.bundle.js
+static/font/*
+static/css/*
+static/js/*
 *.swp
 .*
 *.gz

@@ -1,82 +1,83 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
 <head>
-  {% block head %}
-  <meta charset="utf-8">
-  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-  <meta name="viewport" content="width=device-width">
-  <link rel="alternate canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
+{% block head %}
+<meta charset="utf-8">
+<title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+<meta name="viewport" content="width=device-width">
+<link rel="alternate canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
 {#/
-  <link rel="canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
+<link rel="canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
 /#}
-  <link rel="preload" href="/theme/img/hdr-1200.jpg" as="image">
-  <style>{% include '/css/inline.css' %}</style>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00a300">
-  <!-- order matters - the last applicable icon is used -->
-  <link rel="alternate icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  {% if FEED_ALL_ATOM %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml"
-        rel="alternate" title="{{ SITENAME }} Atom Feed">
-  {% endif %}
-  {% if FEED_ALL_RSS %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml"
-        rel="alternate" title="{{ SITENAME }} RSS Feed">
-  {% endif %}
+<!--<link rel="preload" href="/theme/img/hdr-1200.jpg" as="image">-->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00a300">
+<!-- order matters - the last applicable icon is used -->
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+{% if FEED_ALL_ATOM %}
+<link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml"
+      rel="alternate" title="{{ SITENAME }} Atom Feed">
+{% endif %}
+{% if FEED_ALL_RSS %}
+<link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml"
+      rel="alternate" title="{{ SITENAME }} RSS Feed">
+{% endif %}
 {#/
-  {% if FEED_ATOM %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml"
-        rel="alternate" title="{{ SITENAME }} Atom Feed">
-  {% endif %}
-  {% if FEED_RSS %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml"
-        rel="alternate" title="{{ SITENAME }} RSS Feed">
-  {% endif %}
-  {% if CATEGORY_FEED_ATOM and category %}
-  <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}"
-        type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed">
-  {% endif %}
-  {% if CATEGORY_FEED_RSS and category %}
-  <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}"
-        type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed">
-  {% endif %}
+{% if FEED_ATOM %}
+<link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml"
+      rel="alternate" title="{{ SITENAME }} Atom Feed">
+{% endif %}
+{% if FEED_RSS %}
+<link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml"
+      rel="alternate" title="{{ SITENAME }} RSS Feed">
+{% endif %}
+{% if CATEGORY_FEED_ATOM and category %}
+<link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}"
+      type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed">
+{% endif %}
+{% if CATEGORY_FEED_RSS and category %}
+<link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}"
+      type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed">
+{% endif %}
 /#}
-  {% if TAG_FEED_ATOM and tag %}
-  <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM.format(slug=tag.slug) }}"
-        type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed">
-  {% endif %}
-  {% if TAG_FEED_RSS and tag %}
-  <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS.format(slug=tag.slug) }}"
-        type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed">
-  {% endif %}
-  <meta name="twitter:site" content="@ryancdotorg">
-  {% endblock head %}
-  {% block stylehead %}
-  <link rel="prefetch" href="/theme/css/iosevka-ryanc-woff2.css" as="font">
-  <link rel="stylesheet" href="/theme/css/print.css" media="print">
-  {% endblock stylehead %}
-  <script>
-  {% block scripthead %}
-  {% if SITENAME == 'rya.nc' %}
-  {% include '/js/domain.min.js' %}
-
-  {% endif %}
-  {% if output_file == 'index.html' %}
-  {% include '/js/unhash.min.js' %}
-
-  {% endif %}
+{% if TAG_FEED_ATOM and tag %}
+<link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM.format(slug=tag.slug) }}"
+      type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed">
+{% endif %}
+{% if TAG_FEED_RSS and tag %}
+<link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS.format(slug=tag.slug) }}"
+      type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed">
+{% endif %}
+<meta name="twitter:site" content="@ryancdotorg">
+{%- endblock head %}
+<script>
+{% block scripthead %}
+{% if SITENAME == 'rya.nc' %}
+{% include '/js/domain.min.js' %}
+{% include '/js/header.min.js' %}
+//(function(w){try{w&&w.register('cache.swar',{scope:'/'})}catch(e){}})(navigator.serviceWorker);
+{% endif %}
+{% if output_file != 'placeholder.html' %}
+{% include '/js/unhash.min.js' %}
+{% endif %}
 {#/{% include '/js/svgspriteie.min.js' %}/#}
-  {% endblock scripthead %}
-  </script>
+{% endblock scripthead %}
+</script>
+<style>{% include '/css/inline.css' %}</style>
+{% block stylehead %}
+<link rel="prefetch" href="/theme/css/iosevka-ryanc-woff2.css" as="font">
+<link rel="stylesheet" href="/theme/css/print.css" media="print">
+{% endblock stylehead %}
 </head>
 
 <body>
   <div id="wrap"><!-- Begin Wrap -->
   <header id="banner">
-    {#/
+    <!--<canvas style="z-index:-1"></canvas>-->
+{#/
     <div id="social">
       {% for brand, user, link in SOCIAL %}
       <a href="{{ link }}" rel="me" title="My profile on {{ brand }}">
@@ -87,7 +88,7 @@
       </a>
       {% endfor %}
     </div>
-    /#}
+/#}
     <div itemscope itemtype="http://schema.org/WebSite" class="inside">
     <p class="name" itemprop="name"><a href="/" itemprop="url">{{ SITENAME }}</a></p>
     <h1 class="title"><a href="/">{{ SITETITLE }}</a></h1>
@@ -95,43 +96,37 @@
     </div>
   </header>
 
-  <nav id="menu"><ul>
-  <li><a href="/">Home</a></li>
-  {% for title, link in MENUITEMS %}
-    <li><a href="{{ link }}">{{ title }}</a></li>
-  {% endfor %}
-  {% if DISPLAY_PAGES_ON_MENU %}
-    {% for p in pages %}
-      <li{% if p == page %} class="current_page"{% endif %}>
-        <a href="/{{ p.url }}">{{ p.title }}</a>
-      </li>
-    {% endfor %}
-  {% else %}
-    {% if DISPLAY_CATEGORIES_ON_MENU %}
-      {% for cat, null in categories %}
-        <li{% if cat == category %} class="active"{% endif %}>
-          <a href="/{{ cat.url }}">{{ cat }}</a>
-        </li>
-      {% endfor %}
+  <nav id="menu">
+    <a href="/">Home</a>
+    {%- for title, link in MENUITEMS -%}
+      <a href="{{ link }}">{{ title }}</a>
+    {%- endfor -%}
+    {% if DISPLAY_PAGES_ON_MENU %}
+      {%- for p in pages -%}
+        <a{% if p == page %} class="active"{% endif %} href="/{{ p.url }}">{{ p.title }}</a>
+      {%- endfor -%}
+    {% else %}
+      {% if DISPLAY_CATEGORIES_ON_MENU %}
+        {%- for cat, null in categories -%}
+          <a{% if cat == category %} class="active"{% endif %} href="/{{ cat.url }}">{{ cat }}</a>
+        {%- endfor -%}
+      {% endif %}
     {% endif %}
-  {% endif %}
-  </ul>
   </nav><!-- /#menu -->
 
   <div id="sidebar">
 
   {% if SOCIAL %}
-  <div class="widget" id="elsewhere"><div class="inside">
-    <ul><li><h2>Me Elsewhere</h2></li></ul>
-    <ul>
-      {% for brand, user, link in SOCIAL %}
-        <li><a href="{{ link }}" rel="me">{{ brand }}</a></li>
-      {% endfor %}
-    </ul>
-  </div></div><!-- /.widget -->
+  <div class="widget inside" id="elsewhere">
+    <h2>Elsewhere</h2>
+    {% for brand, user, link in SOCIAL %}
+      <a href="{{ link }}" rel="me">{{ brand }}</a>
+    {% endfor %}
+  </div><!-- /.widget -->
 
   <div class="spacer"></div><!-- hack for the mobile layout -->
   {% endif %}
+{#/
   <div class="widget" id="tagcloud"><div class="inside">
     <ul><li><h2>Tags</h2></li></ul>
     <ul class="tagcloud">
@@ -140,16 +135,15 @@
       {% endfor %}
     </ul>
   </div></div><!-- /.widget -->
+/#}
 
   {% if LINKS %}
-  <div class="widget" id="blogroll"><div class="inside">
-    <ul><li><h2>Blogroll</h2></li></ul>
-    <ul>
-      {% for name, link in LINKS|sort %}
-        <li><a href="{{ link }}">{{ name }}</a></li>
-      {% endfor %}
-    </ul>
-  </div></div><!-- /.widget -->
+  <div class="widget inside" id="blogroll">
+    <h2>Blogroll</h2>
+    {% for name, link in LINKS|sort %}
+      <a href="{{ link }}">{{ name }}</a>
+    {% endfor %}
+  </div><!-- /.widget -->
   {% endif %}
 
   </div><!-- /#sidebar -->
@@ -177,7 +171,7 @@
   </footer><!-- /#contentinfo -->
   </div><!-- /#wrap -->
 
-  <script defer src="/theme/js/prefetch.min.js"></script>
+  <script src="/theme/js/perf.bundle.js" async></script>
 </body>
 </html>
 

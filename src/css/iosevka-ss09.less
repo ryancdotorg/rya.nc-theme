@@ -1,0 +1,23 @@
+@import "font-face.less";
+
+.highlighttable tr td, .highlighttable td code, div.code, pre.code {
+    font-family: Iosevka, monospace;
+}
+
+// this font is narrow and needs larger vw values
+.highlighttable tr>td {
+    font-size: ~"min(16px, 1.55vw)";
+}
+
+@media (max-width: 960px) {
+    .highlighttable tr>td {
+        font-size: ~"min(16px, 1.85vw)";
+    }
+}
+
+.font-inline('Iosevka'; 'iosevka-ss09'; U+0020-007E,U+00A0-00BF,U+00D7,U+00F7);
+
+.font-face('Iosevka'; 'iosevka-ss09'; 'latin'; U+0000-001F,U+007F-009F,U+00C0-00D6,U+00D8-00F6,U+00F9-036F,U+1E00-1EFF,U+2000-20CF);
+.font-face('Iosevka'; 'iosevka-ss09'; 'greek'; U+0370-03FF,U+1F00-1FFF);
+.font-face('Iosevka'; 'iosevka-ss09'; 'symbol'; U+20D0-2BFF);
+.font-face('Iosevka'; 'iosevka-ss09'; 'other'; U+0400-01DFF,U+2E80-1FFFFF);
