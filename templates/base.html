@@ -63,7 +63,7 @@
 {% if output_file != 'placeholder.html' %}
 {% include '/js/unhash.min.js' %}
 {% endif %}
-{#/{% include '/js/svgspriteie.min.js' %}/#}
+{% include '/js/svgspriteie.min.js' %}
 {% endblock scripthead %}
 </script>
 <style>{% include '/css/inline.css' %}</style>
@@ -97,6 +97,7 @@
   </header>
 
   <nav id="menu">
+    <span class="fll">
     <a href="/">Home</a>
     {%- for title, link in MENUITEMS -%}
       <a href="{{ link }}">{{ title }}</a>
@@ -112,10 +113,38 @@
         {%- endfor -%}
       {% endif %}
     {% endif %}
+    </span>
+    <span class="flr" id="social">
+      {%- if SOCIAL -%}
+      {%- for brand, user, link in SOCIAL -%}
+      <a href="{{ link }}" rel="me" title="{{ user }}">
+        <span>my profile on {{ brand }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="/theme/img/social.svg#{{ brand }}"/>
+        </svg>
+      </a>
+      {%- endfor -%}
+      {%- endif -%}
+      {%- if EMAIL -%}
+      <a class="email" href="mailto:{{ EMAIL }}" title="email">
+        <span>email me</span>
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="/theme/img/social.svg#Email"/>
+        </svg>
+      </a>
+      {%- endif %}
+      {%- if FEED_ALL_RSS -%}
+      <a href="/{{ FEED_ALL_RSS }}" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="/theme/img/social.svg#RSS"/>
+        </svg>
+      </a>
+      {%- endif -%}
+    </span>
   </nav><!-- /#menu -->
 
   <div id="sidebar">
-
+{#/
   {% if SOCIAL %}
   <div class="widget inside" id="elsewhere">
     <h2>Elsewhere</h2>
@@ -126,6 +155,7 @@
 
   <div class="spacer"></div><!-- hack for the mobile layout -->
   {% endif %}
+/#}
 {#/
   <div class="widget" id="tagcloud"><div class="inside">
     <ul><li><h2>Tags</h2></li></ul>
@@ -171,7 +201,7 @@
   </footer><!-- /#contentinfo -->
   </div><!-- /#wrap -->
 
-  <script src="/theme/js/perf.bundle.js" async></script>
+  <script src="/theme/js/etc.bundle.js" async></script>
 </body>
 </html>
 

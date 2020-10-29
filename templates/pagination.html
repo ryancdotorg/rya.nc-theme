@@ -1,7 +1,7 @@
 {% if DEFAULT_PAGINATION %}
 {% if articles_paginator.num_pages > 1 %}
 <nav id="pagination" class="inside">
-<span class="pg_left">
+<span class="fll">
 {% if articles_page.has_previous() %}
   <a href="/{{ articles_paginator.page(1).url|replace('index.html','') }}">&laquo; First</a>
   <a href="/{{ articles_previous_page.url|replace('index.html','') }}" rel="prev">&lsaquo; Previous</a>
@@ -25,7 +25,7 @@
 {% endfor %}
 {% endwith %}
 
-<span class="pg_right">
+<span class="flr">
 {% if articles_page.has_next() %}
   <a href="/{{ articles_next_page.url }}" rel="next">Next &rsaquo;</a>
   <a href="/{{ articles_paginator.page(articles_paginator.num_pages).url }}">Last &raquo;</a>

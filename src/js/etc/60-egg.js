@@ -1,4 +1,4 @@
-onDomComplete.push(function(){
+/*onDomComplete.push(function(){
   var span = document.querySelector('footer span');
   addListener(span, 'click', function(e){
     var k, v, l = [];
@@ -20,3 +20,4 @@ onDomComplete.push(function(){
     });
   });
 });
+*/

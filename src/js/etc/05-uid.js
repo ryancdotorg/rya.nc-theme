@@ -1,5 +1,5 @@
 // get a reference to the web crypto object
-var _crypto = crypto || msCrypto;
+var _crypto = window.crypto || window.msCrypto;
 
 // wrap the subtlecrypto api, handling either promise or event based
 var _subtle = function() {
@@ -11,7 +11,7 @@ var _subtle = function() {
   if (typeof res.then === 'function') {
     res.then(callback)
   } else {
-    res.oncomplete = callback;
+    res.oncomplete = function() { callback(this.result) };
   }
 };
 
