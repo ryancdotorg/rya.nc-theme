@@ -53,6 +53,7 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 
     font-weight:bold;
     font-size:1.2em;
+    line-height:1;
     color:@theme-bg0;
 }
 
@@ -60,4 +61,25 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 #menu a:hover {
     background-color:@theme-bg0;
     color:@theme-fg1;
+}
+
+@icon-size: 1.3em;
+
+#social a {
+    height: @icon-size;
+    padding: ((2em - @icon-size) / 2);;
+}
+
+#social svg, #social object {
+    height: @icon-size;
+    width: @icon-size;
+}
+
+/* https://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C7 */
+#social a > span {
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    overflow: hidden;
+    top: -10px;
 }
