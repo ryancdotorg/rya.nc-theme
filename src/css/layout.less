@@ -16,9 +16,10 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 }
 
 #wrap {
-    max-width:1200px;
-    width: auto !important; /*IE6 hack*/
-    width:1200px; /*IE6 hack*/
+    max-width:760px;
+//    width: auto !important; /*IE6 hack*/
+
+//    width:760px; /*IE6 hack*/
     margin:0 auto; /*center hack*/
     text-align:left; /*center hack*/
     /*padding-top:1em; *//*Space above wrap*/
@@ -26,22 +27,25 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 
 #content {
     float:left;
-    margin-right:-215px;
+//    margin-right:-215px;
     width:100%;
     overflow:hidden;
 }
 
+/*
 #sidebar {
     float:right;
     width:215px;
     overflow:hidden;
-    font-size:1.2em;
+    line-height:1.1em;
     margin-bottom:1.5em;
     position:relative;
 }
+*/
 
 #contentinfo {
     clear:both;
+    font-size:0.8em;
     background-color:@theme-bg2;
     border:solid 1px @theme-border;
     margin-bottom:1em;
@@ -49,8 +53,8 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 }
 
 /* reflow for narrow display */
-@media (max-width: 960px) {
-    #sidebar { display: none; }
+//@media (max-width: 960px) {
+//    #sidebar { display: none; }
 //    #sidebar {
 //        width:100%;
 //        font-size:1.1em;
@@ -79,11 +83,11 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 //        margin-right:0;
 //    }
 
-    div.article, div.archive, nav#pagination {
-        margin-right:0;
-    }
-    .highlighttable tbody td {
-      line-height:calc(1.5em - 2px);
-      font-size:~"min(16px, 1.6vw)";
-    }
-}
+//    div.article, div.archive, nav#pagination {
+//        margin-right:0;
+//    }
+//    .highlighttable tbody td {
+//      line-height:calc(1.5em - 2px);
+//      font-size:~"min(16px, 1.6vw)";
+//    }
+//}

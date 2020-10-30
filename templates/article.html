@@ -70,8 +70,8 @@ loadCSS("FontFace" in this?"/theme/css/iosevka-ryanc-woff2.css":"/theme/css/iose
 {% endblock title %}
 
 {% block content %}
-  <div class="article" itemprop="mainEntity" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="inside">
+  <div class="article inside" itemprop="mainEntity" itemscope itemtype="http://schema.org/BlogPosting">
+  <!--<div class="inside">-->
   <link itemprop="mainEntityOfPage" href="{{ output_file|canonical_url }}">
   <header>
     <h1 class="entry-title" itemprop="headline">
@@ -94,9 +94,10 @@ loadCSS("FontFace" in this?"/theme/css/iosevka-ryanc-woff2.css":"/theme/css/iose
     {% endif %}
   </header>
   <div class="entry-content" itemprop="articleBody">
-    <p class="css-warning"><strong>
-      Note: You are viewing this blog post without the intended style information, which may result in formatting issues.
-    </strong></p>
+    <!--<p class="css-warning" aria-hidden="true" role="presentation">
+      <strong>Note:</strong>
+      You are viewing this blog post without the intended style information, which may result in formatting issues.
+    </p>-->
     {{ article.content }}
   </div><!-- /.entry-content -->
   {% if article.author|author_info('twitter') %}
@@ -147,6 +148,6 @@ loadCSS("FontFace" in this?"/theme/css/iosevka-ryanc-woff2.css":"/theme/css/iose
     <meta itemprop="dateModified" content="{{ article.date.isoformat() }}">
     {% endif %}
   </footer><!-- /.postmeta -->
-  </div><!-- /.inside -->
+  <!--</div><!- /.inside -->
   </div><!-- /.article -->
 {% endblock %}

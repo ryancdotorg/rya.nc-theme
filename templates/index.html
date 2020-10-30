@@ -3,10 +3,10 @@
 {% block title %}{{ SITETITLE }} | {{ SITENAME }}{% endblock %}
 
 {% block head %}
-{% if articles_page.number > 1 %}
+{% if articles_page.number > 1 or page_name != 'index' %}
+<meta name="robots" content="noindex, follow">
 {% endif %}
 {{ super() }}
-<meta name="robots" content="noindex, follow">
 <meta name="description" content="{{ SITEDESC }}">
 {% endblock %}
 

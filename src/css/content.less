@@ -11,6 +11,11 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 
 .css-warning {
   display:none;
+//  height:1px;
+//  width:1px;
+//  position:absolute;
+//  overflow:hidden;
+//  top:-10px;
 }
 
 // .redacted { background-color: currentColor; }
@@ -27,10 +32,11 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 .article, .archive, #pagination {
     background-color:@theme-bg2;
     border:solid 1px @theme-border;
-    font-size:1.2em;
+//    font-size:1.2em;
+
     line-height:1.3em;
     margin-bottom:1.5em;
-    margin-right: 239px;
+//    margin-right: 239px;
 }
 
 .article div > p, .archive div > p, .article table {
@@ -77,9 +83,12 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 
 // .article p a:hover { color:#FFF; }
 
+footer, #pagination, .postmeta {
+    font-size:0.9em;
+}
+
 /* The Article's meta data */
 .postmeta {
-    font-size:0.9em;
     color:@theme-meta;
     margin:2.2222em 0 .5em;
 }

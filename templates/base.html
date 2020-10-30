@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
 <head>
-{% block head %}
 <meta charset="utf-8">
+{% block head %}
 <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 <meta name="viewport" content="width=device-width">
 <link rel="alternate canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
@@ -17,6 +17,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
 {% if FEED_ALL_ATOM %}
 <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml"
       rel="alternate" title="{{ SITENAME }} Atom Feed">
@@ -56,14 +57,12 @@
 <script>
 {% block scripthead %}
 {% if SITENAME == 'rya.nc' %}
-{% include '/js/domain.min.js' %}
 {% include '/js/header.min.js' %}
 //(function(w){try{w&&w.register('cache.swar',{scope:'/'})}catch(e){}})(navigator.serviceWorker);
 {% endif %}
 {% if output_file != 'placeholder.html' %}
 {% include '/js/unhash.min.js' %}
 {% endif %}
-{% include '/js/svgspriteie.min.js' %}
 {% endblock scripthead %}
 </script>
 <style>{% include '/css/inline.css' %}</style>
@@ -114,7 +113,7 @@
       {% endif %}
     {% endif %}
     </span>
-    <span class="flr" id="social">
+    <span class="flr" id="icons">
       {%- if SOCIAL -%}
       {%- for brand, user, link in SOCIAL -%}
       <a href="{{ link }}" rel="me" title="{{ user }}">
@@ -143,8 +142,8 @@
     </span>
   </nav><!-- /#menu -->
 
-  <div id="sidebar">
 {#/
+  <div id="sidebar">
   {% if SOCIAL %}
   <div class="widget inside" id="elsewhere">
     <h2>Elsewhere</h2>
@@ -166,7 +165,7 @@
     </ul>
   </div></div><!-- /.widget -->
 /#}
-
+{#/
   {% if LINKS %}
   <div class="widget inside" id="blogroll">
     <h2>Blogroll</h2>
@@ -177,6 +176,7 @@
   {% endif %}
 
   </div><!-- /#sidebar -->
+/#}
 
   <section id="content">
   {% block content %}
@@ -185,7 +185,7 @@
 
   <footer id="contentinfo">
     <div id="ft_left">
-      <p>Site Contents &copy;{{ '%Y'|strfnow }}&nbsp;<a href="/about.html">Ryan Castellucci</a><br>
+      <p>Content &copy;{{ '%Y'|strfnow }}&nbsp;<a href="/about.html">Ryan Castellucci</a><br>
       Powered by <a href="https://getpelican.com/">Pelican</a>
       | <a href="/privacy.html">Privacy Policy</a></p>
     </div>

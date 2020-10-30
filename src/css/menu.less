@@ -10,73 +10,49 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 */
 
 #menu {
-//    width:100%;
-
     background-color:@theme-fg1;
     overflow:hidden;
     position:relative;
     margin-bottom:1em;
-    border:solid 1px @theme-border;
-    clear:both;
+//    border:solid 1px @theme-border;
+//    clear:both;
 }
 
-//#menu ul {
 #menu a {
     clear:left;
-//    float:left;
-    white-space:nowrap;
-    list-style:none;
-    position:relative;
-    left:0;
-    margin:0;
-//    padding:0;
-}
-
-//#menu li {
-#menu a {
     display:inline-block;
-//    float:left;
-//    list-style:none;
-//    position:relative;
-//    left:0;
-//    margin:0;
-//    padding:0;
-}
-
-//#menu li a {
-#menu a {
     text-decoration:none;
     display:inline-block;
-    padding:0.5em;// 1em 0.5em 0.5em;
-//    margin:0;
-//    float:left;
-
+    padding:0.5em;
     font-weight:bold;
-    font-size:1.2em;
     line-height:1;
     color:@theme-bg0;
 }
 
-//#menu li a:hover {
-#menu a:hover {
+#menu span:hover a.active:not(:hover) {
+    background-color:@theme-fg1;
+    color:@theme-bg0;
+}
+
+#menu a:hover, #menu a.active {
     background-color:@theme-bg0;
     color:@theme-fg1;
 }
 
 @icon-size: 1.3em;
 
-#social a {
+#icons a {
     height: @icon-size;
     padding: ((2em - @icon-size) / 2);;
 }
 
-#social svg, #social object {
+#icons svg, #icons object {
     height: @icon-size;
     width: @icon-size;
 }
 
 /* https://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C7 */
-#social a > span {
+#icons a > span {
     height: 1px;
     width: 1px;
     position: absolute;
