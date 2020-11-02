@@ -98,11 +98,11 @@ static/font/%-symbol.woff2: src/font/%.ttf
 		--flavor=woff2 --output-file=$@
 
 static/font/%-other.woff: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0400-01DFF,U+2E80-1FFFFF \
+	pyftsubset $< --unicodes=U+0400-01DFF,U+2E80-10FFFF \
 		--flavor=woff --with-zopfli --output-file=$@
 
 static/font/%-other.woff2: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0400-01DFF,U+2E80-1FFFFF \
+	pyftsubset $< --unicodes=U+0400-01DFF,U+2E80-10FFFF \
 		--flavor=woff2 --output-file=$@
 
 clean: clean_js clean_css
