@@ -37,21 +37,20 @@
 {% for tag in article.tags %}
 <meta property="article:tag" content="{{ tag }}">
 {% endfor %}
+<meta property="article:published_time" content="{{ article.date.isoformat() }}">
+{% if article.modified %}
+<meta property="article:modified_time" content="{{ article.modified.isoformat() }}">
+{% else %}
+<meta property="article:modified_time" content="{{ article.date.isoformat() }}">
+{% endif %}
 {% endblock head %}
-{% block scripthead %}
-{{ super() }}
-{#/* https://github.com/filamentgroup/loadCSS */#}
-
-{% include '/js/cssryanc.min.js' %}
-
-loadCSS("FontFace" in this?"/theme/css/iosevka-ryanc-woff2.css":"/theme/css/iosevka-ryanc-woff.css").next(function(){loadCSS("/theme/css/print.css",null,"print")});
-{% endblock scripthead %}
+{#/
 {% block stylehead %}
 <link rel="preload" href="/theme/css/iosevka-ryanc-woff2.css" as="style">
 {% if article.extracss %}
+<!-- https://www.filamentgroup.com/lab/load-css-simpler/#can%E2%80%99t-rel%3Dpreload-do-this-too%3F -->
 {% for extracss in article.extracss|split %}
 <link rel="preload" href="{{ extracss }}" as="style" onload="this.rel='stylesheet'">
-<!-- https://www.filamentgroup.com/lab/load-css-simpler/#can%E2%80%99t-rel%3Dpreload-do-this-too%3F -->
 {% endfor %}
 {% endif %}
 <noscript>
@@ -64,6 +63,7 @@ loadCSS("FontFace" in this?"/theme/css/iosevka-ryanc-woff2.css":"/theme/css/iose
 {% endif %}
 </noscript>
 {% endblock stylehead %}
+/#}
 {% block title %}
 {% if article.status == "draft" %}[DRAFT] {% endif -%}
 {{ article.title|striptags }} | {{ SITENAME -}}
@@ -137,9 +137,9 @@ loadCSS("FontFace" in this?"/theme/css/iosevka-ryanc-woff2.css":"/theme/css/iose
     <abbr class="published" title="{{ article.date.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_date }}</abbr>.
     <meta itemprop="datePublished" content="{{ article.date.isoformat() }}">
     Tags:
-    {% for tag in article.tags %}
-      <a href="/{{ tag.url }}" rel="tag">{{ tag }}</a>
-    {% endfor %}
+    {% for tag in article.tags -%}
+    {{ " " }}<a href="/{{ tag.url }}" rel="tag">{{ tag }}</a>
+    {%- endfor %}
     {% if article.modified %}
     <br>Last modified
     <abbr class="modified" title="{{ article.modified.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_modified }}</abbr>.

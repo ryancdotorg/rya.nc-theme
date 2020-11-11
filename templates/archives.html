@@ -14,9 +14,9 @@
         <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a>
     {% endfor %}
     | Tags:
-    {% for tag in article.tags %}
-        <a href="/{{ tag.url }}">{{ tag }}</a>
-    {% endfor %}
+    {% for tag in article.tags -%}
+    {{ " " }}<a href="/{{ tag.url }}">{{ tag }}</a>
+    {%- endfor %}
     </div>
 </div>
 {% endfor %}
