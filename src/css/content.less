@@ -22,7 +22,7 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 // .sarcasm { transform: skewX(10deg); display: inline-block; }
 
 /* expand abbreviations on devices without good pointers */
-@media not all and (any-pointer: fine), (any-hover: none) {
+@media not all and (any-pointer: fine), (any-hover: none), print {
     span.abbr::before { content: attr(data-title) " ("; }
     span.abbr::after { content: ")"; }
 }
@@ -39,8 +39,10 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 //    margin-right: 239px;
 }
 
-.article div > p, .archive div > p, .article table {
+//.article div > p, .archive div > p, .article table {
+.article div > p, .archive div > p {
     margin-bottom:1em;
+    margin-top:1em;
 }
 
 .article li p:first-child {

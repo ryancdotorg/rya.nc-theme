@@ -10,7 +10,7 @@
     body, p, h1, h2, h1>a, .name>a, .postmeta { color: black !important; }
     a { color: black; }
     a[href^="http"] { text-decoration: underline; }
-    a[href^="http"]::after { content: " [" attr(href) "] "; }
+    a.external[href^="http"]::after { content: " [" attr(href) "] "; }
     .postmeta abbr { text-decoration: none; }
     .postmeta abbr[data-time]::after { content: " at " attr(data-time); }
 }

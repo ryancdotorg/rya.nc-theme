@@ -9,6 +9,9 @@ Tags: brown, two-column, flexible-width, widget-aware
 License: GPLv3 or Later. (c) 2009 Alan Lord 
 */
 
+/* nearest neighbor rendering is preferred */
+header#banner { image-rendering:pixelated; }
+
 #banner {
 //    width:100%;
 
@@ -17,13 +20,15 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 //    max-height:122px;
 
     margin:2px 0;
+    /* fallback to crisp-edges algorithm */
+    image-rendering:crisp-edges;
     background-color: #2a2d20;
     background-image:
     /* needs less.js preprocessor */
     data-uri("hex_mask_tile.png"),
-    url("/theme/img/hdr-1200.jpg"),
+    url("/theme/img/hdr-760.jpg"),
     /* IE11 and Safari <= 13 will use the background color as a fallback */
-    data-uri("green-circuits-thin-1200-lq.webp");
+    data-uri("hdr-760-lq.webp");
     text-align:right;
     border:0;
 }
