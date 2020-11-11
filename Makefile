@@ -25,26 +25,8 @@ style: static/css/inline.css static/css/print.css $(patsubst %,static/css/iosevk
 static/js/%.min.js: src/js/%.js
 	terser $< --safari10 --ecma 5 -c passes=2 -m --mangle-props regex=/^_/ -o $@
 
-static/js/cssasync.min.js: src/js/loadCSS_1.3.1.js src/js/cssrelpreload_1.3.1.js
-	terser $^ --safari10 --ecma 5 -c -m -o $@
-
-#static/js/cssryanc.min.js: static/js/cssryanc.js
-#	terser --safari10 --ecma 5 -c evaluate=false -m --mangle-props regex=/^_/ -o $@ $<
-
 static/css/%.css: src/css/%.less
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
-
-#static/css/%-woff.css:  src/css/%.less src/css/font-face.less \
-#                        static/font/%-regular-basic.woff \
-#                        static/font/%-italic-basic.woff \
-#                        static/font/%-bold-basic.woff
-#	lessc $(LESS_INCLUDE) --global-var="@font-format=woff"  $< $@
-#
-#static/css/%-woff2.css: src/css/%.less src/css/font-face.less \
-#                        static/font/%-regular-basic.woff2 \
-#                        static/font/%-italic-basic.woff2 \
-#                        static/font/%-bold-basic.woff2
-#	lessc $(LESS_INCLUDE) --global-var="@font-format=woff2" $< $@
 
 static/css/inline.css: src/css/inline.less src/css/*.less src/css/*.css \
                        static/img/green-circuits-thin-1200-lq.webp \
