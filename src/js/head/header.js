@@ -1,5 +1,5 @@
-!function(document){try{
-  var src = location.origin+'/theme/img/hdr-1200.jpg', img = new Image(), sto = setTimeout.bind(this, function(){
+try{
+  var src = location.origin+'/theme/img/hdr-760.jpg', img = new Image(), sto = setTimeout.bind(this, function(){
     // iterate through the rules
     for (var s, i = 0, r = document.styleSheets[0].cssRules; i < r.length; ++i) {
       // look for the rule for the banner
@@ -27,4 +27,4 @@
   } else {
     sto();
   }
-}catch(e){}}(document);
+}catch(e){}

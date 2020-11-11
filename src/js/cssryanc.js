@@ -1,5 +1,5 @@
 //! loadCSS [c]2017 Filament Group, MIT License
-(function( w, _createElement, _getElementsByTagName, _addEventListener, _getAttribute, _load, _link ){
+(function(w, _createElement, _getElementsByTagName, _addEventListener, _getAttribute, _load, _link){
   var doc = w.document, _setTimeout = setTimeout, _preload = "pre"+_load;
   var loadCSS = function( href, before, media ){
     // Arguments explained:
@@ -19,7 +19,8 @@
     ss.href = href;
     // temporarily set media to something inapplicable to ensure it'll fetch
     // without blocking render
-    ss.media = "only x";
+    //ss.media = "only x";
+    ss.media = "print";
 
     // wait until body is defined before injecting link. This ensures a
     // non-blocking load in IE11.
@@ -33,13 +34,15 @@
     // A method (exposed on return object for external use) that mimics onload
     // by polling document.styleSheets until it includes the new sheet.
     var onloadcssdefined = function( cb ){
-      var i = sheets.length;
-      while( i-- ){
-        if( sheets[ i ].href === ss.href ){
-          return cb();
+      if (cb) {
+        var i = sheets.length;
+        while( i-- ){
+          if( sheets[ i ].href === ss.href ){
+            return cb();
+          }
         }
+        _setTimeout(onloadcssdefined, 10, cb);
       }
-      _setTimeout(onloadcssdefined, 10, cb);
     };
 
     function loadCB(){
@@ -60,7 +63,7 @@
     try {
       return doc[_createElement]( _link ).relList.supports( _preload );
     } catch (e) {
-      return false;
+      return 0;
     }
   };
 
@@ -87,4 +90,4 @@
   }
 
   w["loadCSS"] = loadCSS;
-}( this, "createElement", "getElementsByTagName", "addEventListener", "getAttribute", "load", "link" ));
+})(window, "createElement", "getElementsByTagName", "addEventListener", "getAttribute", "load", "link");
