@@ -28,6 +28,9 @@ static/js/%.min.js: src/js/%.js
 static/css/%.css: src/css/%.less
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
 
+static/css/%.css: src/css/%.css
+	csso < $< | tr -d '\n' > $@
+
 static/css/inline.css: src/css/inline.less src/css/*.less src/css/*.css \
                        static/img/hdr-760-zq.webp \
                        static/img/hex_mask_tile.png

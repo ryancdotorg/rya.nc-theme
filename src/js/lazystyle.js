@@ -32,6 +32,8 @@ try {
           // Fetch but not WOFF2:
           // * macOS Safari 10.1-11.1 (El Capitan and older)
           if (!window.fetch) node.href = node.href.replace('woff2','woff');
+        //} else if (/noscript/.test(node.href)) {
+        //  node.href = 'data:text/css,';
         }
       }
     }
