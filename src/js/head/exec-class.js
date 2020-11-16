@@ -1,3 +1,3 @@
-try{
-  document.documentElement.classList.add('exec');
-}catch(e){};
+try {
+  document.documentElement.classList.add("exec");
+} catch (e) {};
