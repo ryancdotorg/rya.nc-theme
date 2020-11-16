@@ -44,26 +44,6 @@
 <meta property="article:modified_time" content="{{ article.date.isoformat() }}">
 {% endif %}
 {% endblock head %}
-{#/
-{% block stylehead %}
-<link rel="preload" href="/theme/css/iosevka-ryanc-woff2.css" as="style">
-{% if article.extracss %}
-<!-- https://www.filamentgroup.com/lab/load-css-simpler/#can%E2%80%99t-rel%3Dpreload-do-this-too%3F -->
-{% for extracss in article.extracss|split %}
-<link rel="preload" href="{{ extracss }}" as="style" onload="this.rel='stylesheet'">
-{% endfor %}
-{% endif %}
-<noscript>
-<link rel="stylesheet" href="/theme/css/iosevka-ryanc-woff.css">
-<link rel="stylesheet" href="/theme/css/print.css" media="print">
-{% if article.extracss %}
-{% for extracss in article.extracss|split %}
-<link rel="stylesheet" href="{{ extracss }}">
-{% endfor %}
-{% endif %}
-</noscript>
-{% endblock stylehead %}
-/#}
 {% block title %}
 {% if article.status == "draft" %}[DRAFT] {% endif -%}
 {{ article.title|striptags }} | {{ SITENAME -}}

@@ -1,4 +1,5 @@
 // shim that queues stylesheets to be loaded
+/*
 var _loadCSS = 'loadCSS', _cssQueue = [], _cssTriggered = 0;
 if (!(_loadCSS in window)) {
   window[_loadCSS] = function() {
@@ -14,3 +15,4 @@ if (!(_loadCSS in window)) {
     return {next:entry.push.bind(entry)};
   };
 }
+*/

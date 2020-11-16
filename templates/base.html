@@ -69,41 +69,25 @@
 <link rel="preload" href="/theme/css/iosevka-ryanc-woff2.css" as="style">
 {% else %}
 <link rel="prefetch" href="/theme/css/iosevka-ryanc-woff2.css" as="style">
-<link rel="stylesheet" href="/theme/css/print.css" media="print">
+{% endif %}
+
+{% for css in extracss %}
+<link rel="preload" href="{{ css }}" as="style">
+{% endfor %}
+
+{% if article or extracss|count %}
+<script>{% include '/js/lazystyle.min.js' %}</script>
+{% if article %}
+<link rel="stylesheet" href="/theme/css/iosevka-ryanc-woff2.css" onload="this.media='all'">
 {% endif %}
 {% for css in extracss %}
-<link rel="preload" href="{{ css }}" as="style" onload="this.rel='stylesheet'">
+<link rel="stylesheet" href="{{ css }}" onload="this.media='all'">
 {% endfor %}
-{% if article or extracss|count %}
+{% endif %}
 
-<noscript>
-{% if article %}
-<link rel="stylesheet" href="/theme/css/iosevka-ryanc-woff.css">
 <link rel="stylesheet" href="/theme/css/print.css" media="print">
-{% endif %}
-{% for css in extracss %}
-<link rel="stylesheet" href="{{ css }}">
-{% endfor %}
-</noscript>
-{% endif %}
 
-<script>
-{% include '/js/head.bundle.js' %}
-{#/
-{% include '/js/header.min.js' %}
-{% if SITENAME == 'rya.nc' %}
-//(function(w){try{w&&w.register('cache.swar',{scope:'/'})}catch(e){}})(navigator.serviceWorker);
-{% endif %}
-/#}
-{% if article or extracss|count %}
-
-{% include '/js/cssryanc.min.js' %}
-{% endif %}
-{% if article %}
-
-loadCSS("FontFace" in window?"/theme/css/iosevka-ryanc-woff2.css":"/theme/css/iosevka-ryanc-woff.css").next(function(){loadCSS("/theme/css/print.css",null,"print")});
-{% endif %}
-</script>
+<script>{% include '/js/head.bundle.js' %}</script>
 </head>
 
 <body>

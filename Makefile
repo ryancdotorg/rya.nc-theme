@@ -29,7 +29,7 @@ static/css/%.css: src/css/%.less
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
 
 static/css/inline.css: src/css/inline.less src/css/*.less src/css/*.css \
-                       static/img/green-circuits-thin-1200-lq.webp \
+                       static/img/hdr-760-zq.webp \
                        static/img/hex_mask_tile.png
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
 
@@ -108,10 +108,10 @@ clean_js:
 .SECONDARY:
 .SECONDEXPANSION:
 static/css/%-woff.css:  src/css/%.less src/css/font-face.less $$(call font_files, $$*, woff)
-	lessc $(LESS_INCLUDE) --global-var="@font-format=woff"  $< $@
+	lessc $(LESS_INCLUDE) --global-var="@font-format=woff"  $< | csso | tr -d '\n' > $@
 
 static/css/%-woff2.css: src/css/%.less src/css/font-face.less $$(call font_files, $$*, woff2)
-	lessc $(LESS_INCLUDE) --global-var="@font-format=woff2" $< $@
+	lessc $(LESS_INCLUDE) --global-var="@font-format=woff2" $< | csso | tr -d '\n' > $@
 
 static/js/%.bundle.js: $$(sort $$(wildcard src/js/$$*/*.js))
 	terser $^ --safari10 --ecma 5 -c passes=2 -m --mangle-props regex=/^_/ \

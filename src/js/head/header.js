@@ -1,17 +1,19 @@
 try{
   var src = location.origin+'/theme/img/hdr-760.jpg', img = new Image(), sto = setTimeout.bind(this, function(){
     // iterate through the rules
-    for (var s, i = 0, r = document.styleSheets[0].cssRules; i < r.length; ++i) {
+    for (var z, s, i = 0, r = document.styleSheets[0].cssRules; i < r.length; ++i) {
       // look for the rule for the banner
       if (r[i].selectorText == '#banner') {
         s = r[i].style;
         if (!img.complete) {
-          r = s.backgroundImage.split(/,\s*(?=u)/);
-          s.backgroundImage = [r[0], r[2]].join(',');
+          z = s.backgroundImage;
+          r = z.split(/,\s*(?=u)/);
+          r.splice(1,1); // delete one element at offset 1
+          s.backgroundImage = r.join(',');
           //img = new Image();
           img.onload = function() {
             s.transition = 'background 2s ease-in-out';
-            s.backgroundImage = r.join(',');
+            s.backgroundImage = z;
           };
           //img.src = img.src;
           //i.style.display = 'none';
