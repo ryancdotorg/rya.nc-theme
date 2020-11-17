@@ -1,4 +1,6 @@
 try{
+  // This doesn't work right in Safari
+  if (/(Chrom|Firefox)/.test(navigator.userAgent)) {
   var src = location.origin+'/theme/img/hdr-760.jpg', img = new Image(), sto = setTimeout.bind(this, function(){
     // iterate through the rules
     for (var z, s, i = 0, r = document.styleSheets[0].cssRules; i < r.length; ++i) {
@@ -28,5 +30,6 @@ try{
     addEventListener('DOMContentLoaded', sto);
   } else {
     sto();
+  }
   }
 }catch(e){}
