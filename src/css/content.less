@@ -157,6 +157,11 @@ sub, sup, a.footnote-reference {
 sup, a.footnote-reference { top: -0.4em; }
 sub { bottom: -0.3em; }
 
+a.footnote-reference + a {
+    position: relative;
+    top: -3.5em;
+}
+
 /* hide broken footnote references from summary */
 //.entry-summary a.footnote-reference { display:none; }
 
@@ -177,12 +182,14 @@ table.footnote ~ table.footnote {
 }
 
 table.footnote .label {
+    vertical-align: top;
     width:1px; /* minimum width */
     white-space:nowrap;
 }
 
 table.footnote:target td + td {
     background-color:@theme-bg1;
+    outline: solid 1px @theme-border;
 }
 
 /* Form Styling */

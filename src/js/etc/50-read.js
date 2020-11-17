@@ -25,7 +25,7 @@ onDomLoaded.push(function(){
   }, removeScrollHandler = addListener(window, 'scroll', handler);
 
   if (typeof IntersectionObserver !== 'function') return;
-  var endElement = blogPost.querySelector('table.footnote, div.call-to-action, footer.postmeta');
+  var endElement = blogPost.querySelector('div.call-to-action, footer.postmeta');
   if (!endElement) return;
 
   var observer = new IntersectionObserver(function(entries, observer) {

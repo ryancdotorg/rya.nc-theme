@@ -10,9 +10,9 @@
 {% endif %}
 {#/ https://moz.com/blog/meta-data-templates-123 /#}
 {% if article.description %}
-<meta name="description" content="{{ article.description|wordtrunc(155)|e }}">
+<meta name="description" content="{{ article.description|wordtrunc(155) }}">
 {% else %}
-<meta name="description" content="{{ article.summary|striptags|wordtrunc(155)|e }}">
+<meta name="description" content="{{ article.summary|striptags|wordtrunc(155) }}">
 {% endif %}
 <!-- twitter article metadata -->
 <meta name="twitter:card" content="summary">
@@ -27,7 +27,7 @@
 {% if article.description %}
 <meta property="og:description" content="{{ article.description|e }}">
 {% else %}
-<meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
+<meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200) }}">
 {% endif %}
 {% if article.image %}
 <meta property="og:image" content="{{ article.image|canonical_url }}">
@@ -65,7 +65,7 @@
     {% if article.description %}
     <meta itemprop="description" content="{{ article.description|e }}">
     {% else %}
-    <meta itemprop="description" content="{{ article.summary|striptags|wordtrunc(200)|e }}">
+    <meta itemprop="description" content="{{ article.summary|striptags|wordtrunc(200) }}">
     {% endif %}
     {% if article.image %}
     <meta itemprop="image" content="{{ article.image|canonical_url }}">
@@ -128,6 +128,7 @@
     <meta itemprop="dateModified" content="{{ article.date.isoformat() }}">
     {% endif %}
   </footer><!-- /.postmeta -->
+  {% if article.footnotes %}{{ article.footnotes }}{% endif %}
   <!--</div><!- /.inside -->
   </div><!-- /.article -->
 {% endblock %}
