@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
 {{ super() }}
+<meta name="referrer" content="unsafe-url">
 {% if article.status == "draft" %}
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, none">
 {% endif %}
