@@ -1,6 +1,7 @@
 static/font/*
 static/css/*
 static/js/*
+static/img/social*
 *.swp
 .*
 *.gz

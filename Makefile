@@ -10,7 +10,13 @@ font_styles = $(patsubst %,static/font/%,$(patsubst %,$(1)-%,$(FONT_STYLES)))
 font_subsets = $(foreach style,$(font_styles),$(patsubst %,$(style)-%, $(FONT_SUBSETS)))
 font_files = $(foreach subset,$(font_subsets),$(patsubst %,$(subset).%, $(2)))
 
+social_icons = Twitter GitHub LinkedIn Email RSS
+social_sources = $(patsubst %,src/img/social-%.svg, $(social_icons))
+
 all: style javascript
+
+image: static/img/social.svg \
+	$(patsubst %,static/img/social-%.png, $(social_icons))
 
 javascript: bundle_js min_js
 
@@ -21,6 +27,9 @@ min_js: $(patsubst %.js,%.min.js,$(foreach js,$(wildcard src/js/*.js),$(subst sr
 font: $(patsubst %,static/css/iosevka-ryanc-%.css,$(FONT_EXTS))
 
 style: static/css/inline.css static/css/print.css $(patsubst %,static/css/iosevka-ryanc-%.css,$(FONT_EXTS))
+
+static/%: src/%
+	cp -a $< $@
 
 static/js/%.min.js: src/js/%.js
 	terser $< --safari10 --ecma 5 -c passes=2 -m --mangle-props regex=/^_/ -o $@
@@ -35,6 +44,16 @@ static/css/inline.css: src/css/inline.less src/css/*.less src/css/*.css \
                        static/img/hdr-760-zq.webp \
                        static/img/hex_mask_tile.png
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
+
+static/img/social.svg: $(social_sources)
+	./svgtool.py merge $^ > $@
+
+static/img/social-%.png: src/img/social-%.svg
+	convert -density 600 -resize 120x120 -background transparent -dither None -colors 8 $< $@
+	zopflipng -y --iterations=10 --filters=01234meb --lossy_transparent $@ $@ > /dev/null
+
+static/img/%.webp: static/img/%.png
+	cwebp -quiet -z 9 $< -o $@
 
 static/font/%.otf: static/font/%.woff
 	woff2sfnt $< > $@
@@ -104,7 +123,7 @@ clean_css:
 clean_js:
 	rm static/js/*.js 2> /dev/null || true
 
-.PHONY: all clean font style javascript \
+.PHONY: all clean font style javascript image \
 	clean_all clean_font clean_css clean_js \
 	bundle_js min_js
 
