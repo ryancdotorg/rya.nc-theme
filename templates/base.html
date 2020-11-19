@@ -133,7 +133,7 @@
     <span class="flr" id="icons">
       {%- if SOCIAL -%}
       {%- for brand, user, link in SOCIAL -%}
-      <a href="{{ link }}" rel="me" title="{{ user }}">
+      <a href="{{ link }}" rel="me" title="{{ user }}" style="background-image:url('*/theme/img/social-{{ brand }}.png')">
         <span>my profile on {{ brand }}</span>
         <svg xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="/theme/img/social.svg#{{ brand }}"/>
@@ -142,7 +142,7 @@
       {%- endfor -%}
       {%- endif -%}
       {%- if EMAIL -%}
-      <a class="email" href="mailto:{{ EMAIL }}" title="email">
+      <a class="email" href="mailto:{{ EMAIL }}" title="email" style="background-image:url('*/theme/img/social-Email.png')">
         <span>email me</span>
         <svg xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="/theme/img/social.svg#Email"/>
@@ -150,7 +150,7 @@
       </a>
       {%- endif %}
       {%- if FEED_ALL_RSS -%}
-      <a href="/{{ FEED_ALL_RSS }}" title="RSS Feed">
+      <a href="/{{ FEED_ALL_RSS }}" title="RSS Feed" style="background-image:url('*/theme/img/social-RSS.png')">
         <svg xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="/theme/img/social.svg#RSS"/>
         </svg>

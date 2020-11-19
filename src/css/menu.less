@@ -45,18 +45,24 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 
 @icon-size: 1.25em;
 
+.exec #icons a { background-image: none !important; }
+
 #icons a {
     height: @icon-size;
-    padding: ((2em - @icon-size) / 2);;
+    padding: ((2em - @icon-size) / 2);
+    background-repeat: no-repeat;
+    background-size: @icon-size;
+    background-position: center;
 }
 
 #icons svg, #icons object {
+    display: inline-block;
     height: @icon-size;
     width: @icon-size;
 }
 
 /* https://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C7 */
-#icons a > span {
+#icons a span {
     height: 1px;
     width: 1px;
     position: absolute;
