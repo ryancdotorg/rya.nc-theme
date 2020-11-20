@@ -15,7 +15,9 @@ social_sources = $(patsubst %,src/img/social-%.svg, $(social_icons))
 
 all: style javascript
 
-image: static/img/social.svg \
+image: static/img/social.svg static/img/hdr-760-24yiq07.png \
+	static/img/hdr-760-zq.webp static/img/hdr-760.jpg \
+	static/img/hex_mask_tile.png \
 	$(patsubst %,static/img/social-%.png, $(social_icons))
 
 javascript: bundle_js min_js
