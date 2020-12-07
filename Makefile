@@ -10,15 +10,15 @@ font_styles = $(patsubst %,static/font/%,$(patsubst %,$(1)-%,$(FONT_STYLES)))
 font_subsets = $(foreach style,$(font_styles),$(patsubst %,$(style)-%, $(FONT_SUBSETS)))
 font_files = $(foreach subset,$(font_subsets),$(patsubst %,$(subset).%, $(2)))
 
-social_icons = Twitter GitHub LinkedIn Email RSS
-social_sources = $(patsubst %,src/img/social-%.svg, $(social_icons))
+icons = Twitter GitHub LinkedIn Email RSS
+icon_sources = $(patsubst %,src/img/icon-%.svg, $(icons))
 
 all: style javascript
 
-image: static/img/social.svg static/img/hdr-760-24yiq07.png \
+image: static/img/icons.svg static/img/hdr-760-24yiq07.png \
 	static/img/hdr-760-zq.webp static/img/hdr-760.jpg \
 	static/img/hex_mask_tile.png \
-	$(patsubst %,static/img/social-%.png, $(social_icons))
+	$(patsubst %,static/img/icon-%.png, $(icons))
 
 javascript: bundle_js min_js
 
@@ -47,10 +47,10 @@ static/css/inline.css: src/css/inline.less src/css/*.less src/css/*.css \
                        static/img/hex_mask_tile.png
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
 
-static/img/social.svg: $(social_sources)
+static/img/icons.svg: $(icon_sources)
 	./svgtool.py merge $^ > $@
 
-static/img/social-%.png: src/img/social-%.svg
+static/img/icon-%.png: src/img/icon-%.svg
 	convert -density 600 -resize 120x120 -background transparent -dither None -colors 8 $< $@
 	zopflipng -y --iterations=10 --filters=01234meb --lossy_transparent $@ $@ > /dev/null
 
