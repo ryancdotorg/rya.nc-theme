@@ -10,6 +10,8 @@ from xml.etree.ElementTree import Element, SubElement
 from xml.dom import minidom
 from lxml import etree
 
+# https://github.com/edent/SuperTinyIcons
+
 NS = {'svg': 'http://www.w3.org/2000/svg'}
 ET.register_namespace('',NS['svg'])
 
