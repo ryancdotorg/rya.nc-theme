@@ -33,7 +33,7 @@
 {% if article.image %}
 <meta property="og:image" content="{{ article.image|canonical_url }}">
 {% else %}
-<meta property="og:image" content="{{ SITEURL }}/avatar2.png">
+<meta property="og:image" content="{{ SITEURL }}/avatar3.png">
 {% endif %}
 {% for tag in article.tags %}
 <meta property="article:tag" content="{{ tag }}">
@@ -71,7 +71,7 @@
     {% if article.image %}
     <meta itemprop="image" content="{{ article.image|canonical_url }}">
     {% else %}
-    <meta itemprop="image" content="{{ SITEURL }}/avatar2.png">
+    <meta itemprop="image" content="{{ SITEURL }}/avatar3.png">
     {% endif %}
   </header>
   <div class="entry-content" itemprop="articleBody">
@@ -93,7 +93,7 @@
     <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
       <meta itemprop="name" content="{{ SITENAME }}">
       <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-        <meta itemprop="url" content="{{ SITEURL }}/avatar2.png">
+        <meta itemprop="url" content="{{ SITEURL }}/avatar3.png">
       </span>
     </span>
     Posted
