@@ -28,6 +28,9 @@
 {% endif %}
 {% if article.image %}
 <meta property="og:image" content="{{ article.image|canonical_url }}">
+{% if article.image_alt %}
+<meta property="og:image:alt" content="{{ article.image_alt }}">
+{% endif %}
 {% else %}
 <meta property="og:image" content="{{ SITEURL }}/avatar3.png">
 {% endif %}
