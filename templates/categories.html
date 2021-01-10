@@ -1,8 +1,14 @@
 {% extends "base.html" %}
+
+{% block title %}Categories | {{ SITENAME }}{% endblock %}
+
 {% block content %}
-<ul>
-{% for category, articles in categories %}
-    <li><a href="/{{ category.url }}">{{ category }}</a></li>
-{% endfor %}
-</ul>
+  <div class="article inside">
+    <h1>Categories on {{ SITENAME }}:</h1>
+    <ul>
+    {%- for category, articles in categories|csort %}
+      <li><a href="/{{ category.url }}">{{ category }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
 {% endblock %}

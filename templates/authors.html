@@ -3,11 +3,12 @@
 {% block title %}Authors | {{ SITENAME }}{% endblock %}
 
 {% block content %}
+  <div class="article inside">
     <h1>Authors on {{ SITENAME }}</h1>
-
     <ul>
-    {% for author, articles in authors|sort %}
-        <li><a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a> ({{ articles|count }})</li>
+    {%- for author, articles in authors|csort %}
+      <li><a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a> ({{ articles|count }})</li>
     {% endfor %}
     </ul>
+  </div>
 {% endblock %}
