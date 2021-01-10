@@ -1,4 +1,4 @@
-["pageshow", "pagehide"].forEach(function(t){
+["pageshow", "pagehide", "beforeprint"].forEach(function(t){
   addListener(window, t, logStats.bind(null, {'event':t}));
 });
 
