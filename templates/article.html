@@ -5,10 +5,6 @@
 {% if article.status == "draft" %}
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, none">
 {% endif %}
-{#//#}
-{% if article.keywords %}
-<meta name="keywords" content="{{ article.keywords }}">
-{% endif %}
 {#/ https://moz.com/blog/meta-data-templates-123 /#}
 {% if article.description %}
 <meta name="description" content="{{ article.description|wordtrunc(155) }}">
