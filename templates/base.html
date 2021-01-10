@@ -88,18 +88,6 @@
   <div id="wrap"><!-- Begin Wrap -->
   <header id="banner">
     <!--<canvas style="z-index:-1"></canvas>-->
-{#/
-    <div id="social">
-      {% for brand, user, link in SOCIAL %}
-      <a href="{{ link }}" rel="me" title="My profile on {{ brand }}">
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <use xlink:href="/theme/img/icons.svg#{{ brand }}"/>
-        </svg>
-        {{ user }}
-      </a>
-      {% endfor %}
-    </div>
-/#}
     <div itemscope itemtype="http://schema.org/WebSite" class="inside">
     <p class="name" itemprop="name"><a href="/" itemprop="url">{{ SITENAME }}</a></p>
     <h1 class="title"><a href="/">{{ SITETITLE }}</a></h1>
@@ -153,42 +141,6 @@
       {%- endif -%}
     </span>
   </nav><!-- /#menu -->
-
-{#/
-  <div id="sidebar">
-  {% if SOCIAL %}
-  <div class="widget inside" id="elsewhere">
-    <h2>Elsewhere</h2>
-    {% for brand, user, link in SOCIAL %}
-      <a href="{{ link }}" rel="me">{{ brand }}</a>
-    {% endfor %}
-  </div><!-- /.widget -->
-
-  <div class="spacer"></div><!-- hack for the mobile layout -->
-  {% endif %}
-/#}
-{#/
-  <div class="widget" id="tagcloud"><div class="inside">
-    <ul><li><h2>Tags</h2></li></ul>
-    <ul class="tagcloud">
-      {% for tag in tag_cloud %}
-        <li class="tag-{{ tag.1 }}"><a href="/{{ tag.0.url }}">{{ tag.0 }}</a></li>
-      {% endfor %}
-    </ul>
-  </div></div><!-- /.widget -->
-/#}
-{#/
-  {% if LINKS %}
-  <div class="widget inside" id="blogroll">
-    <h2>Blogroll</h2>
-    {% for name, link in LINKS|sort %}
-      <a href="{{ link }}">{{ name }}</a>
-    {% endfor %}
-  </div><!-- /.widget -->
-  {% endif %}
-
-  </div><!-- /#sidebar -->
-/#}
 
   <section id="content">
   {% block content %}
