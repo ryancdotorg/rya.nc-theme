@@ -5,16 +5,11 @@
 {% block head %}
 <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 <meta name="viewport" content="width=device-width">
-<!--
-<link rel="alternate canonical" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
--->
 <link rel="alternate" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
 <link rel="canonical" href="{{ output_file|canonical_url }}">
-<!--<link rel="preload" href="/theme/img/hdr-1200.jpg" as="image">-->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00a300">
 <!-- order matters - the last applicable icon is used -->
-<link rel="alternate icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
