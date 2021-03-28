@@ -2,7 +2,7 @@
   addListener(window, t, logStats.bind(null, {'event':t}));
 });
 
-onDomLoaded.push(function(){
+window[$onDomLoaded](function(){
   logStats({
     'event': 'DOMLoaded',
     'visible': document.visibilityState === 'visible',

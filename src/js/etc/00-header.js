@@ -5,4 +5,4 @@ window.onerror = function(e){
   xhr.send(JSON.stringify({'error':[].slice.call(arguments)}));
 };
 */
-var onDomLoaded = [], onDomComplete = [];
+var $onDomLoaded = 'onDomLoaded'+_, $onDomComplete = 'onDomComplete'+_;

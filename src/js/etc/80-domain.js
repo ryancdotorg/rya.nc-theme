@@ -1,4 +1,4 @@
-onDomLoaded.push(function(){
+window[$onDomLoaded](function(){
   if (location.hostname == 'ryanc.org') {
     s = document.createElement('script');
     s.src = 'https://rya.nc/theme/js/redir.min.js';

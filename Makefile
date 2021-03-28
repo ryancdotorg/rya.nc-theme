@@ -34,7 +34,8 @@ static/%: src/%
 	cp -a $< $@
 
 static/js/%.min.js: src/js/%.js
-	terser $< --safari10 --ecma 5 -c passes=2 -m --mangle-props regex=/^_/ -o $@
+	terser $< --safari10 --ecma 5 -c passes=2 -m reserved=_ --mangle-props regex=/^_.+/ \
+	| terser --safari10 --ecma 5 --define _=\"\" -o $@
 
 static/css/%.css: src/css/%.less
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
@@ -138,6 +139,6 @@ static/css/%-woff2.css: src/css/%.less src/css/font-face.less $$(call font_files
 	lessc $(LESS_INCLUDE) --global-var="@font-format=woff2" $< | csso | tr -d '\n' > $@
 
 static/js/%.bundle.js: $$(sort $$(wildcard src/js/$$*/*.js))
-	terser $^ --safari10 --ecma 5 -c passes=2 -m --mangle-props regex=/^_/ \
+	terser $^ --safari10 --ecma 5 -c passes=2 -m reserved=_ --mangle-props regex=/^_.+/ \
 		-e window,document,location,navigator:window,document,location,navigator \
-		-o $@
+	| terser --safari10 --ecma 5 --define _=\"\" -o $@

@@ -1,7 +1,9 @@
 try{
   // This doesn't work right in Safari
   if (/(Chrom|Firefox)/.test(navigator.userAgent)) {
-  var src = location.origin+'/theme/img/hdr-760.jpg', img = new Image(), sto = setTimeout.bind(this, function(){
+  var src = location.origin+'/theme/img/hdr-760.jpg', img = new Image();
+    //, sto = setTimeout.bind(this, function(){
+  window[$onDomLoaded](function(){
     // iterate through the rules
     for (var z, s, i = 0, r = document.styleSheets[0].cssRules; i < r.length; ++i) {
       // look for the rule for the banner
@@ -24,12 +26,15 @@ try{
         return;
       }
     }
-  }, 4);
+  });//, 4);
   img.src = src;
+  //window[$onDomLoaded](sto);
+  /*
   if (document.readyState == 'loading') {
     addEventListener('DOMContentLoaded', sto);
   } else {
     sto();
   }
+  */
   }
 }catch(e){}

@@ -21,7 +21,7 @@ cwebp-1.1.0 \
 	-pass 10 \
 	-segments 1 \
 	-af \
-	-o hrd-760-zq.webp \
+	-o hdr-760-zq.webp \
 	-- -
 convert 4250721014_enhanced.png \
 	-crop 760x122+0+396 \

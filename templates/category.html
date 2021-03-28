@@ -3,4 +3,4 @@
 {{ super() }}
 <meta name="description" content="All posts on {{ SITENAME }} in category '{{ category }}'">
 {% endblock %}
-{% block title %}{{ category }} | {{ SITENAME }}{% endblock %}
+{% block title %}{{ CATEGORY_TITLES[category] }} | {{ SITENAME }}{% endblock %}

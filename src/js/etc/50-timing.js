@@ -1,4 +1,4 @@
-onDomComplete.push(function(){
+window[$onDomComplete](function(){
   if (typeof performance === 'object') {
     var report = {}, timing, usec = function(n){return Math.round(n*1000)|0;};
     try { timing = performance.getEntriesByType("navigation"); } catch(e) {}

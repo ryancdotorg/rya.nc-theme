@@ -1,4 +1,4 @@
-onDomLoaded.push(function(){
+window[$onDomLoaded](function(){
   var O = {}, M = {}, H = document.head, X = new XMLHttpRequest(),
   rt = function() {
     var ret = [], res = performance.getEntriesByType("resource");
