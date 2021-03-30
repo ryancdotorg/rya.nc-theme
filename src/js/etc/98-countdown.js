@@ -1,0 +1,106 @@
+window.onDomLoaded(function(){
+
+var banner = document.getElementById('banner');
+banner.style.overflow = 'hidden';
+
+var bannerDiv = document.querySelector('#banner>div');
+var canvas = document.createElement('canvas');
+canvas.style.position = 'relative';
+canvas.height = 122;
+canvas.width = 760;
+
+var endTime = new Date(1628605800000);
+
+var DateDiff = function() {
+  this._days = 0;
+  this._hours = 0;
+  this._minutes = 0;
+  this._seconds = 0;
+};
+
+var datediff = function(fromDate, toDate) {
+  if (!fromDate) throw new Error('Date should be specified');
+  var startDate = new Date(1970, 0, 1, 0).getTime(),
+    now = new Date(),
+    toDate = toDate && toDate instanceof Date ? toDate : now,
+    diff = toDate - fromDate,
+    date = new Date(startDate + diff),
+    days = ((toDate - fromDate) / 86400000)|0,
+    hours = date.getHours(),
+    minutes = date.getMinutes(),
+    seconds = date.getSeconds(),
+    diffDate = new DateDiff();
+
+  if (days >= 0) {
+    diffDate._days = days > 0 ? days : 0;
+    diffDate._hours = hours > 0 ? hours : 0;
+    diffDate._minutes = minutes > 0 ? minutes : 0;
+    diffDate._seconds = seconds > 0 ? seconds : 0;
+  }
+  return diffDate;
+};
+
+var updateCountdown = function() {
+  var now = Date.now(), diff = datediff(now, endTime);
+
+  writeDigit((diff._days/100) % 10, 0, 0);
+  writeDigit((diff._days/10) % 10, 1, 0);
+  writeDigit(diff._days % 10, 2, 0);
+
+  writeDigit((diff._hours/10) % 10, 9, 0);
+  writeDigit(diff._hours % 10, 10, 0);
+
+  writeDigit((diff._minutes/10) % 10, 12, 0);
+  writeDigit(diff._minutes % 10, 13, 0);
+
+  writeDigit((diff._seconds/10) % 10, 15, 0);
+  writeDigit(diff._seconds % 10, 16, 0);
+
+  setTimeout(updateCountdown, 1010 - (now % 1000));
+};
+
+var tileDigit = [7,41,89,13,2,8,9,0,50,44,16,5,61,43,90,3];
+var lastDigits = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+var writeDigit = function(n, x, y) {
+  n = n|0;
+  if (y == 0 && x < 17) {
+    if (lastDigits[x] == n) return;
+    lastDigits[x] = n;
+  }
+  ctx.clearRect(2+8*x, 2+12*y, 6, 10);
+  ctx.drawImage(img, 2+8*((tileDigit[n]/10)|0), 2+12*(tileDigit[n]%10), 6, 10, 2+8*x, 2+12*y, 6, 10);
+}
+
+var writeMask = function(bits, x, y) {
+  ctx.clearRect(2+8*x, 2+12*y, 6, 10);
+  ctx.fillStyle = '#000';
+  for (var i = 0; i < 15; ++i) {
+    if ((bits >> i) & 1) {
+      ctx.fillRect(8*x+2*(1+((i%3))), 12*y+2*(1+((i/3)|0)), 2, 2);
+    }
+  }
+}
+
+var bannerStyle = [].slice.call(document.styleSheets).map(sheet=>[].slice.call(sheet.cssRules).filter(rule=>rule.selectorText=='#banner')).flat()[0].style;
+var ctx = canvas.getContext('2d');
+var img = new Image();
+img.onload = function() {
+  for (var x = 0; x < 1200; x += 184) { ctx.drawImage(img, x, 0, 184, 122); }
+  bannerStyle.backgroundImage = bannerStyle.backgroundImage.split(' ').slice(1).join(' ');
+  banner.insertBefore(canvas, banner.firstElementChild);
+  bannerDiv.style.position = 'relative';
+  bannerDiv.style.top = '-127px';
+
+  writeMask(32767,  3, 0);
+  writeDigit(0xd,   4, 0);
+  writeDigit(0xa,   5, 0);
+  writeMask(23378,  6, 0);
+  writeDigit(5,     7, 0);
+  writeMask(32767,  8, 0);
+  writeMask(31727, 11, 0);
+  writeMask(31727, 14, 0);
+  writeMask(32767, 17, 0);
+  updateCountdown();
+}
+img.src = bannerStyle.backgroundImage.split('"')[1];
+});

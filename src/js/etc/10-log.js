@@ -38,3 +38,18 @@ var logStats = (function() {
     send(data);
   };
 })();
+
+var $errorLog = 'errorLog'+_, errorPush = function(_err) {
+  if (_err) {
+    logStats({error:{
+      name:_err.name,
+      message:_err.message,
+      stack:_err.stack
+    }});
+  }
+};
+while (window[$errorLog] && window[$errorLog].length) {
+  errorPush(window[$errorLog].shift());
+}
+
+window[$errorLog].push = errorPush;

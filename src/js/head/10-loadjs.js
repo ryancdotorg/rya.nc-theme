@@ -6,3 +6,4 @@ window['loadJS'] = function(src, cb) {
   s.src = src;
   _loadJS_ref.parentNode.insertBefore(s, _loadJS_ref);
 };
+try{Z}catch(e){}
