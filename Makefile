@@ -32,7 +32,6 @@ style: static/css/inline.css static/css/print.css $(patsubst %,static/css/iosevk
 
 static/%: src/%
 	cp -a $< $@
-
 static/js/%.min.js: src/js/%.js
 	terser $< --safari10 --ecma 5 -c passes=2 -m reserved=_ --mangle-props regex=/^_.+/ \
 	| terser --safari10 --ecma 5 --define _=\"\" -o $@
@@ -141,4 +140,5 @@ static/css/%-woff2.css: src/css/%.less src/css/font-face.less $$(call font_files
 static/js/%.bundle.js: $$(sort $$(wildcard src/js/$$*/*.js))
 	terser $^ --safari10 --ecma 5 -c passes=2 -m reserved=_ --mangle-props regex=/^_.+/ \
 		-e window,document,location,navigator:window,document,location,navigator \
-	| terser --safari10 --ecma 5 --define _=\"\" -o $@
+	| terser --safari10 --ecma 5 --define _=\"\" \
+	| sed -E 's/try[{]Z[}]catch[(].[)][{][}]//' > $@

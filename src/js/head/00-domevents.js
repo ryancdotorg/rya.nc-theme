@@ -1,12 +1,15 @@
+// header image stuff
+var src = location.origin+'/theme/img/hdr-760.jpg', img = new Image();
+
 // strings
 var $complete = 'complete'+_, $onDomLoaded = 'onDomLoaded'+_;
 var $addEventListener = 'addEventListener'+_;
+var $headerEvent = 7;
 
 // function refrences
 var $setTimeout = setTimeout;
 
 var $errorLog = window['errorLog'] = [];
-window[$addEventListener]('error', function(e){$errorLog.push(e)});
 
 var domEvents = function(fn, states, evt, ary, dispatch) {
   ary = [];
@@ -22,5 +25,9 @@ var domEvents = function(fn, states, evt, ary, dispatch) {
   }
 };
 
+var bannerReady = window.dispatchEvent.bind(window, new Event($headerEvent));
+
+window[$addEventListener]('error', function(e){$errorLog.push(e)});
 domEvents($onDomLoaded, [$complete, 'loaded', 'interactive'], 'DOMContentLoaded');
 domEvents('onDomComplete', [$complete], 'load');
+domEvents('onHeader', [$complete], $headerEvent);

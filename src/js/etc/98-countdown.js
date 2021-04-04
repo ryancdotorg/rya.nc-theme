@@ -1,7 +1,8 @@
-window.onDomLoaded(function(){
+window.onHeader(function(){
 
 var banner = document.getElementById('banner');
 banner.style.overflow = 'hidden';
+banner.style.position = 'relative';
 
 var bannerDiv = document.querySelector('#banner>div');
 var canvas = document.createElement('canvas');
@@ -84,12 +85,23 @@ var writeMask = function(bits, x, y) {
 var bannerStyle = [].slice.call(document.styleSheets).map(sheet=>[].slice.call(sheet.cssRules).filter(rule=>rule.selectorText=='#banner')).flat()[0].style;
 var ctx = canvas.getContext('2d');
 var img = new Image();
+var clickable = document.createElement('span');
 img.onload = function() {
-  for (var x = 0; x < 1200; x += 184) { ctx.drawImage(img, x, 0, 184, 122); }
+  for (var x = 0; x < 760; x += 184) { ctx.drawImage(img, x, 0, 184, 122); }
+  bannerStyle.transition = '';
   bannerStyle.backgroundImage = bannerStyle.backgroundImage.split(' ').slice(1).join(' ');
   banner.insertBefore(canvas, banner.firstElementChild);
-  bannerDiv.style.position = 'relative';
-  bannerDiv.style.top = '-127px';
+  bannerDiv.style.position = clickable.style.position = 'absolute';
+  bannerDiv.style.top = bannerDiv.style.right = 0;
+  clickable.style.top = clickable.style.left = 0;
+  clickable.style.height = '14px';
+  clickable.style.width = '138px';
+  clickable.style.cursor = 'pointer';
+  addListener(clickable, 'click', {once: true}, function(){
+    clickable.style.cursor = 'auto';
+    location.href = '1vceqvkog0jvon'.replace(/./g, function(c){return String.fromCharCode(c.charCodeAt()-2)});
+  });
+  banner.appendChild(clickable);
 
   writeMask(32767,  3, 0);
   writeDigit(0xd,   4, 0);
@@ -101,6 +113,6 @@ img.onload = function() {
   writeMask(31727, 14, 0);
   writeMask(32767, 17, 0);
   updateCountdown();
-}
+};
 img.src = bannerStyle.backgroundImage.split('"')[1];
 });

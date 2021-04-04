@@ -2,6 +2,22 @@
   addListener(window, t, logStats.bind(null, {'event':t}));
 });
 
+try {
+  var logGetter = function(obj, prop) {
+    var descriptor = Object.getOwnPropertyDescriptor(obj, prop);
+    var getter = descriptor.get;
+    descriptor.get = function() {
+      logStats({"getter":prop,"stack":(new Error()).stack});
+      return getter.apply(this, arguments);
+    };
+    Object.defineProperty(obj, prop, descriptor);
+  };
+  logGetter(HTMLElement.prototype, 'outerText');
+  logGetter(HTMLElement.prototype, 'innerText');
+  logGetter(Element.prototype, 'outerHTML');
+  logGetter(Element.prototype, 'innerHTML');
+} catch(e) {}
+
 window[$onDomLoaded](function(){
   logStats({
     'event': 'DOMLoaded',
