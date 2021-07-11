@@ -10,7 +10,7 @@ canvas.style.position = 'relative';
 canvas.height = 122;
 canvas.width = 760;
 
-var endTime = new Date(1628605800000);
+var endTime = new Date(1631716200000);
 
 var DateDiff = function() {
   this._days = 0;
