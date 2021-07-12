@@ -8,6 +8,11 @@ It is based on a WordPress theme called
 "[Open Sourcerer](https://wordpress.org/themes/open-sourcerer/)".
 I converted it for Pelican and made various modifications.
 
-The theme itself (under `/templates`) is licensed GPLv3. The header images are
-Creative Commons Attribution 2.0 Generic (CC BY 2.0). For the JavaScript,
-please see the file headers.
+Licenses
+========
+
+* The theme itself (under `./templates` and `./src/css`) is licensed GPLv3.
+* The header images are Creative Commons Attribution 2.0 Generic (CC BY 2.0).
+* Iosevka (under `./src/font`) is licensed SIL Open Font License 1.1.
+* For SVG images, please see individual file headers.
+* For JavaScript code, please see individual file headers.

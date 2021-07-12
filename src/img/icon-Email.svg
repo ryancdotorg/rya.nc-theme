@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: MIT
+Copyright (c) 2017 Terence Eden - SuperTinyIcons, Modified by Ryan Castellucci -->
 <svg xmlns="http://www.w3.org/2000/svg" id="Email" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="15%" fill="teal"/>
   <rect width="356" height="256" x="78" y="128" fill="#fff" rx="8%"/>

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: MIT
+Copyright (c) 2017 Terence Eden - SuperTinyIcons, Modified by Ryan Castellucci -->
 <svg xmlns="http://www.w3.org/2000/svg" id="Lock" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="15%" fill="#29303d"/>
   <g fill="#29303d">
