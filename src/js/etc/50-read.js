@@ -14,6 +14,7 @@ try {
   };
   logGetter(HTMLElement.prototype, 'outerText');
   logGetter(HTMLElement.prototype, 'innerText');
+  logGetter(HTMLElement.prototype, 'textContent');
   logGetter(Element.prototype, 'outerHTML');
   logGetter(Element.prototype, 'innerHTML');
 } catch(e) {}
