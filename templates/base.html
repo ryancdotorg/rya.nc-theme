@@ -1,10 +1,18 @@
 <!DOCTYPE html>
+{% if article %}
+{% set this = article %}
+{% elif page %}
+{% set this = page %}
+{% endif -%}
 <html lang="{{ DEFAULT_LANG }}">
 <head>
 <meta charset="utf-8">
 {% block head %}
 <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 <meta name="viewport" content="width=device-width">
+{% if this and this.robots %}
+<meta name="robots" content="{{ this.robots }}">
+{% endif %}
 <link rel="alternate" hreflang="{{ DEFAULT_LANG }}" href="{{ output_file|canonical_url }}">
 <link rel="canonical" href="{{ output_file|canonical_url }}">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">

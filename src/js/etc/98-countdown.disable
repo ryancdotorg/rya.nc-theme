@@ -1,3 +1,4 @@
+/*
 window.onHeader(function(){
 
 var banner = document.getElementById('banner');
@@ -116,3 +117,4 @@ img.onload = function() {
 };
 img.src = bannerStyle.backgroundImage.split('"')[1];
 });
+*/
