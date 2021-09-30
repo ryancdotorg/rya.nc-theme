@@ -2,46 +2,6 @@
 {% block head %}
 {{ super() }}
 <meta name="referrer" content="unsafe-url">
-{#/ https://moz.com/blog/meta-data-templates-123 /#}
-{% if article.description %}
-<meta name="description" content="{{ article.description|wordtrunc(155) }}">
-{% else %}
-<meta name="description" content="{{ article.summary|striptags|wordtrunc(155) }}">
-{% endif %}
-<!-- twitter article metadata -->
-<meta name="twitter:card" content="summary">
-{% if article.author|author_info('twitter') %}
-<meta name="twitter:creator" content="@{{ article.author|author_info('twitter') }}">
-{% endif %}
-<!-- open graph article metadata -->
-<meta property="og:title" content="{{ article.title|striptags|e }}">
-<meta property="og:type" content="article">
-<meta property="og:url" content="{{ output_file|canonical_url }}">
-<meta property="og:site_name" content="{{ SITENAME }}">
-{% if article.description %}
-<meta property="og:description" content="{{ article.description|e }}">
-{% else %}
-<meta property="og:description" content="{{ article.summary|striptags|wordtrunc(200) }}">
-{% endif %}
-{% if article.image %}
-<meta property="og:image" content="{{ article.image|canonical_url }}">
-{% if article.image_alt %}
-<meta property="og:image:alt" content="{{ article.image_alt }}">
-{% endif %}
-{% else %}
-<meta property="og:image" content="{{ SITEURL }}/avatar3.png">
-{% endif %}
-{% for tag in article.tags %}
-<meta property="article:tag" content="{{ tag }}">
-{% endfor %}
-{% if article.locale_date %}
-<meta property="article:published_time" content="{{ article.date.isoformat() }}">
-{% endif %}
-{% if article.modified %}
-<meta property="article:modified_time" content="{{ article.modified.isoformat() }}">
-{% elif article.locale_date %}
-<meta property="article:modified_time" content="{{ article.date.isoformat() }}">
-{% endif %}
 {% endblock head %}
 {% block title %}
 {% if article.status == "draft" %}[DRAFT] {% endif -%}

@@ -4,6 +4,8 @@
 {% set this = article %}
 {% elif page %}
 {% set this = page %}
+{% else %}
+{% set this = {} %}
 {% endif -%}
 <head>
 <meta charset="utf-8">
@@ -23,49 +25,14 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-{% if FEED_ALL_ATOM %}
-<link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml"
-      rel="alternate" title="{{ SITENAME }} Atom Feed">
-{% endif %}
-{% if FEED_ALL_RSS %}
-<link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml"
-      rel="alternate" title="{{ SITENAME }} RSS Feed">
-{% endif %}
-{#/
-{% if FEED_ATOM %}
-<link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml"
-      rel="alternate" title="{{ SITENAME }} Atom Feed">
-{% endif %}
-{% if FEED_RSS %}
-<link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml"
-      rel="alternate" title="{{ SITENAME }} RSS Feed">
-{% endif %}
-{% if CATEGORY_FEED_ATOM and category %}
-<link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}"
-      type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed">
-{% endif %}
-{% if CATEGORY_FEED_RSS and category %}
-<link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}"
-      type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed">
-{% endif %}
-/#}
-{% if TAG_FEED_ATOM and tag %}
-<link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM.format(slug=tag.slug) }}"
-      type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed">
-{% endif %}
-{% if TAG_FEED_RSS and tag %}
-<link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS.format(slug=tag.slug) }}"
-      type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed">
-{% endif %}
-<meta name="twitter:site" content="@ryancdotorg">
+{% include 'feeds.html' %}
+{% include 'meta.html' %}
 {%- endblock head %}
 
 <style>{% include '/css/inline.css' %}</style>
 
-{% if article and article.extracss %}
-{% set extracss = article.extracss|split %}
-{% elif page and page.extracss %}
-{% set extracss = page.extracss|split %}
+{% if this and this.extracss %}
+{% set extracss = this.extracss|split %}
 {% else %}
 {% set extracss = [] %}
 {% endif -%}

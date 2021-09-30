@@ -1,10 +1,4 @@
 {% extends "base.html" %}
-{% block head %}
-{{ super() }}
-{% if page.description %}
-<meta name="description" content="{{ page.description|wordtrunc(155) }}">
-{% endif %}
-{% endblock head %}
 {% block title %}{{ page.title }} | {{ SITENAME }}{% endblock %}
 {% block content %}
   <div class="article inside">
