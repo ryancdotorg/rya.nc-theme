@@ -52,9 +52,10 @@ var getUid = function(gotUid) {
     runAsync((function(){
       // background timer - works well even with low resolution Date.now()
       var p = 32, cnt = 0, si = setInterval(function(){++cnt},1);
+      var ENTROPY_SIZE = 1024;
 
       // collected entropy goes in an array buffer with a data view
-      var entropy = new ArrayBuffer(1024), dv = new DataView(entropy);
+      var entropy = new ArrayBuffer(ENTROPY_SIZE), dv = new DataView(entropy);
 
       // reference count, iterations, etc
       var ref = cnt, i = 0, ua = navigator.userAgent;
@@ -92,7 +93,7 @@ var getUid = function(gotUid) {
       };
 
       var mixUserAgent = function() {
-        for (i = 0, ref = ua.length; i < ref; ++i) {
+        for (i = 0, ref = ua.length; i < ref && p < ENTROPY_SIZE; ++i) {
           dv.setUint16(p, ua.charCodeAt(i));
           p += 2;
         }
