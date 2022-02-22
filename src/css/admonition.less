@@ -1,0 +1,28 @@
+.admonition {
+    color: @theme-fg1;
+    background-color: @theme-bg1;
+    border: 1px solid @theme-border;
+    padding: 0 1em;
+}
+
+.admonition .admonition-title {
+    text-transform: uppercase;
+    float: left;
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+/* notepad an pencil */
+.note .admonition-title::before { content: '\1F4DD\20'; }
+/* lightbulb */
+.tip .admonition-title::before { content: '\1F4A1\20'; }
+.hint .admonition-title::before { content: '\1F4A1\20'; }
+/* heavy red exclaimation mark */
+.error .admonition-title::before { content: '\2757\FE0F\20'; }
+.important .admonition-title::before { content: '\2757\FE0F\20'; }
+.attention .admonition-title::before { content: '\2757\FE0F\20'; }
+/* inverted yellow triangle sign */
+.warning .admonition-title::before { content: '\26A0\FE0F\20'; }
+/* fire */
+.caution .admonition-title::before { content: '\1F525\20'; }
+.danger .admonition-title::before { content: '\1F525\20'; }

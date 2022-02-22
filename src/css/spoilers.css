@@ -1,3 +1,9 @@
+.spoiler {
+  transition-duration: 500ms;
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+}
+
 input[type=checkbox].spoiler { display: none; }
 
 input[type=checkbox].spoiler:not(:checked) + .spoiler,
