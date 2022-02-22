@@ -26,12 +26,23 @@ bundle_js: $(patsubst %/,%.bundle.js,$(foreach js,$(sort $(dir $(wildcard src/js
 
 min_js: $(patsubst %.js,%.min.js,$(foreach js,$(wildcard src/js/*.js),$(subst src/,static/,$(js))))
 
+ext_js: static/js/hyphenopoly_loader.min.js
+
 font: $(patsubst %,static/css/iosevka-ryanc-%.css,$(FONT_EXTS))
 
 style: static/css/inline.css static/css/print.css $(patsubst %,static/css/iosevka-ryanc-%.css,$(FONT_EXTS))
 
 static/%: src/%
 	cp -a $< $@
+
+static/js/hyphenopoly_loader.min.js: ext/Hyphenopoly-4.12.0/Hyphenopoly_Loader.js
+	terser $< -safari10 --ecma 5 -c passes=2 -m -d \
+	'Hyphenopoly={"require":{"en-us":"anesthesiologist"},"setup":{"selectors":".article"}}' \
+	-o $@
+
+static/js/Hyphenopoly.js: ext/Hyphenopoly-4.12.0/Hyphenopoly.js
+	terser $< -safari10 --ecma 5 -c passes=2 -m -o $@
+
 static/js/%.min.js: src/js/%.js
 	terser $< --safari10 --ecma 5 -c passes=2 -m reserved=_ --mangle-props regex=/^_.+/ \
 	| terser --safari10 --ecma 5 --define _=\"\" -o $@
@@ -127,7 +138,7 @@ clean_js:
 
 .PHONY: all clean font style javascript image \
 	clean_all clean_font clean_css clean_js \
-	bundle_js min_js
+	bundle_js min_js ext_js
 
 .SECONDARY:
 .SECONDEXPANSION:
