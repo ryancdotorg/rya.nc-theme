@@ -2,11 +2,19 @@
 {#/ https://moz.com/blog/meta-data-templates-123 /#}
 {% if this.description %}
 <meta name="description" content="{{ this.description|wordtrunc(155) }}">
-{% else %}
+{% elif this.summary %}
 <meta name="description" content="{{ this.summary|striptags|wordtrunc(155) }}">
 {% endif %}
 <!-- twitter article metadata -->
 <meta name="twitter:card" content="summary">
+{% if this.label1 and this.data1 %}
+<meta name="twitter:label1" content="{{ this.label1 }}">
+<meta name="twitter:data1" content="{{ this.data1 }}">
+{% endif %}
+{% if this.label2 and this.data2 %}
+<meta name="twitter:label2" content="{{ this.label2 }}">
+<meta name="twitter:data2" content="{{ this.data2 }}">
+{% endif %}
 {% if article and article.author|author_info('twitter') %}
 <meta name="twitter:creator" content="@{{ article.author|author_info('twitter') }}">
 {% endif %}
