@@ -6,8 +6,13 @@ try {
   var logGetter = function(obj, prop) {
     var descriptor = Object.getOwnPropertyDescriptor(obj, prop);
     var getter = descriptor.get;
+    var seen = {};
     descriptor.get = function() {
-      logStats({"getter":prop,"stack":(new Error()).stack});
+      var stack = (new Error()).stack;
+      if (!seen[stack]) {
+        logStats({"getter":prop,"stack":stack});
+        seen[stack] = 1;
+      }
       return getter.apply(this, arguments);
     };
     Object.defineProperty(obj, prop, descriptor);
