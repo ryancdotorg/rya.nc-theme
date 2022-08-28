@@ -59,7 +59,7 @@ static/css/inline.css: src/css/inline.less src/css/*.less src/css/*.css \
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
 
 static/img/icons.svg: $(icon_sources)
-	./svgtool.py merge $^ > $@
+	scripts/svgtool.py merge $^ > $@
 
 static/img/icon-%.png: src/img/icon-%.svg
 	convert -density 600 -resize 120x120 -background transparent -dither None -colors 8 $< $@

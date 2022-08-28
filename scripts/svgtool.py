@@ -26,6 +26,11 @@ def terse(element):
     return etree.tostring(tree.getroot()).decode()
 
 def parse_ns(filename):
+    if filename.startswith('http'):
+        import requests
+        r = requests.get(filename)
+        filename = StringIO(r.content.decode())
+
     tree = ET.parse(filename)
     root = tree.getroot()
 
@@ -35,6 +40,24 @@ def parse_ns(filename):
 
     return (tree, root, ns)
 
+def copy(dst, src):
+    dst.attrib['viewBox'] = src.attrib['viewBox']
+    if 'aria-label' in src.attrib:
+        dst.attrib['id'] = src.attrib['aria-label'].replace(' ','')
+    else:
+        dst.attrib['id'] = src.attrib['id']
+
+    for child in src:
+        dst.append(child)
+
+    return dst
+
+def format(filename):
+    (tree, root, ns) = parse_ns(filename)
+    svg = Element(ns+'svg')
+    copy(svg, root)
+    sys.stdout.write(pretty(svg))
+
 def merge(filenames):
     ns = '{'+NS['svg']+'}'
     svg = Element(ns+'svg')
@@ -42,17 +65,8 @@ def merge(filenames):
     svg.append(defs)
     for filename in filenames:
         (tree, root, _) = parse_ns(filename)
-
         symbol = Element(ns+'symbol')
-        if 'aria-label' in root.attrib:
-            symbol.attrib['id'] = root.attrib['aria-label']
-        else:
-            symbol.attrib['id'] = root.attrib['id']
-        symbol.attrib['viewBox'] = root.attrib['viewBox']
-
-        for child in root:
-            symbol.append(child)
-
+        copy(symbol, root)
         defs.append(symbol)
 
     sys.stdout.write(terse(svg))
@@ -90,7 +104,9 @@ def main(arg0, narg, args):
 
     cmd = args[0]
 
-    if cmd == 'symbols' and narg == 2:
+    if cmd == 'format' and narg == 2:
+        format(args[1])
+    elif cmd == 'symbols' and narg == 2:
         print('\n'.join(symbols(args[1])))
     elif cmd == 'extract' and narg == 3:
         extract(args[1], args[2])

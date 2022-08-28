@@ -24,14 +24,13 @@ try {
       while (node = mutation.pop()) {
         if (node.rel == "stylesheet" && node.onload && !node.media) {
           node.media = "print";
-          // Fetch support closely approximates WOFF2 support.
-          // WOFF2 but not Fetch:
+          // Approximate WOFF2 support check - false negative for:
           // * Chrome 36-41
-          // * macOS Safari 10.0 (Sierra and newer)
-          // * iOS Safari 10.0-10.2
-          // Fetch but not WOFF2:
-          // * macOS Safari 10.1-11.1 (El Capitan and older)
-          if (!window.fetch) node.href = node.href.replace('woff2','woff');
+          // * macOS Safari 10.x-11.x (Sierra and newer)
+          // * iOS Safari 10.x-11.x
+          if (!(navigator.vendor.match(/^A/) ? [].flat : window.fetch)) {
+            node.href = node.href.replace('woff2','woff');
+          }
         //} else if (/noscript/.test(node.href)) {
         //  node.href = 'data:text/css,';
         }
