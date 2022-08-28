@@ -2,6 +2,7 @@ static/font/*
 static/css/*
 static/js/*
 static/img/*
+ext/*
 *.swp
 .*
 *.gz
