@@ -10,13 +10,14 @@ font_styles = $(patsubst %,static/font/%,$(patsubst %,$(1)-%,$(FONT_STYLES)))
 font_subsets = $(foreach style,$(font_styles),$(patsubst %,$(style)-%, $(FONT_SUBSETS)))
 font_files = $(foreach subset,$(font_subsets),$(patsubst %,$(subset).%, $(2)))
 
-icons = Twitter GitHub LinkedIn Email RSS
+icons = Mastodon Twitter GitHub LinkedIn Email RSS
 icon_sources = $(patsubst %,src/img/icon-%.svg, $(icons))
 
 all: style javascript
 
 image: static/img/icons.svg static/img/hdr-760-24yiq07.png \
 	static/img/hdr-760-zq.webp static/img/hdr-760.jpg \
+	static/img/hdr-760.webp static/img/hdr-760.avif \
 	static/img/hex_mask_tile.png \
 	$(patsubst %,static/img/icon-%.png, $(icons))
 

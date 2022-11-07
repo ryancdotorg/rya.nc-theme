@@ -9,6 +9,8 @@ Tags: brown, two-column, flexible-width, widget-aware
 License: GPLv3 or Later. (c) 2009 Alan Lord 
 */
 
+@import (once) "define.less";
+
 //.css-warning {
 //  display:none;
 //  height:1px;
@@ -28,6 +30,10 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 }
 
 .postmeta a[href^="/tag/"]::before { content: "#"; }
+
+.section {
+    scroll-margin-top: (@menu-size + @h2-size * @vpad-size);
+}
 
 .article, .archive, #pagination {
     background-color:@theme-bg2;
@@ -62,11 +68,15 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 }
 
 .article h1 {
-    padding:0.5em 0 1em 0;
+    padding:@vpad-size 0 1em 0;
     border-bottom:solid 1px @theme-border;
-    font-size:1.8em;
+    font-size:@h1-size;
     font-weight:normal;
     line-height:1.3em;
+}
+
+.article h2 {
+    font-size:@h2-size;
 }
 
 .archive .inside + .inside {
@@ -176,8 +186,9 @@ table.footnote {
     border-collapse:separate;
     border-spacing:0;
     border-top:solid 1px @theme-border;
-    padding-top:0.5em;
+    padding-top:@vpad-size;
     margin-bottom:0;
+    scroll-margin-top: (@menu-size);
 }
 
 table.footnote ~ table.footnote {

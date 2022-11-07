@@ -1,9 +1,12 @@
+@import (once) "define.less";
+
 @import "font-face.less";
 
 //.highlighttable tr td, .highlighttable td code, .highlight code, div.code, pre.code {
 //.highlighttable tr td,
 .highlighttable code, .linenos, .highlight code, div.code, pre.code {
-    font-family: Iosevka, monospace;
+    /* fallback font stack from github */
+    font-family: Iosevka,ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
 }
 
 // this font is narrow and needs larger vw values

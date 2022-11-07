@@ -3,6 +3,9 @@
 {% block title %}{{ SITETITLE }} | {{ SITENAME }}{% endblock %}
 
 {% block head %}
+{% if page_name == 'index' and articles_page.number == 1 %}
+<link rel="me" href="https://infosec.exchange/@ryanc">
+{% endif %}
 {% if articles_page.number > 1 or (page_name != 'index' and (not category or category == 'articles')) %}
 <meta name="robots" content="noindex, follow">
 {% endif %}

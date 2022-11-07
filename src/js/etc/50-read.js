@@ -51,12 +51,15 @@ window[$onDomLoaded](function(){
   if (!endElement) return;
 
   var observer = new IntersectionObserver(function(entries, observer) {
+    // don't trigger 'article finished' log event due to a footnote
+    //if (!document.querySelector(':target .fn-backref')) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         logStats({'event':'finish'});
         observer.disconnect();
       }
     });
+    //}
   });
   observer.observe(endElement);
 });

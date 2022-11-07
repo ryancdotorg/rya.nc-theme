@@ -1,3 +1,5 @@
+@import (once) "define.less";
+
 [unselectable="on"] {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -26,7 +28,8 @@
 pre.code { white-space: pre-wrap; }
 
 code, .code, .linenos {
-    font-family: monospace;
+    /* font stack from github */
+    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     line-height: 1.3;
 }
 

@@ -29,6 +29,8 @@ convert 4250721014_enhanced.png \
 	-evaluate multiply 0.40 \
 	-evaluate add 10% \
 	crop-760-120.pnm
+convert crop-760-120.pnm hdr-760.png
+pngcrush hdr-760.png
 cjpeg -quality 90 -optimize -progressive crop-760-120.pnm > hdr-760.jpg
 ~/code/jpeg/jpgcrush hdr-760.jpg
 cwebp-1.1.0 \
@@ -63,5 +65,5 @@ cwebp-1.1.0 \
 #		zopflipng --iterations=10 --filters=01234meb --lossy_8bit --lossy_transparent tmp3.png hdr-760-px-${space}${n}.png
 #	done
 #done
-rm tmp*.png
+#rm tmp*.png
 rm crop-760-120.pnm
