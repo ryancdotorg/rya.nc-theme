@@ -8,7 +8,7 @@
 <div class="inside">
     <h2 class="entry-title"><a href="/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
     <div class="postmeta">
-    <abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>
+    <time class="published" title="{{ article.date.isoformat() }}" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
     |
     {% for author in article.authors %}
         <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a>

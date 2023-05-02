@@ -1,7 +1,12 @@
 @import (once) "define.less";
 
 @media print {
-    #sidebar, #menu, #pagination, #ft_right, #ft_left span, .call-to-action {
+    /*
+    #sidebar {
+        display: none !important;
+    }
+    */
+    #menu, #pagination, #ft_right, #ft_left span, .call-to-action {
         display: none !important;
     };
     .article, .archive, #contentinfo { border: 0 !important; };
@@ -15,6 +20,6 @@
     a { color: black; }
     a[href^="http"] { text-decoration: underline; }
     a.external[href^="http"]::after { content: " [" attr(href) "] "; }
-    .postmeta abbr { text-decoration: none; }
-    .postmeta abbr[data-time]::after { content: " at " attr(data-time); }
+    .postmeta time { text-decoration: none; }
+    .postmeta time[data-time]::after { content: " at " attr(data-time); }
 }

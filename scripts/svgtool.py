@@ -11,6 +11,14 @@ from xml.dom import minidom
 from lxml import etree
 
 # https://github.com/edent/SuperTinyIcons
+s = None
+def s_get(*args, **kwargs):
+    global s
+    if s is None:
+        import requests
+        s = requests.Session()
+
+    return s.get(*args, **kwargs)
 
 NS = {'svg': 'http://www.w3.org/2000/svg'}
 ET.register_namespace('',NS['svg'])
@@ -27,9 +35,10 @@ def terse(element):
 
 def parse_ns(filename):
     if filename.startswith('http'):
-        import requests
-        r = requests.get(filename)
+        r = s_get(filename)
         filename = StringIO(r.content.decode())
+    elif '<svg' in filename:
+        filename = StringIO(filename)
 
     tree = ET.parse(filename)
     root = tree.getroot()
@@ -56,7 +65,7 @@ def format(filename):
     (tree, root, ns) = parse_ns(filename)
     svg = Element(ns+'svg')
     copy(svg, root)
-    sys.stdout.write(pretty(svg))
+    return pretty(svg)
 
 def merge(filenames):
     ns = '{'+NS['svg']+'}'
@@ -94,6 +103,20 @@ def extract(filename, id):
                 svg.append(child)
             sys.stdout.write(pretty(svg))
 
+def supertiny(name):
+    if isinstance(name, str):
+        res = s_get(f'https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/{name}.svg')
+        if res.status_code == 200:
+            xml = res.content.decode()
+            return format(xml)
+    else:
+        icons = []
+        for n in name:
+            xml = supertiny(n)
+            icons.append(xml)
+
+        return merge(icons)
+
 def abort(msg):
     sys.stderr.write(msg+'\n')
     sys.exit(1)
@@ -105,13 +128,15 @@ def main(arg0, narg, args):
     cmd = args[0]
 
     if cmd == 'format' and narg == 2:
-        format(args[1])
+        sys.stdout.write(format(args[1]))
     elif cmd == 'symbols' and narg == 2:
         print('\n'.join(symbols(args[1])))
     elif cmd == 'extract' and narg == 3:
         extract(args[1], args[2])
     elif cmd == 'merge' and narg > 1:
         merge(args[1:])
+    elif cmd == 'supertiny' and narg > 1:
+        supertiny(args[1:])
     else:
         abort('bad arguments')
 

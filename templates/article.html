@@ -73,7 +73,7 @@
     {% endif %}
     {% if article.locale_date %}
     on
-    <abbr class="published" title="{{ article.date.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_date }}</abbr><meta itemprop="datePublished" content="{{ article.date.isoformat() }}">
+    <time class="published" title="{{ article.date.isoformat() }}" datetime="{{ article.date.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_date }}</time><meta itemprop="datePublished" content="{{ article.date.isoformat() }}">
     {%- endif %}
     {% if article.tags %}
     | Tags:
@@ -83,7 +83,7 @@
     {% endif %}
     {% if article.modified %}
     <br>Last modified
-    <abbr class="modified" title="{{ article.modified.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_modified }}</abbr>.
+    <time class="modified" title="{{ article.date.isoformat() }}" datetime="{{ article.modified.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_modified }}</time>.
     <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}">
     {% elif article.locale_date %}
     <meta itemprop="dateModified" content="{{ article.date.isoformat() }}">

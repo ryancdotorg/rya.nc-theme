@@ -5,7 +5,7 @@
 <a href="/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">Read more...</a>
 </div><!-- /.entry-summary -->
 <footer class="postmeta">
-<abbr class="published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</abbr>
+<time class="published" title="{{ article.date.isoformat() }}" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
 |
 {% for author in article.authors %}
     <a href="/{{ author.url }}" title="Posts by {{ author|author_info('name') or author }}">{{ author|author_info('name') or author }}</a>

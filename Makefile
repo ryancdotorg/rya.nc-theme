@@ -10,7 +10,7 @@ font_styles = $(patsubst %,static/font/%,$(patsubst %,$(1)-%,$(FONT_STYLES)))
 font_subsets = $(foreach style,$(font_styles),$(patsubst %,$(style)-%, $(FONT_SUBSETS)))
 font_files = $(foreach subset,$(font_subsets),$(patsubst %,$(subset).%, $(2)))
 
-icons = Mastodon Twitter GitHub LinkedIn Email RSS
+icons = Mastodon Twitter GitHub GitHubDark LinkedIn Email RSS
 icon_sources = $(patsubst %,src/img/icon-%.svg, $(icons))
 
 all: style javascript
@@ -81,6 +81,14 @@ static/font/%-full.woff: src/font/%.ttf
 
 static/font/%-full.woff2: src/font/%.ttf
 	pyftsubset $< --unicodes='*' \
+		--flavor=woff2 --output-file=$@
+
+static/font/%-ascii.woff: src/font/%.ttf
+	pyftsubset $< --unicodes=U+0020-007E \
+		--flavor=woff --with-zopfli --output-file=$@
+
+static/font/%-ascii.woff2: src/font/%.ttf
+	pyftsubset $< --unicodes=U+0020-007E \
 		--flavor=woff2 --output-file=$@
 
 static/font/%-basic.woff: src/font/%.ttf

@@ -61,13 +61,13 @@
 <script>{% include '/js/head.bundle.js' %}</script>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebSite">
   <div id="wrap"><!-- Begin Wrap -->
   <header id="banner">
     <!--<canvas style="z-index:-1"></canvas>-->
-    <div itemscope itemtype="http://schema.org/WebSite" class="inside">
+    <div class="inside">
     <p class="name" itemprop="name"><a href="/" itemprop="url">{{ SITENAME }}</a></p>
-    <h1 class="title"><a href="/">{{ SITETITLE }}</a></h1>
+    <p class="title"><a href="/" class="title">{{ SITETITLE }}</a></p>
     <!--<p class="subtitle">{{ SITESUBTITLE }}</p>-->
     </div>
   </header>
@@ -75,20 +75,31 @@
   <nav id="menu">
     <span class="fll">
     <a href="/">Posts</a>
-    {%- for title, link in MENUITEMS -%}
-      <a href="{{ link }}">{{ title }}</a>
-    {%- endfor -%}
-    {% if DISPLAY_PAGES_ON_MENU %}
-      {%- for p in pages -%}
-        <a{% if p == page %} class="active"{% endif %} href="/{{ p.url }}">{{ p.title }}</a>
+    {%- if MENUITEMS -%}
+      {%- for title, url in MENUITEMS -%}
+        {%- if url[0] == '/' and page and page.url == url[1:] -%}
+          <a class="active" href="{{ url }}">{{ title }}</a>
+        {%- else -%}
+          <a href="{{ url }}">{{ title }}</a>
+        {%- endif -%}
       {%- endfor -%}
-    {% else %}
-      {% if DISPLAY_CATEGORIES_ON_MENU %}
-        {%- for cat, null in categories -%}
-          <a{% if cat == category %} class="active"{% endif %} href="/{{ cat.url }}">{{ cat }}</a>
-        {%- endfor -%}
-      {% endif %}
-    {% endif %}
+    {%- elif DISPLAY_PAGES_ON_MENU -%}
+      {%- for p in pages -%}
+        {%- if p == page -%}
+          <a class="active" href="/{{ p.url }}">{{ p.title }}</a>
+        {%- else -%}
+          <a href="/{{ p.url }}">{{ p.title }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- elif DISPLAY_CATEGORIES_ON_MENU -%}
+      {%- for cat, null in categories -%}
+        {%- if cat == category -%}
+          <a class="active" href="/{{ cat.url }}">{{ cat }}</a>
+        {%- else -%}
+          <a href="/{{ cat.url }}">{{ cat }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
     </span>
     <span class="flr" id="icons">
       {%- if SOCIAL -%}

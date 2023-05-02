@@ -1,6 +1,6 @@
-// This needs to be an inline script in <head> any stylesheet <link>s for which
-// async loading is desired. Styles to be loaded async should have the
-// following format:
+// This needs to be an inline script in <head> before any stylesheet <link>s
+// for which async loading is desired. Styles to be loaded async should have
+// the following format:
 //
 // <link rel="stylesheet" href="..." onload="this.media='all'">
 //
@@ -24,13 +24,6 @@ try {
       while (node = mutation.pop()) {
         if (node.rel == "stylesheet" && node.onload && !node.media) {
           node.media = "print";
-          // Approximate WOFF2 support check - false negative for:
-          // * Chrome 36-41
-          // * macOS Safari 10.x-11.x (Sierra and newer)
-          // * iOS Safari 10.x-11.x
-          if (!(navigator.vendor.match(/^A/) ? [].flat : window.fetch)) {
-            node.href = node.href.replace('woff2','woff');
-          }
         //} else if (/noscript/.test(node.href)) {
         //  node.href = 'data:text/css,';
         }

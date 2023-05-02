@@ -1,12 +1,10 @@
-/*   
-Theme Name: Open Sourcerer
-Theme URI: http://www.theopensourcerer.com
-Description: A Wordpress Theme inspired by the colour scheme of Ubuntu Jaunty 9.04. Features: Two column layout, widget aware, variable width.
-Author: Alan Lord alan@theopensourcerer.com
-Author URI: http://www.theopensourcerer.com
-Version: 1.3
-Tags: brown, two-column, flexible-width, widget-aware
-License: GPLv3 or Later. (c) 2009 Alan Lord 
+/* SPDX-License-Identifier: GPL-3.0-or-later
+Theme Name: rya.nc
+Theme URI: https://github.com/ryancdotorg/rya.nc-theme
+Description: A Pelican theme originally based on ‘The Open Sourcerer’ by Alan Lord.
+Author: Ryan Castellucci code@ryanc.org
+Author URI: http://rya.nc/
+Copyright (c) 2023 Ryan Castellucci
 */
 
 @import (once) "define.less";
@@ -29,10 +27,20 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
     span.abbr::after { content: ")"; }
 }
 
+time, abbr {
+    text-decoration: underline dotted;
+    cursor: default;
+}
+
 .postmeta a[href^="/tag/"]::before { content: "#"; }
 
 .section {
     scroll-margin-top: (@menu-size + @h2-size * @vpad-size);
+}
+
+.article hr {
+    border:solid @theme-border;
+    border-width:1px 0 0;
 }
 
 .article, .archive, #pagination {
@@ -41,7 +49,6 @@ License: GPLv3 or Later. (c) 2009 Alan Lord
 //    font-size:1.2em;
 
     -webkit-hyphens: auto;
-    -ms-hyphens: auto;
     hyphens: auto;
 
     line-height:1.3em;
@@ -207,9 +214,11 @@ table.footnote:target td + td {
     outline: solid 1px @theme-border;
 }
 
+summary { cursor: pointer; }
+
 /* Form Styling */
 
-/* Style input boxes and buttons */ 
+/* Style input boxes and buttons */
 //input, textarea, select {
 //    background-color:@theme-fg1;
 //    border-color:#BFBFBF; /* C1D7A6 */
