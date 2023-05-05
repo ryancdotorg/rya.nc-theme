@@ -6,9 +6,9 @@
 .pgcssch { font-style: normal; }
 .pgcssgr, .pgcssgt { background-color: #902020; }
 .pgcsshll { background-color: #ffc; }
-.pgcssgh { color:#70b950; }
+.pgcssgh { color: #70b950; }
 .pgcssni { color: #799d6a; }
-.pgcssgo{ color: gray; }
+.pgcssgo { color: #808080; }
 
 /*
 .pgcssk, .pgcsskc, .pgcsskd, .pgcsskn, .pgcsskp, .pgcsskr, .pgcssnt, .pgcssgu, .pgcssow { color: #8197bf; }
@@ -17,7 +17,7 @@
 .pgcssc, .pgcssc1, .pgcsscm, .pgcsscs, .pgcssch { color: #888; }
 .pgcssc, .pgcssc1, .pgcsscm, .pgcsscs { font-style: italic; }
 */
-.pgcsscp { color:#8fbfdc; }
+.pgcsscp { color: #8fbfdc; }
 /*
 .pgcsss, .pgcsss1, .pgcsss2, .pgcsssb, .pgcsssc, .pgcsssd, .pgcssse, .pgcsssh, .pgcsssi, .pgcsssr, .pgcssss, .pgcsssx { color: #99ad6a; }
 */
