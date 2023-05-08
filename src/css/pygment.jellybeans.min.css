@@ -2,13 +2,17 @@
 [class^="pgcsss"], .pgcssgi { color: #99ad6a; }
 [class^="pgcssc"] { color: #888; font-style: italic; }
 [class^="pgcssk"], .pgcssnt, .pgcssgu, .pgcssow { color: #8197bf; }
-[class^="pgcssm"], .pgcssil, .pgcssgd { color: #cf6a4c; }
+[class^="pgcssm"], .pgcssil, { color: #cf6a4c; }
+tr.pgcsshll>td { background-color: #221; }
+.pgcssgd { color: #d2665f; text-decoration: line-through; }
 .pgcssch { font-style: normal; }
 .pgcssgr, .pgcssgt { background-color: #902020; }
+/*
 .pgcsshll { background-color: #ffc; }
+*/
 .pgcssgh { color: #70b950; }
 .pgcssni { color: #799d6a; }
-.pgcssgo { color: #808080; }
+.pgcssgo { color: #999; }
 
 /*
 .pgcssk, .pgcsskc, .pgcsskd, .pgcsskn, .pgcsskp, .pgcsskr, .pgcssnt, .pgcssgu, .pgcssow { color: #8197bf; }
@@ -28,6 +32,6 @@
 /*
 .pgcssbp, .pgcsserr, .pgcssg, .pgcssge, .pgcssgi, .pgcssgp, .pgcssgr, .pgcssgs, .pgcssgt, .pgcssh, .pgcssl, .pgcssld, .pgcssn, .pgcssnb, .pgcssnd, .pgcssnn, .pgcssnx, .pgcsso, .pgcssow, .pgcssp, .pgcsspy, .pgcssw, .pgcssx { color: #e8e8d3; }
 */
-.pgcssna, .pgcssnf, .pgcssnc, .pgcssnd, .pgcssnb { color: #fad07a; }
-.pgcsskt, .pgcssne, .pgcssnl {color: #ffb964; }
-.pgcssgh, .pgcssgu { font-weight: 700; }
+.pgcssna, .pgcssnf, .pgcssnc, .pgcssnd, .pgcssnb, .pgcsskc { color: #fad07a; }
+.pgcsskt, .pgcssne, .pgcssnl { color: #ffb964; }
+.pgcssgh, .pgcssgu { color:#70b950; font-weight: 700; }

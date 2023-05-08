@@ -16,10 +16,46 @@
         height: 0 !important;
         min-height: 0 !important;
     };
-    body, p, h1, h2, h1>a, .name>a, .postmeta { color: black !important; }
+    body, p, h1, h2, h1>a, .name>a, .postmeta {
+        color: black !important;
+    }
+    * { background-color: white !important; }
     a { color: black; }
     a[href^="http"] { text-decoration: underline; }
-    a.external[href^="http"]::after { content: " [" attr(href) "] "; }
+    a.external[href^="http"]::after { content: " [" attr(href) "]"; }
     .postmeta time { text-decoration: none; }
     .postmeta time[data-time]::after { content: " at " attr(data-time); }
+
+    /* we use pygments' default style when printing, and turn off ligatures */
+    [class^="pgcss"]{color:#000!important;font-variant-ligatures:none!important}
+    .pgcsshll{background-color:#ffc!important}
+    .pgcssc,.pgcssc1,.pgcssch,.pgcsscm,.pgcsscpf,.pgcsscs{color:#408080!important}
+    .pgcssc,.pgcssc1,.pgcssch,.pgcsscm,.pgcsscpf,.pgcsscs,.pgcsssd{font-style:italic!important}
+    .pgcsserr{border:1px solid red!important}
+    .pgcssbp,.pgcssk,.pgcsskc,.pgcsskd,.pgcsskn,.pgcsskp,.pgcsskr,.pgcssnb,.pgcssnt,.pgcsssx{color:green!important}
+    .pgcssgh,.pgcssgp,.pgcssgu,.pgcssk,.pgcsskc,.pgcsskd,.pgcsskn,.pgcsskr,.pgcssnc,.pgcssne,.pgcssni,.pgcssnn,.pgcssnt,.pgcssow,.pgcssse,.pgcsssi{font-weight:700!important}
+    .pgcssil,.pgcssm,.pgcssmb,.pgcssmf,.pgcssmh,.pgcssmi,.pgcssmo,.pgcsso{color:#666!important}
+    .pgcsscp{color:#bc7a00!important}
+    .pgcssgd{color:#a00000!important}
+    .pgcssge{font-style:italic!important}
+    .pgcssgr{color:red!important}
+    .pgcssgh,.pgcssgp{color:navy!important}
+    .pgcssgi{color:#00a000!important}
+    .pgcssgo{color:#888!important}
+    .pgcssgs{font-weight:700!important}
+    .pgcssgu{color:purple!important}
+    .pgcssgt{color:#04d!important}
+    .pgcsskt{color:#b00040!important}
+    .pgcssdl,.pgcsss,.pgcsss1,.pgcsss2,.pgcsssa,.pgcsssb,.pgcsssc,.pgcsssd,.pgcsssh{color:#ba2121!important}
+    .pgcssna{color:#7d9029!important}
+    .pgcssfm,.pgcssnc,.pgcssnf,.pgcssnn{color:#00f!important}
+    .pgcssno{color:#800!important}
+    .pgcssnd,.pgcssow{color:#a2f!important}
+    .pgcssni{color:#999!important}
+    .pgcssne{color:#d2413a!important}
+    .pgcssnl{color:#a0a000!important}
+    .pgcssnv,.pgcssss,.pgcssvc,.pgcssvg,.pgcssvi,.pgcssvm{color:#19177c!important}
+    .pgcssw{color:#bbb!important}
+    .pgcssse{color:#b62!important}
+    .pgcsssi,.pgcsssr{color:#b68!important}
 }

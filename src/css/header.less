@@ -9,27 +9,26 @@ Copyright (c) 2023 Ryan Castellucci
 
 @import (once) "define.less";
 
-/* nearest neighbor rendering is preferred */
+// nearest neighbor rendering is preferred
 //header#banner { image-rendering:pixelated; }
 
 #banner {
-//    width:100%;
+    // width:100%;
 
     height:122px;
-//    min-height:122px;
-//    max-height:122px;
+    // min-height:122px;
+    // max-height:122px;
 
     margin:2px 0;
-    /* fallback to crisp-edges algorithm */
-//    image-rendering:crisp-edges;
-    /*background-color: #2a2d20;*/
+    // fallback to crisp-edges algorithm
+    // image-rendering:crisp-edges;
+    // background-color: #2a2d20;
     background-image:
-    /* needs less.js preprocessor */
+    // needs less.js preprocessor
     data-uri("hex_mask_tile.png"),
     url("/theme/img/hdr-760.jpg"),
-    /* IE11 and Safari <= 13 will use the background color as a fallback */
-    /* IE11 and Safari <= 13 will use the background color as a fallback */
- //   data-uri("hdr-760-zq.webp"),
+    // IE11 and Safari <= 13 will use the background color as a fallback
+    // data-uri("hdr-760-zq.webp"),
     data-uri("hdr-760-24yiq07.png");
     text-align:right;
     border:0;

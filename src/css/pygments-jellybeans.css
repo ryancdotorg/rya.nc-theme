@@ -1,5 +1,6 @@
 /*! jellybeans http://bytefluent.com/devify/ (original https://github.com/nanotech/jellybeans.vim) */
 /*.highlight, .highlight pre, .highlight table { background: #151515; color: #e8e8d3; }*/
+[class^="pgcss"] { color: #d9d9d9; }
 .pgcsshll { background-color: #ffffcc; }
 .pgcssc { color: #888888; font-style: italic; } /* Comment */
 .pgcsserr { color: #e8e8d3; } /* Error */
@@ -19,7 +20,7 @@
 .pgcssgr { color: #e8e8d3; background-color: #902020; } /* Generic.Error */
 .pgcssgh { color: #70b950; font-weight: bold; } /* Generic.Heading */
 .pgcssgi { color: #e8e8d3; background-color: #032218; } /* Generic.Inserted */
-.pgcssgo { color: #808080; } /* Generic.Output */
+.pgcssgo { color: #999999; } /* Generic.Output */
 .pgcssgp { color: #e8e8d3; } /* Generic.Prompt */
 .pgcssgs { color: #e8e8d3; } /* Generic.Strong */
 .pgcssgu { color: #70b950; font-weight: bold; } /* Generic.Subheading */
