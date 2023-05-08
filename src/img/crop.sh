@@ -14,7 +14,7 @@ convert 4250721014_enhanced.png \
 	-evaluate multiply 0.40 \
 	-evaluate add 10% \
 	pnm:- | \
-cwebp-1.1.0 \
+cwebp-1.3.0 \
 	-sharp_yuv \
 	-m 6 \
 	-q 0 \
@@ -30,10 +30,15 @@ convert 4250721014_enhanced.png \
 	-evaluate add 10% \
 	crop-760-120.pnm
 convert crop-760-120.pnm hdr-760.png
-pngcrush hdr-760.png
+pngcrush hdr-760.png hdr-760.min.png
+if ((`stat -c%s hdr-760.min.png`<`stat -c%s hdr-760.png`));then
+	mv hdr-760.min.png hdr-760.png
+else
+	rm hdr-760.min.png
+fi
 cjpeg -quality 90 -optimize -progressive crop-760-120.pnm > hdr-760.jpg
 ~/code/jpeg/jpgcrush hdr-760.jpg
-cwebp-1.1.0 \
+cwebp-1.3.0 \
 	-pass 10 \
 	-m 6 \
 	-size 15000 \
