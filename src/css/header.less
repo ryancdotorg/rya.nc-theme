@@ -9,20 +9,9 @@ Copyright (c) 2023 Ryan Castellucci
 
 @import (once) "define.less";
 
-// nearest neighbor rendering is preferred
-//header#banner { image-rendering:pixelated; }
-
 #banner {
-    // width:100%;
-
     height:122px;
-    // min-height:122px;
-    // max-height:122px;
-
     margin:2px 0;
-    // fallback to crisp-edges algorithm
-    // image-rendering:crisp-edges;
-    // background-color: #2a2d20;
     background-image:
     // needs less.js preprocessor
     data-uri("hex_mask_tile.png"),
@@ -52,11 +41,6 @@ Copyright (c) 2023 Ryan Castellucci
     font-weight:normal;
     margin:1em 18px 0 0;
 }
-
-//#banner p.subtitle {
-//    font-size:1.2em;
-//    margin:1em 18px 0 0;
-//}
 
 #banner a {
     color:@theme-fg1;

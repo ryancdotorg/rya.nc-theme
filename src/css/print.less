@@ -26,6 +26,11 @@
     .postmeta time { text-decoration: none; }
     .postmeta time[data-time]::after { content: " at " attr(data-time); }
 
+    /* don't hide comment markup when printing */
+    .highlighttable strong>span, .highlight strong>span, .highlighttable em>span, .highlight em>span {
+        font-size: inherit;
+    }
+
     /* we use pygments' default style when printing, and turn off ligatures */
     [class^="pgcss"]{color:#000!important;font-variant-ligatures:none!important}
     .pgcsshll{background-color:#ffc!important}
