@@ -127,8 +127,20 @@
         </svg>
       </a>
       {%- endif %}
-      {%- if FEED_ALL_RSS -%}
+      {%- if FEED_ALL_RSS and FEED_ALL_ATOM -%}
+      <a href="/{{ FEED_ALL_RSS|replace(".rss", ".xml") }}" title="RSS Feed" style="background-image:url('*/theme/img/icon-RSS.png')">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="/theme/img/icons.svg#RSS"/>
+        </svg>
+      </a>
+      {%- elif FEED_ALL_RSS -%}
       <a href="/{{ FEED_ALL_RSS }}" title="RSS Feed" style="background-image:url('*/theme/img/icon-RSS.png')">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="/theme/img/icons.svg#RSS"/>
+        </svg>
+      </a>
+      {%- elif FEED_ALL_ATOM -%}
+      <a href="/{{ FEED_ALL_ATOM }}" title="Atom Feed" style="background-image:url('*/theme/img/icon-RSS.png')">
         <svg xmlns="http://www.w3.org/2000/svg">
           <use xlink:href="/theme/img/icons.svg#RSS"/>
         </svg>
