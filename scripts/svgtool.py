@@ -74,8 +74,15 @@ def merge(filenames):
     svg.append(defs)
     for filename in filenames:
         (tree, root, _) = parse_ns(filename)
+
+        d = root.find(ns+'defs') or []
+        for e in d: defs.append(e)
+
         symbol = Element(ns+'symbol')
         copy(symbol, root)
+        d = symbol.find(ns+'defs')
+        if d: symbol.remove(d)
+
         defs.append(symbol)
 
     sys.stdout.write(terse(svg))
