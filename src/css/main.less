@@ -10,7 +10,7 @@ Copyright (c) 2023 Ryan Castellucci
 @import (once) "define.less";
 
 /* If you want to clear a float (after an image perhaps) use this class */
-.clear { clear:both; }
+//.clear { clear:both; }
 
 /* Begin Global Resets */
 * {
@@ -21,9 +21,9 @@ Copyright (c) 2023 Ryan Castellucci
 body {
     background-color:@theme-bg0;
     color:@theme-fg1;
-    font-size:16px;
-    font-family: sans-serif;
-    line-height:1.3em;
+    font-size:@body-size;
+    font-family:sans-serif;
+    line-height:(@line-height * 1em);
 }
 
 table {
