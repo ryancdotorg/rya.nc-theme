@@ -1,7 +1,7 @@
 LESS_INCLUDE = --include-path=src/css:src/font:src/img:static/css/src:static/img:static/font
 FONT_NAMES = iosevka-ryanc
 FONT_STYLES = regular bold italic bolditalic
-FONT_SUBSETS = basic latin greek symbol other full
+FONT_SUBSETS = $(shell sed -En 's!^@subset-([a-z0-9_-]+):.*!\1!p' src/css/font-face.less)
 FONT_EXTS = woff woff2
 
 #map = $(foreach a,$(2),$(call $(1),$(a)))
@@ -9,6 +9,8 @@ FONT_EXTS = woff woff2
 font_styles = $(patsubst %,static/font/%,$(patsubst %,$(1)-%,$(FONT_STYLES)))
 font_subsets = $(foreach style,$(font_styles),$(patsubst %,$(style)-%, $(FONT_SUBSETS)))
 font_files = $(foreach subset,$(font_subsets),$(patsubst %,$(subset).%, $(2)))
+
+$(foreach subset,$(FONT_SUBSETS),$(eval $(shell sed -En "s/^@subset-("$(subset)"): \"(U[U+0-9A-F,-]+)\";.*/subset_\1 = \2/p" src/css/font-face.less)))
 
 icons = Mastodon Twitter GitHub GitHubDark LinkedIn Email RSS
 icon_sources = $(patsubst %,src/img/icon-%.svg, $(icons))
@@ -29,9 +31,9 @@ min_js: $(patsubst %.js,%.min.js,$(foreach js,$(wildcard src/js/*.js),$(subst sr
 
 ext_js: static/js/hyphenopoly_loader.min.js
 
-font: $(patsubst %,static/css/iosevka-ryanc-%.css,$(FONT_EXTS))
+font: $(foreach name,$(FONT_NAMES),$(patsubst %,static/css/$(name)-%.css,$(FONT_EXTS)))
 
-style: static/css/inline.css static/css/print.css $(patsubst %,static/css/iosevka-ryanc-%.css,$(FONT_EXTS))
+style: static/css/inline.css static/css/print.css $(foreach name,$(FONT_NAMES),$(patsubst %,static/css/$(name)-%.css,$(FONT_EXTS)))
 
 static/%: src/%
 	cp -a $< $@
@@ -83,53 +85,17 @@ static/font/%-full.woff2: src/font/%.ttf
 	pyftsubset $< --unicodes='*' \
 		--flavor=woff2 --output-file=$@
 
-static/font/%-ascii.woff: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0020-007E \
-		--flavor=woff --with-zopfli --output-file=$@
+define font_template =
+static/font/%-$(1).woff: src/font/%.ttf src/css/font-face.less
+	pyftsubset $$< --unicodes=$$(subset_$(1)) \
+		--flavor=woff --with-zopfli --output-file=$$@
 
-static/font/%-ascii.woff2: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0020-007E \
-		--flavor=woff2 --output-file=$@
+static/font/%-$(1).woff2: src/font/%.ttf src/css/font-face.less
+	pyftsubset $$< --unicodes=$$(subset_$(1)) \
+		--flavor=woff2 --output-file=$$@
+endef
 
-static/font/%-basic.woff: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0020-007E,U+00A0-00BF,U+00D7,U+00F7 \
-		--flavor=woff --with-zopfli --output-file=$@
-
-static/font/%-basic.woff2: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0020-007E,U+00A0-00BF,U+00D7,U+00F7 \
-		--flavor=woff2 --output-file=$@
-
-static/font/%-latin.woff: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0000-001F,U+007F-009F,U+00C0-00D6,U+00D8-00F6,U+00F9-036F,U+1E00-1EFF,U+2000-20CF \
-		--flavor=woff --with-zopfli --output-file=$@
-
-static/font/%-latin.woff2: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0000-001F,U+007F-009F,U+00C0-00D6,U+00D8-00F6,U+00F9-036F,U+1E00-1EFF,U+2000-20CF \
-		--flavor=woff2 --output-file=$@
-
-static/font/%-greek.woff: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0370-03FF,U+1F00-1FFF \
-		--flavor=woff --with-zopfli --output-file=$@
-
-static/font/%-greek.woff2: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0370-03FF,U+1F00-1FFF \
-		--flavor=woff2 --output-file=$@
-
-static/font/%-symbol.woff: src/font/%.ttf
-	pyftsubset $< --unicodes=U+20D0-2BFF \
-		--flavor=woff --with-zopfli --output-file=$@
-
-static/font/%-symbol.woff2: src/font/%.ttf
-	pyftsubset $< --unicodes=U+20D0-2BFF \
-		--flavor=woff2 --output-file=$@
-
-static/font/%-other.woff: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0400-01DFF,U+2E80-10FFFF \
-		--flavor=woff --with-zopfli --output-file=$@
-
-static/font/%-other.woff2: src/font/%.ttf
-	pyftsubset $< --unicodes=U+0400-01DFF,U+2E80-10FFFF \
-		--flavor=woff2 --output-file=$@
+$(foreach subset,$(FONT_SUBSETS),$(eval $(call font_template,$(subset))))
 
 clean: clean_js clean_css
 

@@ -1,9 +1,15 @@
-.font-inline(@family, @stem, @ranges) {
+@subset-basic: "U+0020-007E,U+00A0-00BF,U+00D7,U+00F7,U+20AC";
+@subset-latin: "U+0000-001F,U+007F-009F,U+00C0-00D6,U+00D8-00F6,U+00F9-036F,U+1E00-1EFF,U+2000-20AB,U+20AE-20CF";
+@subset-greek: "U+0370-03FF,U+1F00-1FFF";
+@subset-symbol: "U+20D0-2BFF,U+2E00-2E7F";
+@subset-other: "U+0400-1DFF,U+2C00-2DFF,U+2E80-10FFFF";
+
+.font-inline(@family, @stem, @subset, @ranges) {
 
     @font-face {
         font-family: @family;
-        src: data-uri("@{stem}-regular-basic.@{font-format}") format("@{font-format}")
-             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-regular-basic.woff") format("woff"));
+        src: data-uri("@{stem}-regular-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-regular-@{subset}.woff") format("woff"));
         font-weight: 400;
         font-style: normal;
         unicode-range: @ranges;
@@ -11,8 +17,8 @@
 
     @font-face {
         font-family: @family;
-        src: data-uri("@{stem}-bold-basic.@{font-format}") format("@{font-format}")
-             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bold-basic.woff") format("woff"));
+        src: data-uri("@{stem}-bold-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bold-@{subset}.woff") format("woff"));
         font-weight: 700;
         font-style: normal;
         unicode-range: @ranges;
@@ -20,8 +26,8 @@
 
     @font-face {
         font-family: @family;
-        src: data-uri("@{stem}-italic-basic.@{font-format}") format("@{font-format}")
-             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-italic-basic.woff") format("woff"));
+        src: data-uri("@{stem}-italic-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-italic-@{subset}.woff") format("woff"));
         font-weight: 400;
         font-style: italic;
         unicode-range: @ranges;
@@ -29,8 +35,8 @@
 
     @font-face {
         font-family: @family;
-        src: url("/theme/font/@{stem}-bolditalic-basic.@{font-format}") format("@{font-format}")
-             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bolditalic-basic.woff") format("woff"));
+        src: url("/theme/font/@{stem}-bolditalic-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bolditalic-@{subset}.woff") format("woff"));
         font-weight: 700;
         font-style: italic;
         unicode-range: @ranges;
