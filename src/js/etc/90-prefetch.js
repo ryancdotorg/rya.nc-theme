@@ -16,9 +16,9 @@ window[$onDomLoaded](function(){
     var l, t = e.target, T = (O.reqTime||[]).slice(), navConn = navigator.connection || {}, rtt;
     T.push(O.connInfo&&O.connInfo.rtt||Infinity);
     // skip prefetches if the round trip time is under 40ms or saveData is on
-    if (navConn.saveData || ((rtt = Math.min.apply(0, T) < 40000) && !(navConn.rtt >= 500))) return;
+    if (navConn.saveData || (rtt = Math.min.apply(0, T) < 40000)) return;
     // skip prefetches on hover unless the connection has high latency and okayish bandwidth
-    if (e.type == "mouseenter" && rtt < 100000 && !(navConn.rtt >= 1000) && !(navConn.downlink < 0.25)) return;
+    if (e.type == "mouseenter" && rtt < 100000 && !(navConn.downlink < 0.25)) return;
     if (t.tagName == 'A' && t.origin == self.origin && !e.button && uh(t) != uh(location) && t.getAttribute('download') === null && !M[t.href]) {
       M[t.href] = 1;
       l = document.createElement('link');
