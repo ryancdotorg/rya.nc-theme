@@ -38,6 +38,15 @@ time, abbr {
     scroll-margin-top: (@menu-size + @h2-size * @vpad-size);
 }
 
+span:target {
+    scroll-margin-top: (@menu-size + @vpad-size);
+    background-color:@highlight;
+    margin:0 -2px;
+    border:solid 2px @highlight;
+    -webkit-box-decoration-break:clone;
+    box-decoration-break:clone;
+}
+
 .article hr {
     border:solid @theme-border;
     border-width:1px 0 0;

@@ -1,6 +1,6 @@
 @import (once) "define.less";
 
-td.linenos {
+td.linenos, .pgcssgp {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
@@ -46,38 +46,40 @@ code, .code, .linenos {
 
 table.highlighttable { width:100%; }
 
+.highlighttable {
+    width:100%;
+    line-height:1.3;
+}
+
 .highlighttable td {
     vertical-align:text-top;
-    padding:0 .3em;
+    padding:0 0.3em 0 0;
+    border:0;
+}
+
+.highlighttable tbody td {
+    vertical-align:text-top;
+    padding:0 0.3em 0 0;
     border:0;
 }
 
 .highlighttable .linenos {
     width:4ch;
+    padding:0 .3em;
     text-align:right;
     border-right:solid 1px @theme-border;
-}
-
-.highlighttable {
-    width:100%;
-    background-color:@theme-bg1;
-    border:solid 1px @theme-border;
-    line-height:1.3;
-}
-
-.highlighttable tbody td {
-    vertical-align:text-top;
-    padding:0 .3em;
-    border:0;
 }
 
 .highlighttable td>code, .highlight pre>code {
     background-color:transparent;
     white-space:pre-wrap;
     border:0;
+    -webkit-box-decoration-break:clone;
+    box-decoration-break:clone;
 }
+
 .highlighttable .special td, .highlighttable :target td {
-    background-color: #292929 !important;
+    background-color: @highlight !important;
 }
 
 .breakall { word-break:break-all !important; }
