@@ -9,8 +9,11 @@
 {% endif -%}
 <head>
 <meta charset="utf-8">
+{% macro title() -%}
+{% block title %}{{ SITENAME }}{% endblock title %}
+{%- endmacro %}
 {% block head %}
-<title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+<title>{{ title() }}</title>
 <meta name="viewport" content="width=device-width">
 {% if this and this.robots %}
 <meta name="robots" content="{{ this.robots }}">
@@ -66,8 +69,12 @@
   <header id="banner">
     <!--<canvas style="z-index:-1"></canvas>-->
     <div class="inside">
-    <p class="name" itemprop="name"><a href="/" itemprop="url">{{ SITENAME }}</a></p>
-    <p class="title"><a href="/">{{ SITETITLE }}</a></p>
+    <p class="name" itemprop="name">
+      <a href="/" itemprop="url">{{ SITENAME }}</a>
+    </p>
+    <p class="title">
+      <a href="/">{{ SITETITLE }}</a>
+    </p>
     <!--<p class="subtitle">{{ SITESUBTITLE }}</p>-->
     </div>
   </header>
