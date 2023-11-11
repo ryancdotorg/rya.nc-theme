@@ -83,7 +83,7 @@
     {% endif %}
     {% if article.modified %}
     <br>Last modified
-    <time class="modified" title="{{ article.date.isoformat() }}" datetime="{{ article.modified.isoformat() }}" data-time="{{ article.date.strftime('%H:%M:%S%z') }}">{{ article.locale_modified }}</time>.
+    <time class="modified" title="{{ article.modified.isoformat() }}" datetime="{{ article.modified.isoformat() }}" data-time="{{ article.modified.strftime('%H:%M:%S%z') }}">{{ article.locale_modified }}</time>
     <meta itemprop="dateModified" content="{{ article.modified.isoformat() }}">
     {% elif article.locale_date %}
     <meta itemprop="dateModified" content="{{ article.date.isoformat() }}">

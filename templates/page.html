@@ -13,13 +13,11 @@
   <div class="entry-content">
   {{ page.content }}
   </div>
+  {% if page.modified %}
+  <footer class="postmeta">
+    Last Modified <time class="modified" title="{{ page.modified.isoformat() }}" datetime="{{ page.modified.isoformat() }}" data-time="{{ page.modified.strftime('%H:%M:%S%z') }}">{{ page.locale_modified }}</time>
+  </footer><!-- /.postmeta -->
+  {% endif %}
   {% if page.footnotes %}{{ page.footnotes }}{% endif %}
   </div><!-- /.article -->
-{#/
-  {% if page.modified %}
-    <p>
-    Last updated: {{ page.locale_modified }}
-    </p>
-  {% endif %}
-/#}
 {% endblock %}
