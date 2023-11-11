@@ -12,7 +12,7 @@ font_files = $(foreach subset,$(font_subsets),$(patsubst %,$(subset).%, $(2)))
 
 $(foreach subset,$(FONT_SUBSETS),$(eval $(shell sed -En "s/^@subset-("$(subset)"): \"(U[U+0-9A-F,-]+)\";.*/subset_\1 = \2/p" src/css/font-face.less)))
 
-icons = Mastodon Twitter GitHub GitHubDark LinkedIn Email RSS
+icons = Mastodon Bluesky Twitter GitHub GitHubDark LinkedIn Email RSS
 icon_sources = $(patsubst %,src/img/icon-%.svg, $(icons))
 
 all: style javascript
