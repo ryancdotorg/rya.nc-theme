@@ -20,8 +20,9 @@ def s_get(*args, **kwargs):
 
     return s.get(*args, **kwargs)
 
+BG = 'z'
 NS = {'svg': 'http://www.w3.org/2000/svg'}
-ET.register_namespace('',NS['svg'])
+ET.register_namespace('', NS['svg'])
 
 def pretty(element):
     parser = etree.XMLParser(remove_blank_text=True)
@@ -52,7 +53,7 @@ def parse_ns(filename):
 def copy(dst, src):
     dst.attrib['viewBox'] = src.attrib['viewBox']
     if 'aria-label' in src.attrib:
-        dst.attrib['id'] = src.attrib['aria-label'].replace(' ','')
+        dst.attrib['id'] = src.attrib['aria-label'].replace(' ', '')
     else:
         dst.attrib['id'] = src.attrib['id']
 
@@ -69,20 +70,60 @@ def format(filename):
 
 def merge(filenames):
     ns = '{'+NS['svg']+'}'
+
     svg = Element(ns+'svg')
+
     defs = Element(ns+'defs')
     svg.append(defs)
+
+    # background
+    bg = Element(ns+'path')
+    bg.attrib['id'] = BG
+    bg.attrib['d'] = 'm0 0H512V512H0'
+    defs.append(bg)
+
     for filename in filenames:
         (tree, root, _) = parse_ns(filename)
 
-        d = root.find(ns+'defs') or []
-        for e in d: defs.append(e)
+        # move any elements from <defs> into the new svg
+        d = root.find(ns+'defs')
+        if d:
+            [defs.append(e) for e in d]
+            root.remove(d)
 
+        # convert hex colors to lowercase
+        for attr in ('fill', 'stroke'):
+            for e in root.findall(f'*/[@{attr}]'):
+                if e.attrib[attr][0] == '#':
+                    e.attrib[attr] = e.attrib[attr].lower()
+
+        # convert background rectangles to use references
+        for r in root.findall(ns+'rect[@rx="15%"][@width="512"][@height="512"]'):
+            del r.attrib['rx']
+            if 'fill' in r.attrib:
+                r.tag = ns+'use'
+                del r.attrib['width']
+                del r.attrib['height']
+                r.attrib['href'] = '#' + BG
+                # move any other attributes to the end
+                for k in tuple(r.attrib.keys()):
+                    if k == 'href': continue
+                    r.attrib[k] = r.attrib.pop(k)
+
+        # convert background paths to use references
+        for r in root.findall(ns+'path[@d="m0 0H512V512H0"]'):
+            if 'fill' in r.attrib:
+                r.tag = ns+'use'
+                del r.attrib['d']
+                r.attrib['href'] = '#' + BG
+                # move any other attributes to the end
+                for k in tuple(r.attrib.keys()):
+                    if k == 'href': continue
+                    r.attrib[k] = r.attrib.pop(k)
+
+        # add this file as a symbol
         symbol = Element(ns+'symbol')
         copy(symbol, root)
-        d = symbol.find(ns+'defs')
-        if d: symbol.remove(d)
-
         defs.append(symbol)
 
     sys.stdout.write(terse(svg))
@@ -142,8 +183,11 @@ def main(arg0, narg, args):
         extract(args[1], args[2])
     elif cmd == 'merge' and narg > 1:
         merge(args[1:])
-    elif cmd == 'supertiny' and narg > 1:
+    elif cmd == 'supertiny' and narg > 2:
         supertiny(args[1:])
+        print()
+    elif cmd == 'supertiny':
+        sys.stdout.write(supertiny(args[1]))
     else:
         abort('bad arguments')
 
