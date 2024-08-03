@@ -23,12 +23,14 @@ cwebp-1.3.0 \
 	-af \
 	-o hdr-760-zq.webp \
 	-- -
+
 convert 4250721014_enhanced.png \
 	-crop 760x122+0+396 \
 	+repage \
 	-evaluate multiply 0.40 \
 	-evaluate add 10% \
 	crop-760-120.pnm
+
 convert crop-760-120.pnm hdr-760.png
 pngcrush hdr-760.png hdr-760.min.png
 if ((`stat -c%s hdr-760.min.png`<`stat -c%s hdr-760.png`));then
@@ -36,8 +38,10 @@ if ((`stat -c%s hdr-760.min.png`<`stat -c%s hdr-760.png`));then
 else
 	rm hdr-760.min.png
 fi
+
 cjpeg -quality 90 -optimize -progressive crop-760-120.pnm > hdr-760.jpg
 ~/code/jpeg/jpgcrush hdr-760.jpg
+
 cwebp-1.3.0 \
 	-pass 10 \
 	-m 6 \
@@ -45,6 +49,7 @@ cwebp-1.3.0 \
 	-af \
 	-o hdr-760.webp \
 	crop-760-120.pnm
+
 #convert 4250721014_enhanced.png \
 #	-crop 768x144+0+396 \
 #	-evaluate multiply 0.40 \
