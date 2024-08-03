@@ -38,13 +38,13 @@
     </p>-->
     {{ article.content }}
   </div><!-- /.entry-content -->
-  {% if article.author|author_info('twitter') %}
   <div class="call-to-action">
+  {% if article.author|author_info('twitter') %}
     <!-- If you enjoyed this,
     <a class="reference external" href="//twitter.com/intent/follow?screen_name={{ article.author|author_info('twitter') }}" rel="noreferrer">follow me on Twitter</a>
     for my latest posts.-->
-  </div>
   {% endif %}
+  </div>
   <footer class="postmeta">
     {#/ Okay, this is just obnoxious... /#}
     <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
