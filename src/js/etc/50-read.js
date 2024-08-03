@@ -29,7 +29,8 @@ window[$onDomLoaded](function(){
     'event': 'DOMLoaded',
     'visible': document.visibilityState === 'visible',
     'focus': document.hasFocus(),
-    'discarded': document.wasDiscarded || false
+    'discarded': document.wasDiscarded || false,
+    'referrer': document.referrer
   });
 
   addListener(document, 'xvisibilitychange', function(e) {

@@ -10,6 +10,7 @@ var logStats = (function() {
     if (typeof fetch === 'function' && 'keepalive' in Request.prototype) {
       send = function(data) {
         fetch(target, {
+          priority: "low",
           keepalive: true,
           method: 'POST',
           body: serialize(data)
