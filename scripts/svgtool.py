@@ -10,6 +10,19 @@ from xml.etree.ElementTree import Element, SubElement
 from xml.dom import minidom
 from lxml import etree
 
+CSS_COLORS = {
+    "#ffd700": "gold",
+    "#808080": "grey",
+    "#000080": "navy",
+    "#cd853f": "peru",
+    "#ffc0cb": "pink",
+    "#dda0dd": "plum",
+    "#ff0000": "red",
+    "#fffafa": "snow",
+    "#d2b48c": "tan",
+    "#008080": "teal",
+}
+
 # https://github.com/edent/SuperTinyIcons
 s = None
 def s_get(*args, **kwargs):
@@ -92,8 +105,8 @@ def merge(filenames):
             root.remove(d)
 
         # convert hex colors to lowercase
-        for attr in ('fill', 'stroke'):
-            for e in root.findall(f'*/[@{attr}]'):
+        for attr in ('stroke', 'fill'):
+            for e in root.findall(f'.//*[@{attr}]'):
                 if e.attrib[attr][0] == '#':
                     e.attrib[attr] = e.attrib[attr].lower()
 
@@ -120,6 +133,10 @@ def merge(filenames):
                 for k in tuple(r.attrib.keys()):
                     if k == 'href': continue
                     r.attrib[k] = r.attrib.pop(k)
+
+        # move fill to the end
+        for r in root.findall('.//*[@fill]'):
+            r.attrib['fill'] = r.attrib.pop('fill')
 
         # add this file as a symbol
         symbol = Element(ns+'symbol')

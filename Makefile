@@ -1,8 +1,8 @@
-LESS_INCLUDE = --include-path=src/css:src/font:src/img:static/css/src:static/img:static/font
+LESS_INCLUDE = --include-path=src/css:src/font:src/img:static/css:static/img:static/font
 FONT_NAMES = iosevka-ryanc
 FONT_STYLES = regular bold italic bolditalic
-FONT_SUBSETS = $(shell sed -En 's!^@subset-([a-z0-9_-]+):.*!\1!p' src/css/font-face.less)
-FONT_EXTS = woff woff2
+FONT_SUBSETS = full $(shell sed -En 's!^@subset-([a-z0-9_-]+):.*!\1!p' src/css/font-face.less)
+FONT_EXTS = woff2
 
 #map = $(foreach a,$(2),$(call $(1),$(a)))
 
@@ -10,9 +10,9 @@ font_styles = $(patsubst %,static/font/%,$(patsubst %,$(1)-%,$(FONT_STYLES)))
 font_subsets = $(foreach style,$(font_styles),$(patsubst %,$(style)-%, $(FONT_SUBSETS)))
 font_files = $(foreach subset,$(font_subsets),$(patsubst %,$(subset).%, $(2)))
 
-$(foreach subset,$(FONT_SUBSETS),$(eval $(shell sed -En "s/^@subset-("$(subset)"): \"(U[U+0-9A-F,-]+)\";.*/subset_\1 = \2/p" src/css/font-face.less)))
+$(foreach subset,$(FONT_SUBSETS),$(eval $(shell sed -En "s/^@subset-("$(subset)"): (U[U+0-9A-F,-]+);.*/subset_\1 = \2/p" src/css/font-face.less)))
 
-icons = Mastodon Bluesky Twitter GitHub GitHubDark LinkedIn Email RSS
+icons = Mastodon Bluesky GitHub LinkedIn Email RSS
 icon_sources = $(patsubst %,src/img/icon-%.svg, $(icons))
 
 all: style javascript
@@ -33,22 +33,17 @@ ext_js: static/js/hyphenopoly_loader.min.js
 
 font: $(foreach name,$(FONT_NAMES),$(patsubst %,static/css/$(name)-%.css,$(FONT_EXTS)))
 
-style: static/css/inline.css static/css/print.css $(foreach name,$(FONT_NAMES),$(patsubst %,static/css/$(name)-%.css,$(FONT_EXTS)))
+style: static/css/inline.css static/css/print.css static/css/icons.css $(foreach name,$(FONT_NAMES),$(patsubst %,static/css/$(name)-%.css,$(FONT_EXTS)))
 
 static/%: src/%
 	cp -a $< $@
 
-static/js/hyphenopoly_loader.min.js: ext/Hyphenopoly-4.12.0/Hyphenopoly_Loader.js
-	terser $< -safari10 --ecma 5 -c passes=2 -m -d \
-	'Hyphenopoly={"require":{"en-us":"anesthesiologist"},"setup":{"selectors":".article"}}' \
-	-o $@
-
-static/js/Hyphenopoly.js: ext/Hyphenopoly-4.12.0/Hyphenopoly.js
-	terser $< -safari10 --ecma 5 -c passes=2 -m -o $@
-
 static/js/%.min.js: src/js/%.js
 	terser $< --safari10 --ecma 5 -c passes=2 -m reserved=_ --mangle-props regex=/^_.+/ \
 	| terser --safari10 --ecma 5 --define _=\"\" -o $@
+
+static/css/icons.css: static/img/icons.svg scripts/icons.py
+	scripts/icons.py $(icons) | csso | tr -d '\n' > $@
 
 static/css/%.css: src/css/%.less
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
@@ -57,12 +52,13 @@ static/css/%.css: src/css/%.css
 	csso < $< | tr -d '\n' > $@
 
 static/css/inline.css: src/css/inline.less src/css/*.less src/css/*.css \
+                       static/css/icons.css \
                        static/img/hdr-760-zq.webp \
                        static/img/hex_mask_tile.png
 	lessc $(LESS_INCLUDE) $< | csso | tr -d '\n' > $@
 
-static/img/icons.svg: $(icon_sources)
-	scripts/svgtool.py merge $^ > $@
+static/img/icons.svg: scripts/svgtool.py $(icon_sources)
+	scripts/svgtool.py merge $(wordlist 2,999,$^) > $@
 
 static/img/icon-%.png: src/img/icon-%.svg
 	convert -density 600 -resize 120x120 -background transparent -dither None -colors 8 $< $@
@@ -87,11 +83,14 @@ static/font/%-full.woff2: src/font/%.ttf
 
 define font_template =
 static/font/%-$(1).woff: src/font/%.ttf src/css/font-face.less
+	scripts/subset-cache.py \
 	pyftsubset $$< --unicodes=$$(subset_$(1)) \
 		--flavor=woff --with-zopfli --output-file=$$@
 
 static/font/%-$(1).woff2: src/font/%.ttf src/css/font-face.less
+	scripts/subset-cache.py \
 	pyftsubset $$< --unicodes=$$(subset_$(1)) \
+		--desubroutinize \
 		--flavor=woff2 --output-file=$$@
 endef
 
