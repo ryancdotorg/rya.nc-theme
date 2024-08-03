@@ -1,8 +1,8 @@
-@subset-basic: "U+0020-007E,U+00A0-00BF,U+00D7,U+00F7,U+20AC";
-@subset-latin: "U+0000-001F,U+007F-009F,U+00C0-00D6,U+00D8-00F6,U+00F9-036F,U+1E00-1EFF,U+2000-20AB,U+20AE-20CF";
-@subset-greek: "U+0370-03FF,U+1F00-1FFF";
-@subset-symbol: "U+20D0-2BFF,U+2E00-2E7F";
-@subset-other: "U+0400-1DFF,U+2C00-2DFF,U+2E80-10FFFF";
+@subset-basic: U+0000-00A0;
+@subset-extra: U+00A1-00BF,U+00D7,U+00F7,U+0391-03A9,U+03B1-03C9,U+2000-206F,U+20AC,U+2200-22FF;
+@subset-latin: U+00C0-00D6,U+00D8-00F6,U+00F8-00FF,U+0300-036F,U+2070-20AB,U+20AE-20CF;
+@subset-symbol: U+20D0-21FF,U+2300-2BFF,U+2E00-2E7F;
+@subset-other: U+0370-0390,U+03AA-03B0,U+0400-1EFF,U+2C00-2DFF,U+2E80-10FFFF;
 
 .font-inline(@family, @stem, @subset, @ranges) {
 
@@ -17,19 +17,19 @@
 
     @font-face {
         font-family: @family;
-        src: data-uri("@{stem}-bold-@{subset}.@{font-format}") format("@{font-format}")
-             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bold-@{subset}.woff") format("woff"));
-        font-weight: 700;
-        font-style: normal;
+        src: data-uri("@{stem}-italic-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-italic-@{subset}.woff") format("woff"));
+        font-weight: 400;
+        font-style: italic;
         unicode-range: @ranges;
     }
 
     @font-face {
         font-family: @family;
-        src: data-uri("@{stem}-italic-@{subset}.@{font-format}") format("@{font-format}")
-             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-italic-@{subset}.woff") format("woff"));
-        font-weight: 400;
-        font-style: italic;
+        src: data-uri("@{stem}-bold-@{subset}.@{font-format}") format("@{font-format}")
+             if(@font-format = woff2, ~"," url("/theme/font/@{stem}-bold-@{subset}.woff") format("woff"));
+        font-weight: 700;
+        font-style: normal;
         unicode-range: @ranges;
     }
 

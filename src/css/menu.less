@@ -1,11 +1,10 @@
-/* SPDX-License-Identifier: GPL-3.0-or-later
-Theme Name: rya.nc
-Theme URI: https://github.com/ryancdotorg/rya.nc-theme
-Description: A Pelican theme originally based on ‘The Open Sourcerer’ by Alan Lord.
-Author: Ryan Castellucci code@ryanc.org
-Author URI: https://rya.nc/
-Copyright (c) 2023 Ryan Castellucci
-*/
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Theme Name: rya.nc
+// Theme URI: https://github.com/ryancdotorg/rya.nc-theme
+// Description: A Pelican theme originally based on ‘The Open Sourcerer’ by Alan Lord.
+// Author: Ryan Castellucci code@ryanc.org
+// Author URI: https://rya.nc/
+// Copyright (c) 2023 Ryan Castellucci
 
 @import (once) "define.less";
 
@@ -15,7 +14,7 @@ Copyright (c) 2023 Ryan Castellucci
 
     position:sticky;
     top:0;
-    margin-bottom:1em;
+    margin-bottom:-1em;
     z-index: 1;
 }
 
@@ -50,10 +49,11 @@ Copyright (c) 2023 Ryan Castellucci
     background-position: center;
 }
 
-#icons svg, #icons object {
+#icons svg, #icons img {
     display: inline-block;
     height: @icon-size;
     width: @icon-size;
+    border-radius: 15%;
 }
 
 /* https://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C7 */

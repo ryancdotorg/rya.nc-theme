@@ -15,8 +15,14 @@ td.linenos, .pgcssgp {
     text-decoration: underline dotted;
 }
 
-.highlighttable strong>span, .highlight strong>span, .highlighttable em>span, .highlight em>span {
+.delimiter {
     font-size: 0;
+}
+
+.fixme {
+    font-weight: 700;
+    color: @theme-fg1;
+    font-style: normal;
 }
 
 .highlighttable em, .highlight em {
@@ -39,8 +45,7 @@ code, .code {
 pre.code { white-space: pre-wrap; }
 
 code, .code, .linenos {
-    /* font stack from github */
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    font-family: @mono-fallback;
     line-height: 1.3;
 }
 

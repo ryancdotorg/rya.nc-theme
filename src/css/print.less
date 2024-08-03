@@ -1,17 +1,15 @@
 @import (once) "define.less";
 
 @media print {
-    /*
-    #sidebar {
-        display: none !important;
-    }
-    */
+    //#sidebar {
+    //    display: none !important;
+    //}
     .print { display: initial !important}
     #banner, #menu, #pagination, #ft_right, #ft_left span, .call-to-action .noprint {
         display: none !important;
     };
     .article, .archive, #contentinfo { border: 0 !important; };
-    .inside, #contentinfo { padding: 0 !important; };
+    .inside, #content, #contentinfo { padding: 0 !important; };
     #banner {
         margin: 0 !important;
         height: 0 !important;
@@ -28,27 +26,24 @@
     .postmeta time[data-time]::after { content: " at " attr(data-time); }
 
     /* don't hide comment markup when printing */
-    .highlighttable strong>span, .highlight strong>span, .highlighttable em>span, .highlight em>span {
-        font-size: inherit;
-    }
+    .delimiter{font-size:inherit;}
+    .fixme{color:inherit!important;}
 
     /* we use pygments' default style when printing, and turn off ligatures */
     [class^="pgcss"]{color:#000!important;font-variant-ligatures:none!important}
     .pgcsshll{background-color:#ffc!important}
     .pgcssc,.pgcssc1,.pgcssch,.pgcsscm,.pgcsscpf,.pgcsscs{color:#408080!important}
-    .pgcssc,.pgcssc1,.pgcssch,.pgcsscm,.pgcsscpf,.pgcsscs,.pgcsssd{font-style:italic!important}
+    .pgcssc,.pgcssc1,.pgcssch,.pgcsscm,.pgcsscpf,.pgcsscs,.pgcsssd,.pgcssge{font-style:italic!important}
     .pgcsserr{border:1px solid red!important}
     .pgcssbp,.pgcssk,.pgcsskc,.pgcsskd,.pgcsskn,.pgcsskp,.pgcsskr,.pgcssnb,.pgcssnt,.pgcsssx{color:green!important}
-    .pgcssgh,.pgcssgp,.pgcssgu,.pgcssk,.pgcsskc,.pgcsskd,.pgcsskn,.pgcsskr,.pgcssnc,.pgcssne,.pgcssni,.pgcssnn,.pgcssnt,.pgcssow,.pgcssse,.pgcsssi{font-weight:700!important}
+    .pgcssgh,.pgcssgs,.pgcssgp,.pgcssgu,.pgcssk,.pgcsskc,.pgcsskd,.pgcsskn,.pgcsskr,.pgcssnc,.pgcssne,.pgcssni,.pgcssnn,.pgcssnt,.pgcssow,.pgcssse,.pgcsssi{font-weight:700!important}
     .pgcssil,.pgcssm,.pgcssmb,.pgcssmf,.pgcssmh,.pgcssmi,.pgcssmo,.pgcsso{color:#666!important}
     .pgcsscp{color:#bc7a00!important}
     .pgcssgd{color:#a00000!important}
-    .pgcssge{font-style:italic!important}
     .pgcssgr{color:red!important}
     .pgcssgh,.pgcssgp{color:navy!important}
     .pgcssgi{color:#00a000!important}
     .pgcssgo{color:#888!important}
-    .pgcssgs{font-weight:700!important}
     .pgcssgu{color:purple!important}
     .pgcssgt{color:#04d!important}
     .pgcsskt{color:#b00040!important}

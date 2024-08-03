@@ -1,11 +1,10 @@
-/* SPDX-License-Identifier: GPL-3.0-or-later
-Theme Name: rya.nc
-Theme URI: https://github.com/ryancdotorg/rya.nc-theme
-Description: A Pelican theme originally based on ‘The Open Sourcerer’ by Alan Lord.
-Author: Ryan Castellucci code@ryanc.org
-Author URI: https://rya.nc/
-Copyright (c) 2023 Ryan Castellucci
-*/
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Theme Name: rya.nc
+// Theme URI: https://github.com/ryancdotorg/rya.nc-theme
+// Description: A Pelican theme originally based on ‘The Open Sourcerer’ by Alan Lord.
+// Author: Ryan Castellucci code@ryanc.org
+// Author URI: https://rya.nc/
+// Copyright (c) 2023 Ryan Castellucci
 
 @import (once) "define.less";
 
@@ -38,6 +37,32 @@ time, abbr {
     scroll-margin-top: (@menu-size + @h2-size * @vpad-size);
 }
 
+.section > .section {
+    scroll-margin-top: (@menu-size + @h3-size * @vpad-size);
+}
+
+.section > .section > .section {
+    scroll-margin-top: (@menu-size + @h4-size * @vpad-size);
+}
+
+.section > :first-child > a[rel=bookmark] {
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+        content: "\0000A0#";
+        opacity: 50%;
+    }
+
+//    &::after {
+//        content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-158 0 512 512'%3e%3cpath fill='%23d9d9d9' d='m140 435-31 31a44 44 0 0 1-62-63l80-80a44 44 0 0 1 60-2l3 2a18 18 0 0 0 24-26l-3-3a79 79 0 0 0-108 4l-82 80a80 80 0 0 0 113 113 l31-30a18 18 0 0 0-25-26m190-253a80 80 0 0 0-112 0l-31 30a18 18 0 0 0 24 26l31-31a44 44 0 0 1 62 62l-80 81a44 44 0 0 1-61 2l-2-2a18 18 0 1 0 -25 26l4 3a79 79 0 0 0 109-4l81-80a80 80 0 0 0 0-113m0 0'/%3e%3c/svg%3e");
+//        background-repeat: no-repeat;
+//        display: inline-block;
+//        width: 1em;
+//        height: auto;
+//    }
+}
+
 span:target {
     scroll-margin-top: (@menu-size + @vpad-size);
     background-color:@highlight;
@@ -56,7 +81,6 @@ span:target {
     background-color:@theme-bg2;
     border:solid 1px @theme-border;
 
-    -webkit-hyphens: auto;
     hyphens: auto;
 
     line-height:1.3;
@@ -89,9 +113,9 @@ span:target {
     line-height:1.3;
 }
 
-.article h2 {
-    font-size:@h2-size;
-}
+.article h2 { font-size:@h2-size; }
+.article h3 { font-size:@h3-size; }
+.article h4 { font-size:@h4-size; }
 
 .archive .inside + .inside {
     border-top:solid 1px @theme-border;
@@ -121,7 +145,7 @@ footer, #pagination, .postmeta {
 }
 
 .article blockquote {
-    margin:0 1em 0 2em;
+    margin:0 1em;
     padding:1em;
     font-style:italic;
     font-synthesis:none;
@@ -137,13 +161,14 @@ blockquote > p + p { margin-top:1em; }
     word-break:break-all !important;
 }
 
-.article td, .article th {
+.article td, .article table>caption {
     padding:0.3em;
     border:solid 1px @theme-border;
 }
 
-.article th {
+.article table>caption {
     text-align:center;
+    font-weight:700;
     background-color:@theme-border;
 }
 
@@ -173,6 +198,7 @@ sub, sup, a.footnote-reference {
     line-height: 0;
     position: relative;
     vertical-align: baseline;
+    font-style: normal;
 }
 sup, a.footnote-reference { top: -0.4em; }
 sub { bottom: -0.3em; }

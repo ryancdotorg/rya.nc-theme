@@ -1,10 +1,12 @@
 @import (once) "define.less";
 
+@import "pygment.jellybeans.min.less";
+
 @import "font-face.less";
 
-.highlighttable code, .linenos, .highlight code, div.code, pre.code {
-    /* fallback font stack from github */
-    font-family: Iosevka,ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+//.highlighttable code, .linenos, .highlight code, .code, a.code, div.code, pre.code, input.code {
+.code, .linenos, code {
+    font-family: Iosevka,@mono-fallback;
 }
 
 // this font is narrow and needs larger vw values
@@ -14,7 +16,7 @@
 
 .font-inline('Iosevka'; 'iosevka-ryanc'; 'basic'; @subset-basic);
 
+.font-face('Iosevka'; 'iosevka-ryanc'; 'extra'; @subset-extra);
 .font-face('Iosevka'; 'iosevka-ryanc'; 'latin'; @subset-latin);
-.font-face('Iosevka'; 'iosevka-ryanc'; 'greek'; @subset-greek);
 .font-face('Iosevka'; 'iosevka-ryanc'; 'symbol'; @subset-symbol);
 .font-face('Iosevka'; 'iosevka-ryanc'; 'other'; @subset-other);
