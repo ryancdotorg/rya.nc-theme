@@ -1,10 +1,5 @@
 {% block meta %}
 {#/ https://moz.com/blog/meta-data-templates-123 /#}
-{% if this.description %}
-<meta name="description" content="{{ this.description|wordtrunc(155) }}">
-{% elif this.summary %}
-<meta name="description" content="{{ this.summary|striptags|wordtrunc(155) }}">
-{% endif %}
 <!-- twitter article metadata -->
 <meta name="twitter:card" content="summary">
 {% if this.label1 and this.data1 %}
@@ -18,16 +13,12 @@
 {% if article and article.author|author_info('twitter') %}
 <meta name="twitter:creator" content="@{{ article.author|author_info('twitter') }}">
 {% endif %}
+
 <!-- open graph article metadata -->
 <meta property="og:title" content="{{ this.title|striptags|e }}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{{ output_file|canonical_url }}">
 <meta property="og:site_name" content="{{ SITENAME }}">
-{% if this.description %}
-<meta property="og:description" content="{{ this.description|e }}">
-{% elif this.summary %}
-<meta property="og:description" content="{{ this.summary|striptags|wordtrunc(200) }}">
-{% endif %}
 {% if this.image %}
 <meta property="og:image" content="{{ this.image|canonical_url }}">
 {% if this.image_alt %}
@@ -36,6 +27,16 @@
 {% else %}
 <meta property="og:image" content="{{ SITEURL }}/avatar3.png">
 {% endif %}
+
+<!-- combined description metadata (compresses better) -->
+{% if this.description %}
+<meta name="description" content="{{ this.description|wordtrunc(155) }}">
+<meta property="og:description" content="{{ this.description|e }}">
+{% elif this.summary %}
+<meta name="description" content="{{ this.summary|striptags|wordtrunc(155) }}">
+<meta property="og:description" content="{{ this.summary|striptags|wordtrunc(200) }}">
+{% endif %}
+
 {% if article %}
 {% for tag in article.tags %}
 <meta property="article:tag" content="{{ tag }}">
@@ -49,5 +50,7 @@
 {% elif artile and article.locale_date %}
 <meta property="article:modified_time" content="{{ article.date.isoformat() }}">
 {% endif %}
+<!--
 <meta name="twitter:site" content="@ryancdotorg">
+-->
 {% endblock meta %}
